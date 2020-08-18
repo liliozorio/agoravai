@@ -1,0 +1,38 @@
+# depslib dependency file v1.0
+1590712472 source:c:\users\livia\onedrive\documents\faculdade\ed ii\trabalho_parte1\main.cpp
+	<iostream>
+	<string>
+	<fstream>
+	"Book.h"
+
+1590712586 source:c:\users\livia\onedrive\documents\faculdade\ed ii\trabalho_parte1\book.cpp
+	"Book.h"
+	<string>
+
+1590712586 c:\users\livia\onedrive\documents\faculdade\ed ii\trabalho_parte1\book.h
+	<iostream>
+	<string>
+
+1590712653 source:c:\users\livia\onedrive\documents\faculdade\ed ii\trabalho_parte1\authors.cpp
+	"Authors.h"
+
+1590712653 c:\users\livia\onedrive\documents\faculdade\ed ii\trabalho_parte1\authors.h
+
+1590712694 source:c:\users\livia\onedrive\documents\faculdade\ed ii\trabalho_parte1\categories.cpp
+	"Categories.h"
+
+1590712694 c:\users\livia\onedrive\documents\faculdade\ed ii\trabalho_parte1\categories.h
+
+1590712716 source:c:\users\livia\onedrive\documents\faculdade\ed ii\trabalho_parte1\place.cpp
+	"Place.h"
+
+1590712716 c:\users\livia\onedrive\documents\faculdade\ed ii\trabalho_parte1\place.h
+
+1590712586 source:c:\users\rsara\downloads\trabalho_parte1\trabalho_parte1\book.cpp
+	"Book.h"
+	<string>
+
+1597767375 c:\users\rsara\downloads\trabalho_parte1\trabalho_parte1\book.h
+	<iostream>
+	<string>
+
