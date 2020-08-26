@@ -7,8 +7,8 @@
 #include <map>
 #include <utility>
 #include "Book.h"
-#include "Book.cpp"
 
+#define n 60000
 #define CHEIA 0
 #define VAZIA 1
 #define BESTSELLERS 2
@@ -53,11 +53,37 @@ int string_size(string s)
 
 string separar(ifstream* arquivo)
 {
+    int tamanho_line;
+    string separar, trash, line;
+    getline(*arquivo, line, '\0');
+    tamanho_line = string_size(line);
+    for(int i=0; i<tamanho_line; i++)
+    {
+        cout<<"entrei aqui4"<< endl;
+        if(line[i]== '"')
+        {
+            if(line[i+1] == ',')
+            {
+                if(line[i+2] == '"')
+                {
+                    getline(*arquivo, trash, '"');
+                    getline(*arquivo, separar, '"');
+                    getline(*arquivo, trash, ',');
+                    cout<<"entrei aqui5"<< endl;
+                    return separar;
+                }
+            }
+        }
+    }
+}
+/*
+string separar(ifstream* arquivo)
+{
     string line, trash;
     getline(*arquivo,trash,'"');
     getline(*arquivo,line,'"');
     getline(*arquivo,trash,',');
-    getline(*arquivo,trash,'"');
+    //getline(*arquivo,trash,'"');
     return line;
 }
 /*
@@ -138,6 +164,10 @@ bool verificaAtributos(int* flag, Book leituraDS)
     }
     return false;
 }*/
+void imprimir(Book* leitura)
+{
+    cout << leitura->get_authors() << " - " << leitura->get_bestsellers_rank() << endl;
+}
 
 void leituraDataSet()
 {
@@ -146,8 +176,9 @@ void leituraDataSet()
     int flag = 0;
     if(arquivo.is_open())
     {
+        cout<<"entrei aqui"<< endl;
         string word, trash, line;
-        getline(arquivo,line);
+        getline(arquivo,line,'\0');
         while(!arquivo.eof())
         {
             Book *leituraDS;
@@ -155,7 +186,7 @@ void leituraDataSet()
 
             ///AUTOR
             getline(arquivo,line,',');
-            getline(arquivo,trash,'"');
+            //getline(arquivo,trash,'"');
             int tamanho_line;
             tamanho_line = string_size(line);
             while(line[tamanho_line-1]!=']')
@@ -165,6 +196,7 @@ void leituraDataSet()
                     for(int i=1;i<tamanho_line;i++)
                     {
                         line[i-1]=line[i];
+                        cout<<"entrei aqui2"<< endl;
                     }
                 }
                 leituraDS->set_authours(line);
@@ -187,6 +219,7 @@ void leituraDataSet()
                     for(int i=1;i<tamanho_line;i++)
                     {
                         line[i-1]=line[i];
+                        cout<<"entrei aqui3"<< endl;
                     }
                 }
                 leituraDS->set_categories(line);
@@ -264,6 +297,7 @@ void leituraDataSet()
             {
 
             }*/
+            imprimir(leituraDS);
         }
 
         arquivo.close();
@@ -278,6 +312,8 @@ void leituraDataSet()
 
 int main()
 {
+    leituraDataSet();
+    /*
     Book *lista_livros;
     map<string,string> authors;
     map<string,string> categories;
@@ -485,6 +521,6 @@ int main()
     {
         cout << "Erro ao abrir o arquivo";
         //exit(1);
-    }
+    }*/
     return 0;
 }
