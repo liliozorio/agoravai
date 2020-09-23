@@ -69,125 +69,36 @@ string separar(ifstream* arquivo)
                     getline(*arquivo, trash, '"');
                     getline(*arquivo, separar, '"');
                     getline(*arquivo, trash, ',');
-                    cout<<"entrei aqui5"<< endl;
+                    cout<<"entrei aqui5 "<< endl;
                     return separar;
                 }
             }
         }
     }
 }
-/*
-string separar(ifstream* arquivo)
+
+void imprimir(Book leitura)
 {
-    string line, trash;
-    getline(*arquivo,trash,'"');
-    getline(*arquivo,line,'"');
-    getline(*arquivo,trash,',');
-    //getline(*arquivo,trash,'"');
-    return line;
-}
-/*
-bool verificaAtributos(int* flag, Book leituraDS)
-{
-    if(leituraDS.get_bestsellers_rank() == NULL){
-        *flag = BESTSELLERS;
-        return true;
-    }else if(leituraDS.get_categories() == NULL){
-        *flag = CATEGORIES;
-        return true;
-    }else if(leituraDS.get_description() == NULL){
-        *flag = DESCRIPTION;
-        return true;
-    }else if(leituraDS.get_dimension_x() == NULL){
-        *flag = DIMENSION_X;
-        return true;
-    }else if(leituraDS.get_dimension_y() == NULL){
-        *flag = DIMENSION_Y;
-        return true;
-    }else if(leituraDS.get_dimension_z() == NULL){
-        *flag = DIMENSION_Z;
-        return true;
-    }else if(leituraDS.get_edition() == NULL){
-        *flag = EDITION;
-        return true;
-    }else if(leituraDS.get_edition_statement() == NULL){
-        *flag = EDITION_STATEMENT;
-        return true;
-    }else if(leituraDS.get_format() == NULL){
-        *flag = FORMAT;
-        return true;
-    }else if(leituraDS.get_for_ages() == NULL){
-        *flag = FOR_AGES;
-        return true;
-    }else if(leituraDS.get_id() == NULL){
-        *flag = ID;
-        return true;
-    }else if(leituraDS.get_illustrations_note() == NULL){
-        *flag = ILLUSTRATIONS;
-        return true;
-    }else if(leituraDS.get_imprint() == NULL){
-        *flag = IMPRINT;
-        return true;
-    }else if(leituraDS.get_index_date() == NULL){
-        *flag = INDEX_DATE;
-        return true;
-    }else if(leituraDS.get_isbn10() == NULL){
-        *flag = ISBN10;
-        return true;
-    }else if(leituraDS.get_isbn13() == NULL){
-        *flag = ISBN13;
-        return true;
-    }else if(leituraDS.get_lang() == NULL){
-        *flag = LANG;
-        return true;
-    }else if(leituraDS.get_publication_date() == NULL){
-        *flag = PUBLICATION_DATE;
-        return true;
-    }else if(leituraDS.get_publication_place() == NULL){
-        *flag = PUBLICATION_PLACE;
-        return true;
-    }else if(leituraDS.get_rating_avg() == NULL){
-        *flag = RATING_AVG;
-        return true;
-    }else if(leituraDS.get_rating_count() == NULL){
-        *flag = RATING_COUNT;
-        return true;
-    }else if(leituraDS.get_title() == NULL){
-        *flag = TITLE;
-        return true;
-    }else if(leituraDS.get_url() == NULL){
-        *flag = URL;
-        return true;
-    }else if(leituraDS.get_weight() == NULL){
-        *flag = WEIGHT;
-        return true;
-    }
-    return false;
-}*/
-void imprimir(Book* leitura)
-{
-    cout << leitura->get_authors() << " - " << leitura->get_bestsellers_rank() << endl;
+    cout << leitura.get_authors() << " - " << leitura.get_bestsellers_rank() << endl;
 }
 
-void leituraDataSet()
+void leituraDataSet(Book* lista,int tam)
 {
     ifstream arquivo;
-    arquivo.open("arquivos/dataset.csv");
-    int flag = 0;
+    arquivo.open("testeEntrada.txt");
+    int i=0;
     if(arquivo.is_open())
     {
         cout<<"entrei aqui"<< endl;
         string word, trash, line;
         getline(arquivo,line,'\0');
-        while(!arquivo.eof())
-        {
-            Book *leituraDS;
-            leituraDS = new Book;
 
+        while(i<tam)
+        {
             ///AUTOR
             getline(arquivo,line,',');
             //getline(arquivo,trash,'"');
-            int tamanho_line;
+            /*int tamanho_line;
             tamanho_line = string_size(line);
             while(line[tamanho_line-1]!=']')
             {
@@ -198,21 +109,21 @@ void leituraDataSet()
                         line[i-1]=line[i];
                         cout<<"entrei aqui2"<< endl;
                     }
-                }
-                leituraDS->set_authours(line);
+                }*/
+                lista[i].set_authours(line);
                 getline(arquivo,line,',');
-                tamanho_line = string_size(line);
-            }
-            line[tamanho_line-1] = '\0';
-            leituraDS->set_authours(line);
+                //tamanho_line = string_size(line);
+
+            //line[tamanho_line-1] = '\0';
+            lista[i].set_authours(line);
             ///RANK BESTSELLERS
             line = separar(&arquivo);
-            leituraDS->set_bestseller_rank(std::stoi(line));
+            lista[i].set_bestseller_rank(std::stoi(line));
             ///CATEGORIAS
             line = separar(&arquivo);
-            tamanho_line = string_size(line);
+            //tamanho_line = string_size(line);
 
-            while(line[tamanho_line-1]!=']')
+            /*while(line[tamanho_line-1]!=']')
             {
                 if(line[0]=='[')
                 {
@@ -221,83 +132,34 @@ void leituraDataSet()
                         line[i-1]=line[i];
                         cout<<"entrei aqui3"<< endl;
                     }
-                }
-                leituraDS->set_categories(line);
+                }*/
+                lista[i].set_categories(line);
                 line = separar(&arquivo);
-                tamanho_line = string_size(line);
-            }
-            ///DESCRIÇÃO
-            line = separar(&arquivo);
-            leituraDS->set_description(line);
-            ///DIMENSÃO X
-            line = separar(&arquivo);
-            leituraDS->set_dimention_x(std::stof(line));
-            ///DIMENSÃO Y
-            line = separar(&arquivo);
-            leituraDS->set_dimention_y(std::stof(line));
-            ///DIMENSÃO Z
-            line = separar(&arquivo);
-            leituraDS->set_dimention_z(std::stof(line));
+                //tamanho_line = string_size(line);
+
             ///EDIÇÃO
             line = separar(&arquivo);
-            leituraDS->set_edition(line);
-            ///EDITION STATEMENT
-            line = separar(&arquivo);
-            leituraDS->set_edition_statement(line);
-            ///IDADE
-            line = separar(&arquivo);
-            leituraDS->set_for_ages(line);
-            ///FORMATO
-            line = separar(&arquivo);
-            leituraDS->set_format(line);
+            lista[i].set_edition(line);
             ///ID
             line = separar(&arquivo);
-            leituraDS->set_id(std::stof(line));
-            ///NOTAS
-            line = separar(&arquivo);
-            leituraDS->set_illustrations_note(line);
-            ///IMPRESSÃO
-            line = separar(&arquivo);
-            leituraDS->set_imprint(line);
-            ///INDEX DATE
-            line = separar(&arquivo);
-            leituraDS->set_index_date(line);
+            lista[i].set_id(std::stof(line));
             ///ISBN-10
             line = separar(&arquivo);
-            leituraDS->set_isbn10(line);
+            lista[i].set_isbn10(line);
             ///ISBN-13
             line = separar(&arquivo);
-            leituraDS->set_isbn13(line);
-            ///LINGUAGEM
-            line = separar(&arquivo);
-            leituraDS->set_lang(line);
-            ///DATA DE PUBLICAÇÃO
-            line = separar(&arquivo);
-            leituraDS->set_publication_date(line);
-            ///LOCAL DE PUBLICAÇÃO
-            line = separar(&arquivo);
-            leituraDS->set_publication_place(line);
+            lista[i].set_isbn13(line);
             ///RATING-AVG
             line = separar(&arquivo);
-            leituraDS->set_rating_avg(std::stof(line));
+            lista[i].set_rating_avg(std::stof(line));
             ///RATING-COUNT
             line = separar(&arquivo);
-            leituraDS->set_rating_count(std::stof(line));
+            lista[i].set_rating_count(std::stof(line));
             ///TÍTULO
             line = separar(&arquivo);
-            leituraDS->set_title(line);
-            ///URL
-            line = separar(&arquivo);
-            leituraDS->set_url(line);
-            ///PESO
-            line = separar(&arquivo);
-            leituraDS->set_weight(std::stof(line));
-
-            /*if(verificaAtributos(&flag, &leituraDS))
-            {
-
-            }*/
-            imprimir(leituraDS);
+            lista[i].set_title(line);
+            imprimir(lista[i]);
+            i++;
         }
 
         arquivo.close();
@@ -312,7 +174,9 @@ void leituraDataSet()
 
 int main()
 {
-    leituraDataSet();
+    int tamanho=3;
+    Book lista[tamanho];
+    leituraDataSet(lista,tamanho);
     /*
     Book *lista_livros;
     map<string,string> authors;
