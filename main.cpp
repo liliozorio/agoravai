@@ -86,7 +86,7 @@ string separar(ifstream* arquivo)
     //getline(*arquivo,trash,'"');
     return line;
 }
-/*
+*/
 bool verificaAtributos(int* flag, Book leituraDS)
 {
     if(leituraDS.get_bestsellers_rank() == NULL){
