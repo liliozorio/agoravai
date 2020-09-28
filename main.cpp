@@ -43,38 +43,21 @@ using namespace std;
 ///RETORNA O TAMANHO DA STRING
 int string_size(string s)
 {
-        int i=0;
-        while(s[i]!='\0')
-        {
-            i++;
-        }
-        return i;
+    int i=0;
+    while(s[i]!='\0')
+    {
+        i++;
+    }
+    return i;
 }
 
 string separar(ifstream* arquivo)
 {
     int tamanho_line;
     string separar, trash, line;
-    getline(*arquivo, line, '\0');
-    tamanho_line = string_size(line);
-    for(int i=0; i<tamanho_line; i++)
-    {
-        cout<<"entrei aqui4"<< endl;
-        if(line[i]== '"')
-        {
-            if(line[i+1] == ',')
-            {
-                if(line[i+2] == '"')
-                {
-                    getline(*arquivo, trash, '"');
-                    getline(*arquivo, separar, '"');
-                    getline(*arquivo, trash, ',');
-                    cout<<"entrei aqui5 "<< endl;
-                    return separar;
-                }
-            }
-        }
-    }
+    getline(*arquivo,line,'"');
+    getline(*arquivo,line,'"');
+    return line;
 }
 
 void imprimir(Book leitura)
@@ -91,74 +74,56 @@ void leituraDataSet(Book* lista,int tam)
     {
         cout<<"entrei aqui"<< endl;
         string word, trash, line;
-        getline(arquivo,line,'\0');
-
+        string linha;
         while(i<tam)
         {
             ///AUTOR
-            getline(arquivo,line,',');
-            //getline(arquivo,trash,'"');
-            /*int tamanho_line;
-            tamanho_line = string_size(line);
-            while(line[tamanho_line-1]!=']')
-            {
-                if(line[0]=='[')
-                {
-                    for(int i=1;i<tamanho_line;i++)
-                    {
-                        line[i-1]=line[i];
-                        cout<<"entrei aqui2"<< endl;
-                    }
-                }*/
-                lista[i].set_authours(line);
-                getline(arquivo,line,',');
-                //tamanho_line = string_size(line);
-
-            //line[tamanho_line-1] = '\0';
+            getline(arquivo,line,'"');
+            getline(arquivo,line,'[');
+            getline(arquivo,line,']');
+            getline(arquivo,trash,'"');
+            cout<<line<<endl;
             lista[i].set_authours(line);
             ///RANK BESTSELLERS
             line = separar(&arquivo);
+            cout<<line<<endl;
             lista[i].set_bestseller_rank(std::stoi(line));
             ///CATEGORIAS
-            line = separar(&arquivo);
-            //tamanho_line = string_size(line);
-
-            /*while(line[tamanho_line-1]!=']')
-            {
-                if(line[0]=='[')
-                {
-                    for(int i=1;i<tamanho_line;i++)
-                    {
-                        line[i-1]=line[i];
-                        cout<<"entrei aqui3"<< endl;
-                    }
-                }*/
-                lista[i].set_categories(line);
-                line = separar(&arquivo);
-                //tamanho_line = string_size(line);
-
+            getline(arquivo,line,'"');
+            getline(arquivo,line,'[');
+            getline(arquivo,line,']');
+            getline(arquivo,trash,'"');
+            cout<<line<<endl;
+            lista[i].set_categories(line);
             ///EDIÇÃO
             line = separar(&arquivo);
+            cout<<line<<endl;
             lista[i].set_edition(line);
             ///ID
             line = separar(&arquivo);
+            cout<<line<<endl;
             lista[i].set_id(std::stof(line));
             ///ISBN-10
             line = separar(&arquivo);
+            cout<<line<<endl;
             lista[i].set_isbn10(line);
             ///ISBN-13
             line = separar(&arquivo);
+            cout<<line<<endl;
             lista[i].set_isbn13(line);
             ///RATING-AVG
             line = separar(&arquivo);
+            cout<<line<<endl;
             lista[i].set_rating_avg(std::stof(line));
             ///RATING-COUNT
             line = separar(&arquivo);
-            lista[i].set_rating_count(std::stof(line));
+            cout<<line<<endl;
+            lista[i].set_rating_count(std::stoi(line));
             ///TÍTULO
             line = separar(&arquivo);
+            cout<<line<<endl;
             lista[i].set_title(line);
-            imprimir(lista[i]);
+            //imprimir(lista[i]);
             i++;
         }
 
@@ -223,7 +188,7 @@ int main()
     else
     {
         cout << "Erro ao abrir o arquivo";
-//        exit(1);
+    //        exit(1);
     }
     ///LE OS FORMATOS E ARMAZENA EM UM HASHMAP
     arquivo.open("arquivos/formats.csv");
@@ -243,7 +208,7 @@ int main()
     else
     {
         cout << "Erro ao abrir o arquivo";
-//        exit(1);
+    //        exit(1);
     }
     ///LE OS LUGARES E ARMAZENA EM UM HASHMAP
     ///TEM PLACES QUE CONTEM VIRGULA LOGO TEREMOS QUE PENSAR COMO FAZER PARA PEGAR ELA POR COMPLETO SEM PARTIR
@@ -264,7 +229,7 @@ int main()
     else
     {
         cout << "Erro ao abrir o arquivo";
-//        exit(1);
+    //        exit(1);
     }
     arquivo.open("arquivos/dataset.csv");
     if(arquivo.is_open())
