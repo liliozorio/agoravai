@@ -52,3 +52,19 @@
 	<iostream>
 	<string>
 
+1600811917 source:c:\users\henrique\onedrive\documentos\faculdade\codeblocks\ed2\edgit\ed2\book.cpp
+	"Book.h"
+	<string>
+
+1600811917 c:\users\henrique\onedrive\documentos\faculdade\codeblocks\ed2\edgit\ed2\book.h
+	<iostream>
+	<string>
+
+1600814727 source:c:\users\henrique\onedrive\documentos\faculdade\codeblocks\ed2\edgit\ed2\main.cpp
+	<iostream>
+	<string>
+	<fstream>
+	<map>
+	<utility>
+	"Book.h"
+

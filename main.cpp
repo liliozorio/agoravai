@@ -69,13 +69,14 @@ string separar(ifstream* arquivo)
                     getline(*arquivo, trash, '"');
                     getline(*arquivo, separar, '"');
                     getline(*arquivo, trash, ',');
-                    cout<<"entrei aqui5"<< endl;
+                    cout<<"entrei aqui5 "<< endl;
                     return separar;
                 }
             }
         }
     }
 }
+<<<<<<< HEAD
 /*
 string separar(ifstream* arquivo)
 {
@@ -165,29 +166,31 @@ bool verificaAtributos(int* flag, Book leituraDS)
     return false;
 }*/
 void imprimir(Book* leitura)
+=======
+
+void imprimir(Book leitura)
+>>>>>>> master
 {
-    cout << leitura->get_authors() << " - " << leitura->get_bestsellers_rank() << endl;
+    cout << leitura.get_authors() << " - " << leitura.get_bestsellers_rank() << endl;
 }
 
-void leituraDataSet()
+void leituraDataSet(Book* lista,int tam)
 {
     ifstream arquivo;
-    arquivo.open("arquivos/dataset.csv");
-    int flag = 0;
+    arquivo.open("testeEntrada.txt");
+    int i=0;
     if(arquivo.is_open())
     {
         cout<<"entrei aqui"<< endl;
         string word, trash, line;
         getline(arquivo,line,'\0');
-        while(!arquivo.eof())
-        {
-            Book *leituraDS;
-            leituraDS = new Book;
 
+        while(i<tam)
+        {
             ///AUTOR
             getline(arquivo,line,',');
             //getline(arquivo,trash,'"');
-            int tamanho_line;
+            /*int tamanho_line;
             tamanho_line = string_size(line);
             while(line[tamanho_line-1]!=']')
             {
@@ -198,21 +201,21 @@ void leituraDataSet()
                         line[i-1]=line[i];
                         cout<<"entrei aqui2"<< endl;
                     }
-                }
-                leituraDS->set_authours(line);
+                }*/
+                lista[i].set_authours(line);
                 getline(arquivo,line,',');
-                tamanho_line = string_size(line);
-            }
-            line[tamanho_line-1] = '\0';
-            leituraDS->set_authours(line);
+                //tamanho_line = string_size(line);
+
+            //line[tamanho_line-1] = '\0';
+            lista[i].set_authours(line);
             ///RANK BESTSELLERS
             line = separar(&arquivo);
-            leituraDS->set_bestseller_rank(std::stoi(line));
+            lista[i].set_bestseller_rank(std::stoi(line));
             ///CATEGORIAS
             line = separar(&arquivo);
-            tamanho_line = string_size(line);
+            //tamanho_line = string_size(line);
 
-            while(line[tamanho_line-1]!=']')
+            /*while(line[tamanho_line-1]!=']')
             {
                 if(line[0]=='[')
                 {
@@ -221,83 +224,34 @@ void leituraDataSet()
                         line[i-1]=line[i];
                         cout<<"entrei aqui3"<< endl;
                     }
-                }
-                leituraDS->set_categories(line);
+                }*/
+                lista[i].set_categories(line);
                 line = separar(&arquivo);
-                tamanho_line = string_size(line);
-            }
-            ///DESCRIÇÃO
-            line = separar(&arquivo);
-            leituraDS->set_description(line);
-            ///DIMENSÃO X
-            line = separar(&arquivo);
-            leituraDS->set_dimention_x(std::stof(line));
-            ///DIMENSÃO Y
-            line = separar(&arquivo);
-            leituraDS->set_dimention_y(std::stof(line));
-            ///DIMENSÃO Z
-            line = separar(&arquivo);
-            leituraDS->set_dimention_z(std::stof(line));
+                //tamanho_line = string_size(line);
+
             ///EDIÇÃO
             line = separar(&arquivo);
-            leituraDS->set_edition(line);
-            ///EDITION STATEMENT
-            line = separar(&arquivo);
-            leituraDS->set_edition_statement(line);
-            ///IDADE
-            line = separar(&arquivo);
-            leituraDS->set_for_ages(line);
-            ///FORMATO
-            line = separar(&arquivo);
-            leituraDS->set_format(line);
+            lista[i].set_edition(line);
             ///ID
             line = separar(&arquivo);
-            leituraDS->set_id(std::stof(line));
-            ///NOTAS
-            line = separar(&arquivo);
-            leituraDS->set_illustrations_note(line);
-            ///IMPRESSÃO
-            line = separar(&arquivo);
-            leituraDS->set_imprint(line);
-            ///INDEX DATE
-            line = separar(&arquivo);
-            leituraDS->set_index_date(line);
+            lista[i].set_id(std::stof(line));
             ///ISBN-10
             line = separar(&arquivo);
-            leituraDS->set_isbn10(line);
+            lista[i].set_isbn10(line);
             ///ISBN-13
             line = separar(&arquivo);
-            leituraDS->set_isbn13(line);
-            ///LINGUAGEM
-            line = separar(&arquivo);
-            leituraDS->set_lang(line);
-            ///DATA DE PUBLICAÇÃO
-            line = separar(&arquivo);
-            leituraDS->set_publication_date(line);
-            ///LOCAL DE PUBLICAÇÃO
-            line = separar(&arquivo);
-            leituraDS->set_publication_place(line);
+            lista[i].set_isbn13(line);
             ///RATING-AVG
             line = separar(&arquivo);
-            leituraDS->set_rating_avg(std::stof(line));
+            lista[i].set_rating_avg(std::stof(line));
             ///RATING-COUNT
             line = separar(&arquivo);
-            leituraDS->set_rating_count(std::stof(line));
+            lista[i].set_rating_count(std::stof(line));
             ///TÍTULO
             line = separar(&arquivo);
-            leituraDS->set_title(line);
-            ///URL
-            line = separar(&arquivo);
-            leituraDS->set_url(line);
-            ///PESO
-            line = separar(&arquivo);
-            leituraDS->set_weight(std::stof(line));
-
-            /*if(verificaAtributos(&flag, &leituraDS))
-            {
-
-            }*/
-            imprimir(leituraDS);
+            lista[i].set_title(line);
+            imprimir(lista[i]);
+            i++;
         }
 
         arquivo.close();
@@ -312,7 +266,9 @@ void leituraDataSet()
 
 int main()
 {
-    leituraDataSet();
+    int tamanho=3;
+    Book lista[tamanho];
+    leituraDataSet(lista,tamanho);
     /*
     Book *lista_livros;
     map<string,string> authors;
