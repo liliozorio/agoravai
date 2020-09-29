@@ -52,15 +52,23 @@
 	<iostream>
 	<string>
 
-1600811917 source:c:\users\henrique\onedrive\documentos\faculdade\codeblocks\ed2\edgit\ed2\book.cpp
+1600891541 source:c:\users\henrique\onedrive\documentos\faculdade\codeblocks\ed2\edgit\ed2\book.cpp
 	"Book.h"
 	<string>
 
-1600811917 c:\users\henrique\onedrive\documentos\faculdade\codeblocks\ed2\edgit\ed2\book.h
+1601333215 c:\users\henrique\onedrive\documentos\faculdade\codeblocks\ed2\edgit\ed2\book.h
 	<iostream>
 	<string>
 
-1600814727 source:c:\users\henrique\onedrive\documentos\faculdade\codeblocks\ed2\edgit\ed2\main.cpp
+1601332898 source:c:\users\henrique\onedrive\documentos\faculdade\codeblocks\ed2\edgit\ed2\main.cpp
+	<iostream>
+	<string>
+	<fstream>
+	<map>
+	<utility>
+	"Book.h"
+
+1601336967 source:c:\users\rsara\onedrive\documentos\trabalho_parte1\ed2\main.cpp
 	<iostream>
 	<string>
 	<fstream>

@@ -1,3 +1,3 @@
-dj magrao, 1,funk pesado, primeira edicao,000,isbdez,isbtreze,5,5,lençol dobrado livro
-dennis dj,2, funk,pri edi,001,isbddez,isbdtrezi,4,4,livro novo
-kevin o cris,3,pra chorar a noite,edicao unica,002,is10,is13,5,5,babalu
+"[1]","57858","[220, 233, 237, 2644, 2679, 2689]","0","9780393325799","393325792","9780393325799","4.24","6688","The Great Escape"
+"[2, 3]","114465","[235, 3386]","","9781844547371","184454737X","9781844547371","3.59","291","Underbelly : The Gangland War"
+"[4]","61,471","[241, 245, 247, 249, 378]","Revised","9780199669172","199669171","9780199669172","4.18","128","Oxford Guide to Plain English"
