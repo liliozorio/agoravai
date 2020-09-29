@@ -53,108 +53,15 @@ int string_size(string s)
 
 string separar(ifstream* arquivo)
 {
-    int tamanho_line;
-    string separar, trash, line;
+    string line;
     getline(*arquivo,line,'"');
     getline(*arquivo,line,'"');
     return line;
 }
-<<<<<<< HEAD
-/*
-string separar(ifstream* arquivo)
-{
-    string line, trash;
-    getline(*arquivo,trash,'"');
-    getline(*arquivo,line,'"');
-    getline(*arquivo,trash,',');
-    //getline(*arquivo,trash,'"');
-    return line;
-}
-*/
-bool verificaAtributos(int* flag, Book leituraDS)
-{
-    if(leituraDS.get_bestsellers_rank() == NULL){
-        *flag = BESTSELLERS;
-        return true;
-    }else if(leituraDS.get_categories() == NULL){
-        *flag = CATEGORIES;
-        return true;
-    }else if(leituraDS.get_description() == NULL){
-        *flag = DESCRIPTION;
-        return true;
-    }else if(leituraDS.get_dimension_x() == NULL){
-        *flag = DIMENSION_X;
-        return true;
-    }else if(leituraDS.get_dimension_y() == NULL){
-        *flag = DIMENSION_Y;
-        return true;
-    }else if(leituraDS.get_dimension_z() == NULL){
-        *flag = DIMENSION_Z;
-        return true;
-    }else if(leituraDS.get_edition() == NULL){
-        *flag = EDITION;
-        return true;
-    }else if(leituraDS.get_edition_statement() == NULL){
-        *flag = EDITION_STATEMENT;
-        return true;
-    }else if(leituraDS.get_format() == NULL){
-        *flag = FORMAT;
-        return true;
-    }else if(leituraDS.get_for_ages() == NULL){
-        *flag = FOR_AGES;
-        return true;
-    }else if(leituraDS.get_id() == NULL){
-        *flag = ID;
-        return true;
-    }else if(leituraDS.get_illustrations_note() == NULL){
-        *flag = ILLUSTRATIONS;
-        return true;
-    }else if(leituraDS.get_imprint() == NULL){
-        *flag = IMPRINT;
-        return true;
-    }else if(leituraDS.get_index_date() == NULL){
-        *flag = INDEX_DATE;
-        return true;
-    }else if(leituraDS.get_isbn10() == NULL){
-        *flag = ISBN10;
-        return true;
-    }else if(leituraDS.get_isbn13() == NULL){
-        *flag = ISBN13;
-        return true;
-    }else if(leituraDS.get_lang() == NULL){
-        *flag = LANG;
-        return true;
-    }else if(leituraDS.get_publication_date() == NULL){
-        *flag = PUBLICATION_DATE;
-        return true;
-    }else if(leituraDS.get_publication_place() == NULL){
-        *flag = PUBLICATION_PLACE;
-        return true;
-    }else if(leituraDS.get_rating_avg() == NULL){
-        *flag = RATING_AVG;
-        return true;
-    }else if(leituraDS.get_rating_count() == NULL){
-        *flag = RATING_COUNT;
-        return true;
-    }else if(leituraDS.get_title() == NULL){
-        *flag = TITLE;
-        return true;
-    }else if(leituraDS.get_url() == NULL){
-        *flag = URL;
-        return true;
-    }else if(leituraDS.get_weight() == NULL){
-        *flag = WEIGHT;
-        return true;
-    }
-    return false;
-}*/
-void imprimir(Book* leitura)
-=======
 
 void imprimir(Book leitura)
->>>>>>> master
 {
-    cout << leitura.get_authors() << " - " << leitura.get_bestsellers_rank() << endl;
+    cout << leitura.get_title() << " - " << leitura.get_bestsellers_rank() << endl;
 }
 
 void leituraDataSet(Book* lista,int tam)
@@ -164,7 +71,7 @@ void leituraDataSet(Book* lista,int tam)
     int i=0;
     if(arquivo.is_open())
     {
-        cout<<"entrei aqui"<< endl;
+        //cout<<"entrei aqui"<< endl;
         string word, trash, line;
         string linha;
         while(i<tam)
@@ -228,12 +135,173 @@ void leituraDataSet(Book* lista,int tam)
     }
 }
 
+bool compara_string(Book pivo, Book qualquer)
+{
+    int maiusculo_minisculo = 'a'-'A';
+    int tamanho_pivo;
+    int tamanho_qualquer;
+    for(int i = 0; pivo.get_title()[i] != '\0' && qualquer.get_title()[i] != '\0'; i++) /// Compara letra por letra das strings artistas
+    {
+        if(pivo.get_title()[i] > 'Z' || qualquer.get_title()[i] > 'Z') /// Vê se pelo menos uma das letras comparadas é maiuscula
+        {
+            if(pivo.get_title()[i] > 'Z' && qualquer.get_title()[i] > 'Z') /// Se as duas letras das strings comparadas forem maiusculas
+            {
+                if(pivo.get_title()[i] > qualquer.get_title()[i])
+                {
+                    return false;
+                }
+                else if(qualquer.get_title()[i] > pivo.get_title()[i])
+                {
+                    return true;
+                }
+            }
+            else if(pivo.get_title()[i] > 'Z') /// Se apenas a letra da string pivo for maiuscula
+            {
+                if(pivo.get_title()[i] > qualquer.get_title()[i] + maiusculo_minisculo)
+                {
+                    return false;
+                }
+                else if(qualquer.get_title()[i] + maiusculo_minisculo > pivo.get_title()[i])
+                {
+                    return true;
+                }
+            }
+            else /// Se apenas a letra da string qualquer for maiuscula
+            {
+                if(pivo.get_title()[i] + maiusculo_minisculo > qualquer.get_title()[i])
+                {
+                    return false;
+                }
+                else if(qualquer.get_title()[i] > pivo.get_title()[i] + maiusculo_minisculo)
+                {
+                    return true;
+                }
+            }
+        }
+        else /// Se as letras comparadas forem as duas minusculas
+        {
+            if(pivo.get_title()[i] > qualquer.get_title()[i])
+            {
+                return false;
+            }
+            else if(qualquer.get_title()[i] > pivo.get_title()[i])
+            {
+                return true;
+            }
+        }
+    }
+    tamanho_pivo = string_size(pivo.get_title());
+    tamanho_qualquer = string_size(qualquer.get_title());
+    /// as linhas 77 a 84 comparam os tamanhos das strings pois o inicio delas é igual e uma já acabou, logo a mais comprida é colocada depois na ordem alfabetica
+    if(tamanho_pivo < tamanho_qualquer)
+    {
+        return true;
+    }
+    else if(tamanho_pivo > tamanho_qualquer)
+    {
+        return false;
+    }
+    cout << "entrei aqui" << endl;
+    return true;
+
+}
+
+
+///Função para escolher o pivo do metodo QuickSort
+int escolhe_pivo(Book *livro, int id_1, int id_2, int id_3)
+{
+    int i;
+    if (compara_string(livro[id_1], livro[id_3]))
+    {
+        if(compara_string(livro[id_1], livro[id_2]))
+        {
+            if(compara_string(livro[id_2], livro[id_3]))
+            {
+                return id_2;
+            }
+            else
+            {
+                return id_3;
+            }
+        }
+        else
+        {
+            return id_1;
+        }
+    }
+    else if(compara_string(livro[id_2], livro[id_1]))
+    {
+        if(compara_string(livro[id_3], livro[id_2]))
+        {
+            if(compara_string(livro[id_2], livro[id_3]))
+            {
+                return id_3;
+            }
+            else
+            {
+                return id_1;
+            }
+        }
+    }
+    else
+    {
+        return id_2;
+    }
+}
+
+///Função auxiliar do QuickSort
+int Particionamento(Book *livro, int esquerda, int direita)
+{
+    int meio;
+    int pivo_indice = 0;
+    meio = (esquerda + direita)/2;
+    pivo_indice = escolhe_pivo(livro, esquerda, meio, direita);
+    Book pivo = livro[pivo_indice];
+    int i = esquerda;
+    int j = direita;
+    Book aux;
+    while(true)
+    {
+        while(compara_string(livro[i],pivo))
+        {
+            i++;
+        }
+        while(compara_string (pivo, livro[j]))
+        {
+            j--;
+        }
+        if(i >= j)
+        {
+            break;
+        }
+        else
+        {
+            aux = livro[i];
+            livro[i] = livro[j];
+            livro[j] = aux;
+        }
+    }
+    return i;
+}
+
+///Metodo QuickSort
+void QuickSort(Book *livro, int esquerda, int direita)
+{
+    if(direita - esquerda > 0)
+    {
+        int particao = Particionamento(livro, esquerda, direita);
+        QuickSort(livro, esquerda, particao-1);
+        QuickSort(livro, particao+1, direita);
+    }
+}
 
 int main()
 {
     int tamanho=3;
     Book lista[tamanho];
     leituraDataSet(lista,tamanho);
+    QuickSort(&lista[0], 0, 2);
+    imprimir(lista[0]);
     /*
     Book *lista_livros;
     map<string,string> authors;
