@@ -44,7 +44,7 @@
 	<iostream>
 	<string>
 
-1601335142 source:c:\users\rsara\onedrive\documentos\trabalho_parte1\ed2\book.cpp
+1601494348 source:c:\users\rsara\onedrive\documentos\trabalho_parte1\ed2\book.cpp
 	"Book.h"
 	<string>
 
@@ -68,19 +68,37 @@
 	<utility>
 	"Book.h"
 
-1601336967 source:c:\users\rsara\onedrive\documentos\trabalho_parte1\ed2\main.cpp
+1601497989 source:c:\users\rsara\onedrive\documentos\trabalho_parte1\ed2\main.cpp
 	<iostream>
 	<string>
 	<fstream>
 	<map>
 	<utility>
+	<random>
+	<chrono>
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
 	"Book.h"
 
-1601338068 source:c:\users\rsara\onedrive\documentos\trabalho_parte1\ed2\main.cpp
+1601494348 source:c:\ed2\book.cpp
+	"Book.h"
+	<string>
+
+1601335142 c:\ed2\book.h
+	<iostream>
+	<string>
+
+1601500441 source:c:\ed2\main.cpp
 	<iostream>
 	<string>
 	<fstream>
 	<map>
 	<utility>
+	<random>
+	<chrono>
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
 	"Book.h"
 
