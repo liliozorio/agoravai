@@ -99,8 +99,7 @@ int string_size(string s)
 
 string separar(ifstream* arquivo)
 {
-    int tamanho_line;
-    string separar, trash, line;
+    string line;
     getline(*arquivo,line,'"');
     getline(*arquivo,line,'"');
     return line;
@@ -108,7 +107,7 @@ string separar(ifstream* arquivo)
 
 void imprimir(Book leitura)
 {
-    cout << leitura.get_authors() << " - " << leitura.get_bestsellers_rank() << endl;
+    cout << leitura.get_title() << " - " << leitura.get_bestsellers_rank() << " - " << leitura.get_categories() << endl;
 }
 
 void leituraDataSet(Book* lista,int tam)
@@ -118,7 +117,7 @@ void leituraDataSet(Book* lista,int tam)
     int i=0;
     if(arquivo.is_open())
     {
-        cout<<"entrei aqui"<< endl;
+        //cout<<"entrei aqui"<< endl;
         string word, trash, line;
         string linha;
         while(i<tam)
@@ -135,10 +134,12 @@ void leituraDataSet(Book* lista,int tam)
             cout<<line<<endl;
             lista[i].set_bestseller_rank(std::stoi(line));
             ///CATEGORIAS
-            getline(arquivo,line,'"');
+            //getline(arquivo,trash,',');
+            /*getline(arquivo,line,'"');
             getline(arquivo,line,'[');
             getline(arquivo,line,']');
-            getline(arquivo,trash,'"');
+            getline(arquivo,trash,'"');*/
+            line = separar(&arquivo);
             cout<<line<<endl;
             lista[i].set_categories(line);
             ///EDIÇÃO
@@ -182,12 +183,263 @@ void leituraDataSet(Book* lista,int tam)
     }
 }
 
+int compara_string(Book pivo, Book qualquer) /// Retorna -1 caso pivo menor e 1 caso pivo maior, retorna 0 caso igual
+{
+    int tamanho_pivo;
+    int tamanho_qualquer;
+    int maiusculo_minusculo = 'a' - 'A';
+    for(int i=0; pivo.get_title()[i] != '\0' && qualquer.get_title()[i] != '\0'; i++)
+    {
+        if(pivo.get_title()[i] > 'Z' && qualquer.get_title()[i] > 'Z') /// Ve se os dois são minusculos
+        {
+            if(pivo.get_title()[i] > qualquer.get_title()[i])
+            {
+                return 1;
+            }
+            else if(qualquer.get_title()[i] > pivo.get_title()[i])
+            {
+                return -1;
+            }
+        }
+        else if(pivo.get_title()[i] < 'a' && qualquer.get_title()[i] < 'a') /// ve se os dois são maiusculos
+        {
+            if(pivo.get_title()[i] > qualquer.get_title()[i])
+            {
+                return 1;
+            }
+            else if(qualquer.get_title()[i] > pivo.get_title()[i])
+            {
+                return -1;
+            }
+        }
+        else if(pivo.get_title()[i] < 'a') /// ve letra do pivo maiuscula, se for a letra do qualquer é minuscula
+        {
+            if(pivo.get_title()[i]+maiusculo_minusculo > qualquer.get_title()[i])
+            {
+                return 1;
+            }
+            else if(qualquer.get_title()[i] > pivo.get_title()[i]+maiusculo_minusculo)
+            {
+                return -1;
+            }
+        }
+        else /// letra do qualquer maiuscula e a letra do pivo é minuscula
+        {
+            if(pivo.get_title()[i] > qualquer.get_title()[i]+maiusculo_minusculo)
+            {
+                return 1;
+            }
+            else if(qualquer.get_title()[i]+maiusculo_minusculo > pivo.get_title()[i])
+            {
+                return -1;
+            }
+        }
+    }
+    tamanho_pivo=string_size(pivo.get_title());
+    tamanho_qualquer=string_size(qualquer.get_title());
+    if(tamanho_pivo<tamanho_qualquer)
+    {
+        return -1;
+    }
+    else if(tamanho_pivo>tamanho_qualquer)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+
+///Função para escolher o pivo do metodo QuickSort
+int escolhe_pivo(Book *livro, int id_1, int id_2, int id_3)
+{
+    int compara_1_2 = compara_string(livro[id_1],livro[id_2]);
+    int compara_1_3 = compara_string(livro[id_1],livro[id_3]);
+    int compara_2_3 = compara_string(livro[id_2],livro[id_3]);
+
+    if(compara_1_2 == 0 || compara_1_3 == 0 || compara_2_3 == 0)
+    {
+        if(compara_1_2 == 0)
+        {
+            return id_1;
+        }
+        else if(compara_1_3 == 0)
+        {
+            return id_1;
+        }
+        else
+        {
+            return id_2;
+        }
+    }
+    if ((compara_1_2 == -1 && compara_2_3 == -1) || (compara_2_3 == 1 && compara_1_2 == 1))
+    {
+        return id_2;
+    }
+    if ((compara_1_2 == 1 && compara_1_3 == -1) || (compara_1_3 == 1 && compara_1_2 == -1))
+    {
+        return id_1;
+    }
+    return id_3;
+}
+
+///Função auxiliar do QuickSort
+int Particionamento(Book *livro, int esquerda, int direita)
+{
+    int meio;
+    int pivo_indice = 0;
+    meio = (esquerda + direita)/2;
+    pivo_indice = escolhe_pivo(livro, esquerda, meio, direita);
+    Book pivo = livro[pivo_indice];
+
+    /*Book pivo;
+    int tamanho = direita - esquerda;
+    int divide_vetor;
+    int k;
+    int l;
+    int mediana1;
+    int mediana2;
+    int mediana3;
+    int mediana_final;
+
+    divide_vetor = tamanho/3;
+    divide_vetor++;
+    k = esquerda + divide_vetor;
+    l = k + divide_vetor;
+    if(tamanho>2)
+    {
+        mediana1 = escolhe_pivo(livro, esquerda, (k-1+esquerda)/2, k-1);
+        mediana2 = escolhe_pivo(livro, k, (l-1+k)/2, l-1);
+        mediana3 = escolhe_pivo(livro, l, (direita+l)/2, direita);
+        mediana_final = escolhe_pivo(livro, mediana1, mediana2, mediana3);
+    }
+    else
+    {
+        mediana_final = escolhe_pivo(livro, esquerda, (direita+esquerda)/2, direita);
+    }*/
+
+    int i = esquerda;
+    int j = direita;
+    Book aux;
+    while(true)
+    {
+        while(compara_string(livro[i],pivo)==-1)
+        {
+            i++;
+        }
+        while(compara_string (pivo, livro[j])==-1)
+        {
+            j--;
+        }
+        if(i >= j)
+        {
+            break;
+        }
+        else
+        {
+            aux = livro[i];
+            livro[i] = livro[j];
+            livro[j] = aux;
+        }
+    }
+    return i;
+}
+
+///Metodo QuickSort
+void QuickSort(Book *livro, int esquerda, int direita)
+{
+    if(direita - esquerda > 0)
+    {
+        int particao = Particionamento(livro, esquerda, direita);
+        QuickSort(livro, esquerda, particao-1);
+        QuickSort(livro, particao+1, direita);
+    }
+}
+
+void igual(Book livro1, Book livro2)
+{
+        livro1.set_authours(livro2.get_authors());
+        livro1.set_bestseller_rank(livro2.get_bestsellers_rank());
+        livro1.set_categories(livro2.get_categories());
+        livro1.set_edition(livro2.get_edition());
+        livro1.set_id(livro2.get_id());
+        livro1.set_isbn10(livro2.get_isbn10());
+        livro1.set_isbn13(livro2.get_isbn13());
+        livro1.set_rating_avg(livro2.get_rating_avg());
+        livro1.set_rating_count(livro2.get_rating_count());
+        livro1.set_title(livro2.get_title());
+}
+
+void MergeTripleSort(Book *Livro, int primeiro, int meio, int ultimo){
+    int x, y;
+    int a = meio - primeiro +1;
+    int b = ultimo - meio;
+    Book Primeiro[a], Segundo[b];
+
+    for(int x = 0; x < a; x++){
+        //igual(Primeiro[x],Livro[primeiro+x]);
+        Primeiro[x] = Livro[primeiro+x];
+    }
+    for(int y = 0; y < b; y++){
+        //igual(Segundo[y],Livro[meio+1+y]);
+        Segundo[y] = Livro[meio+1+y];
+    }
+    x = 0;
+    y = 0;
+    int z = primeiro;
+
+    while(x < a && y < b){
+        if(compara_string(Primeiro[x],Segundo[y]) == -1 || compara_string(Primeiro[x],Segundo[y]) == 0){
+            Livro[z] = Primeiro[x];
+            //igual(Livro[z],Primeiro[x]);
+            x++;
+        }
+        else{
+            Livro[z] = Segundo[y];
+            //igual(Livro[z],Segundo[y]);
+            y++;
+        }
+        z++;
+    }
+    while(x < a){
+        Livro[z] = Primeiro[x];
+        //igual(Livro[z],Primeiro[x]);
+        x++; z++;
+    }
+    while(y < b){
+        Livro[z] = Segundo[y];
+        //igual(Livro[z],Segundo[y]);
+        y++; z++;
+    }
+}
+
+
+
+void MergeSort(Book *Livro, int primeiro, int ultimo){
+    int media;
+    if(primeiro < ultimo){
+       media = primeiro + (ultimo - primeiro)/2;
+       MergeSort(Livro, primeiro, media);
+       MergeSort(Livro, media+1, ultimo);
+       MergeTripleSort(Livro, primeiro, media, ultimo);
+    }
+}
 
 int main()
 {
     int tamanho=3;
     Book lista[tamanho];
     leituraDataSet(lista,tamanho);
+    MergeSort(lista,0,tamanho-1);
+    //QuickSort(lista, 0, 2);
+    for(int i=0; i<tamanho; i++)
+    {
+      imprimir(lista[i]);
+    }
+
+
     /*
     Book *lista_livros;
     map<string,string> authors;
