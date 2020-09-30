@@ -37,7 +37,53 @@
 #define WEIGHT 25
 
 using namespace std;
+void MergeTripleSort(int Lista[], int primeiro, int meio, int ultimo){
+    int x, y;
+    int a = meio - primeiro +1;
+    int b = ultimo - meio;
+    int Primeiro[a], Segundo[b];
 
+    for(int x = 0; x < a; x++){
+        Primeiro[x] = Lista[primeiro+x];
+    }
+    for(int y = 0; y < b; y++){
+        Segundo[y] = Lista[meio+1+y];
+    }
+    x = 0;
+    y = 0;
+    int z = primeiro;
+
+    while(x < a && y < b){
+        if(Primeiro[x] <= Segundo[y]){
+            Lista[z] = Primeiro[x];
+            x++;
+        }
+        else{
+            Lista[z] = Segundo[y];
+            y++;
+        }
+        z++;
+    }
+    while(x < a){
+        Lista[z] = Primeiro[x];
+        x++; z++;
+    }
+    while(y < b){
+        Lista[z] = Segundo[y];
+        y++; z++;
+    }
+}
+
+
+
+void MergeSort(int Lista[], int primeiro, int ultimo){
+    int media;
+    if(primeiro < ultimo){
+       media = primeiro + (ultimo - primeiro)/2;
+       MergeSort(Lista, primeiro, media);
+       MergeSort(Lista, media+1, ultimo);
+       MergeTripleSort(Lista, primeiro, media, ultimo);
+    }
 
 
 ///RETORNA O TAMANHO DA STRING
