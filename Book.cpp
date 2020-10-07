@@ -40,7 +40,9 @@ string Book::get_categories()
 
 void Book::set_categories(string categories)
 {
+
         this->categories = categories;
+
 }
 
 string Book::get_description()

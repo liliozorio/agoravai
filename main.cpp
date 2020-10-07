@@ -6,9 +6,14 @@
 #include <fstream>
 #include <map>
 #include <utility>
+#include <random>
+#include <chrono>
+#include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "Book.h"
 
-#define n 60000
+//#define n 60000
 #define CHEIA 0
 #define VAZIA 1
 #define BESTSELLERS 2
@@ -86,6 +91,10 @@ void MergeSort(int Lista[], int primeiro, int ultimo){
     }
 
 
+int numComparacoes = 0;
+int numCopias = 0;
+
+
 ///RETORNA O TAMANHO DA STRING
 int string_size(string s)
 {
@@ -102,6 +111,7 @@ string separar(ifstream* arquivo)
     string line;
     getline(*arquivo,line,'"');
     getline(*arquivo,line,'"');
+
     return line;
 }
 
@@ -115,60 +125,80 @@ void leituraDataSet(Book* lista,int tam)
     ifstream arquivo;
     arquivo.open("testeEntrada.txt");
     int i=0;
+    srand(time(NULL));
     if(arquivo.is_open())
     {
         //cout<<"entrei aqui"<< endl;
         string word, trash, line;
         string linha;
-        while(i<tam)
+
+        int a;
+        while(i < tam)
         {
+            arquivo.seekg(0);
+            int a = rand() % 14; ///TAMANHO DO DATASET
+
+            int j = 0;
+            while(j < a)
+            {
+                getline(arquivo, line);
+                j++;
+            }
+
             ///AUTOR
             getline(arquivo,line,'"');
             getline(arquivo,line,'[');
             getline(arquivo,line,']');
             getline(arquivo,trash,'"');
-            cout<<line<<endl;
+            //cout<<line<<endl;
             lista[i].set_authours(line);
             ///RANK BESTSELLERS
             line = separar(&arquivo);
-            cout<<line<<endl;
+            //cout<<line<<endl;
+            if(line == "")
+                line = '0';
             lista[i].set_bestseller_rank(std::stoi(line));
             ///CATEGORIAS
             //getline(arquivo,trash,',');
-            /*getline(arquivo,line,'"');
+            getline(arquivo,line,'"');
             getline(arquivo,line,'[');
             getline(arquivo,line,']');
-            getline(arquivo,trash,'"');*/
-            line = separar(&arquivo);
-            cout<<line<<endl;
+            getline(arquivo,trash,'"');
+            //cout<<line<<endl;
             lista[i].set_categories(line);
             ///EDIÇÃO
             line = separar(&arquivo);
-            cout<<line<<endl;
+            //cout<<line<<endl;
             lista[i].set_edition(line);
             ///ID
             line = separar(&arquivo);
-            cout<<line<<endl;
+            //cout<<line<<endl;
+            if(line == "")
+                line = '0';
             lista[i].set_id(std::stof(line));
             ///ISBN-10
             line = separar(&arquivo);
-            cout<<line<<endl;
+            //cout<<line<<endl;
             lista[i].set_isbn10(line);
             ///ISBN-13
             line = separar(&arquivo);
-            cout<<line<<endl;
+            //cout<<line<<endl;
             lista[i].set_isbn13(line);
             ///RATING-AVG
             line = separar(&arquivo);
-            cout<<line<<endl;
+            if(line == "")
+                line = '0';
+            //cout<<line<<endl;
             lista[i].set_rating_avg(std::stof(line));
             ///RATING-COUNT
             line = separar(&arquivo);
-            cout<<line<<endl;
+            if(line == "")
+                line = '0';
+            //cout<<line<<endl;
             lista[i].set_rating_count(std::stoi(line));
             ///TÍTULO
             line = separar(&arquivo);
-            cout<<line<<endl;
+            //cout<<line<<endl;
             lista[i].set_title(line);
             //imprimir(lista[i]);
             i++;
@@ -188,6 +218,7 @@ int compara_string(Book pivo, Book qualquer) /// Retorna -1 caso pivo menor e 1 
     int tamanho_pivo;
     int tamanho_qualquer;
     int maiusculo_minusculo = 'a' - 'A';
+    numComparacoes++;
     for(int i=0; pivo.get_title()[i] != '\0' && qualquer.get_title()[i] != '\0'; i++)
     {
         if(pivo.get_title()[i] > 'Z' && qualquer.get_title()[i] > 'Z') /// Ve se os dois são minusculos
@@ -342,6 +373,7 @@ int Particionamento(Book *livro, int esquerda, int direita)
             aux = livro[i];
             livro[i] = livro[j];
             livro[j] = aux;
+            numCopias++;
         }
     }
     return i;
@@ -358,18 +390,24 @@ void QuickSort(Book *livro, int esquerda, int direita)
     }
 }
 
-void igual(Book livro1, Book livro2)
+void igual(Book livro1[], Book livro2[], int tamanho)
 {
-        livro1.set_authours(livro2.get_authors());
-        livro1.set_bestseller_rank(livro2.get_bestsellers_rank());
-        livro1.set_categories(livro2.get_categories());
-        livro1.set_edition(livro2.get_edition());
-        livro1.set_id(livro2.get_id());
-        livro1.set_isbn10(livro2.get_isbn10());
-        livro1.set_isbn13(livro2.get_isbn13());
-        livro1.set_rating_avg(livro2.get_rating_avg());
-        livro1.set_rating_count(livro2.get_rating_count());
-        livro1.set_title(livro2.get_title());
+    for(int i = 0; i < tamanho; i++)
+    {
+        livro1[i] = livro2[i];
+        //cout << "entrei" << endl;
+        /*livro1[i].set_authours(livro2[i].get_authors());
+        livro1[i].set_bestseller_rank(livro2[i].get_bestsellers_rank());
+        livro1[i].set_categories(livro2[i].get_categories());
+        livro1[i].set_edition(livro2[i].get_edition());
+        livro1[i].set_id(livro2[i].get_id());
+        livro1[i].set_isbn10(livro2[i].get_isbn10());
+        livro1[i].set_isbn13(livro2[i].get_isbn13());
+        livro1[i].set_rating_avg(livro2[i].get_rating_avg());
+        livro1[i].set_rating_count(livro2[i].get_rating_count());
+        livro1[i].set_title(livro2[i].get_title());*/
+    }
+
 }
 
 void MergeTripleSort(Book *Livro, int primeiro, int meio, int ultimo){
@@ -379,11 +417,9 @@ void MergeTripleSort(Book *Livro, int primeiro, int meio, int ultimo){
     Book Primeiro[a], Segundo[b];
 
     for(int x = 0; x < a; x++){
-        //igual(Primeiro[x],Livro[primeiro+x]);
         Primeiro[x] = Livro[primeiro+x];
     }
     for(int y = 0; y < b; y++){
-        //igual(Segundo[y],Livro[meio+1+y]);
         Segundo[y] = Livro[meio+1+y];
     }
     x = 0;
@@ -393,25 +429,25 @@ void MergeTripleSort(Book *Livro, int primeiro, int meio, int ultimo){
     while(x < a && y < b){
         if(compara_string(Primeiro[x],Segundo[y]) == -1 || compara_string(Primeiro[x],Segundo[y]) == 0){
             Livro[z] = Primeiro[x];
-            //igual(Livro[z],Primeiro[x]);
             x++;
+            numCopias++;
         }
         else{
             Livro[z] = Segundo[y];
-            //igual(Livro[z],Segundo[y]);
             y++;
+            numCopias++;
         }
         z++;
     }
     while(x < a){
         Livro[z] = Primeiro[x];
-        //igual(Livro[z],Primeiro[x]);
         x++; z++;
+        numCopias++;
     }
     while(y < b){
         Livro[z] = Segundo[y];
-        //igual(Livro[z],Segundo[y]);
         y++; z++;
+        numCopias++;
     }
 }
 
@@ -429,15 +465,50 @@ void MergeSort(Book *Livro, int primeiro, int ultimo){
 
 int main()
 {
-    int tamanho=3;
-    Book lista[tamanho];
-    leituraDataSet(lista,tamanho);
-    MergeSort(lista,0,tamanho-1);
-    //QuickSort(lista, 0, 2);
-    for(int i=0; i<tamanho; i++)
+    //MergeSort(lista,0,tamanho-1);
+    //QuickSort(lista, 0,tamanho-1);
+    /*for(int i=0; i<tamanho; i++)
     {
       imprimir(lista[i]);
+    }*/
+    int N = 0;
+
+    ifstream entrada;
+    entrada.open("entrada.txt");
+
+    if(entrada.is_open())
+    {
+        string n;
+        getline(entrada, n);
+        N = std::stoi(n);
+        //cout << N << endl;
+        int tamanho[N];
+        for (int i=0; i<N; i++)
+        {
+            getline(entrada, n);
+            tamanho[i] = std::stoi(n);
+
+            Book lista[tamanho[i]];
+            Book lista2[tamanho[i]];
+            leituraDataSet(lista, tamanho[i]);
+            igual(lista2, lista, tamanho[i]);
+
+            QuickSort(lista, 0, tamanho[i] - 1);
+
+            for(int j=0; j<tamanho[i]; j++)
+            {
+              imprimir(lista[j]);
+            }
+            MergeSort(lista2, 0, tamanho[i]-1);
+            cout << "________________________" << endl;
+        }
     }
+    else
+    {
+        cout << "Poxa, que pena, nao abriu" << endl;
+    }
+
+
 
 
     /*
