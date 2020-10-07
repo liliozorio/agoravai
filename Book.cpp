@@ -18,19 +18,9 @@ string Book::get_authors()
 
 void Book::set_authours(string authours)
 {
-    int i=0;
-    while(authours[i]!='\0')
-    {
-        i++;
-    }
-    if(i==0)
-    {
-        this->authors = authours;
-    }
-    else
-    {
-        this->authors = this->authors + ", " + authours;
-    }
+
+
+        this->authors =authours;
 }
 
 int Book::get_bestsellers_rank()
@@ -50,19 +40,7 @@ string Book::get_categories()
 
 void Book::set_categories(string categories)
 {
-    int i=0;
-    while(categories[i]!='\0')
-    {
-        i++;
-    }
-    if(i==0)
-    {
         this->categories = categories;
-    }
-    else
-    {
-        this->categories = this->categories + ", " + categories;
-    }
 }
 
 string Book::get_description()

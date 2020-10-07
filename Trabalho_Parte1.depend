@@ -60,15 +60,7 @@
 	<iostream>
 	<string>
 
-1601332898 source:c:\users\henrique\onedrive\documentos\faculdade\codeblocks\ed2\edgit\ed2\main.cpp
-	<iostream>
-	<string>
-	<fstream>
-	<map>
-	<utility>
-	"Book.h"
-
-1601336967 source:c:\users\rsara\onedrive\documentos\trabalho_parte1\ed2\main.cpp
+1601493803 source:c:\users\henrique\onedrive\documentos\faculdade\codeblocks\ed2\edgit\ed2\main.cpp
 	<iostream>
 	<string>
 	<fstream>
@@ -77,6 +69,12 @@
 	"Book.h"
 
 1601338068 source:c:\users\rsara\onedrive\documentos\trabalho_parte1\ed2\main.cpp
+	<iostream>
+	<string>
+	<fstream>
+	<map>
+	<utility>
+	"Book.h"
 	<iostream>
 	<string>
 	<fstream>
