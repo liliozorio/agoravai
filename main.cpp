@@ -13,38 +13,12 @@
 #include <stdlib.h>
 #include "Book.h"
 
-//#define n 60000
-#define CHEIA 0
-#define VAZIA 1
-#define BESTSELLERS 2
-#define CATEGORIES 3
-#define DESCRIPTION 4
-#define DIMENSION_X 5
-#define DIMENSION_Y 6
-#define DIMENSION_Z 7
-#define EDITION 8
-#define EDITION_STATEMENT 9
-#define FOR_AGES 10
-#define FORMAT 11
-#define ID 12
-#define ILLUSTRATIONS 13
-#define IMPRINT 14
-#define INDEX_DATE 15
-#define ISBN10 16
-#define ISBN13 17
-#define LANG 18
-#define PUBLICATION_DATE 19
-#define PUBLICATION_PLACE 20
-#define RATING_AVG 21
-#define RATING_COUNT 22
-#define TITLE 23
-#define URL 24
-#define WEIGHT 25
-
 using namespace std;
 
 int numComparacoes = 0;
 int numCopias = 0;
+string quickk = "QuickSort";
+string mergee = "MergeSort";
 
 ///RETORNA O TAMANHO DA STRING
 int string_size(string s)
@@ -62,7 +36,6 @@ string separar(ifstream* arquivo)
     string line;
     getline(*arquivo,line,'"');
     getline(*arquivo,line,'"');
-
     return line;
 }
 
@@ -75,86 +48,70 @@ void leituraDataSet(Book* lista,int tam)
 {
     ifstream arquivo;
     arquivo.open("testeEntrada.txt");
-    int i=0;
+    int i = 0;
     srand(time(NULL));
     if(arquivo.is_open())
     {
-        //cout<<"entrei aqui"<< endl;
         string word, trash, line;
         string linha;
-
-        int a;
         while(i < tam)
         {
-            arquivo.seekg(0);
-            int a = rand() % 14; ///TAMANHO DO DATASET
 
+            arquivo.seekg(0);
+            int a = rand() % 9; ///TAMANHO DO DATASET
             int j = 0;
+            cout << a << endl;
             while(j < a)
             {
                 getline(arquivo, line);
                 j++;
             }
-
             ///AUTOR
             getline(arquivo,line,'"');
             getline(arquivo,line,'[');
             getline(arquivo,line,']');
             getline(arquivo,trash,'"');
-            //cout<<line<<endl;
             lista[i].set_authours(line);
             ///RANK BESTSELLERS
             line = separar(&arquivo);
-            //cout<<line<<endl;
             if(line == "")
                 line = '0';
             lista[i].set_bestseller_rank(std::stoi(line));
             ///CATEGORIAS
-            //getline(arquivo,trash,',');
             getline(arquivo,line,'"');
             getline(arquivo,line,'[');
             getline(arquivo,line,']');
             getline(arquivo,trash,'"');
-            //cout<<line<<endl;
             lista[i].set_categories(line);
             ///EDIÇÃO
             line = separar(&arquivo);
-            //cout<<line<<endl;
             lista[i].set_edition(line);
             ///ID
             line = separar(&arquivo);
-            //cout<<line<<endl;
             if(line == "")
                 line = '0';
             lista[i].set_id(std::stof(line));
             ///ISBN-10
             line = separar(&arquivo);
-            //cout<<line<<endl;
             lista[i].set_isbn10(line);
             ///ISBN-13
             line = separar(&arquivo);
-            //cout<<line<<endl;
             lista[i].set_isbn13(line);
             ///RATING-AVG
             line = separar(&arquivo);
             if(line == "")
                 line = '0';
-            //cout<<line<<endl;
             lista[i].set_rating_avg(std::stof(line));
             ///RATING-COUNT
             line = separar(&arquivo);
             if(line == "")
                 line = '0';
-            //cout<<line<<endl;
             lista[i].set_rating_count(std::stoi(line));
             ///TÍTULO
             line = separar(&arquivo);
-            //cout<<line<<endl;
             lista[i].set_title(line);
-            //imprimir(lista[i]);
             i++;
         }
-
         arquivo.close();
     }
     else
@@ -162,6 +119,17 @@ void leituraDataSet(Book* lista,int tam)
         cout << "Erro ao abrir o arquivo";
         //exit(1);
     }
+}
+
+void Escrita(ofstream* Saida, string tipo_ordena, double tempo_processamento, int tamanho)
+{
+    cout << tipo_ordena << endl;
+        *Saida << tipo_ordena << endl;
+        *Saida << "Tamanho: " << tamanho << endl;
+        *Saida << "Tempo de Processamento: " << tempo_processamento << endl;
+        *Saida << "Numero de Comparacoes: " << numComparacoes << endl;
+        *Saida << "Numero de Copias: " << numCopias << endl << endl;
+
 }
 
 int compara_string(Book pivo, Book qualquer) /// Retorna -1 caso pivo menor e 1 caso pivo maior, retorna 0 caso igual
@@ -217,13 +185,15 @@ int compara_string(Book pivo, Book qualquer) /// Retorna -1 caso pivo menor e 1 
             }
         }
     }
-    tamanho_pivo=string_size(pivo.get_title());
-    tamanho_qualquer=string_size(qualquer.get_title());
-    if(tamanho_pivo<tamanho_qualquer)
+
+    tamanho_pivo = string_size(pivo.get_title());
+    tamanho_qualquer = string_size(qualquer.get_title());
+
+    if(tamanho_pivo < tamanho_qualquer)
     {
         return -1;
     }
-    else if(tamanho_pivo>tamanho_qualquer)
+    else if(tamanho_pivo > tamanho_qualquer)
     {
         return 1;
     }
@@ -232,7 +202,6 @@ int compara_string(Book pivo, Book qualquer) /// Retorna -1 caso pivo menor e 1 
         return 0;
     }
 }
-
 
 ///Função para escolher o pivo do metodo QuickSort
 int escolhe_pivo(Book *livro, int id_1, int id_2, int id_3)
@@ -305,26 +274,28 @@ int Particionamento(Book *livro, int esquerda, int direita)
     int i = esquerda;
     int j = direita;
     Book aux;
-    while(true)
+    while(i<=j)
     {
-        while(compara_string(livro[i],pivo)==-1)
+        while(compara_string(livro[i], pivo) == -1)
         {
             i++;
         }
-        while(compara_string (pivo, livro[j])==-1)
+        while(compara_string (livro[j], pivo) == 1)
         {
             j--;
         }
-        if(i >= j)
-        {
-            break;
-        }
-        else
+        if(i <= j)
         {
             aux = livro[i];
             livro[i] = livro[j];
             livro[j] = aux;
+            i++;
+            j--;
             numCopias++;
+        }
+        else
+        {
+            break;
         }
     }
     return i;
@@ -346,95 +317,92 @@ void igual(Book livro1[], Book livro2[], int tamanho)
     for(int i = 0; i < tamanho; i++)
     {
         livro1[i] = livro2[i];
-        //cout << "entrei" << endl;
-        /*livro1[i].set_authours(livro2[i].get_authors());
-        livro1[i].set_bestseller_rank(livro2[i].get_bestsellers_rank());
-        livro1[i].set_categories(livro2[i].get_categories());
-        livro1[i].set_edition(livro2[i].get_edition());
-        livro1[i].set_id(livro2[i].get_id());
-        livro1[i].set_isbn10(livro2[i].get_isbn10());
-        livro1[i].set_isbn13(livro2[i].get_isbn13());
-        livro1[i].set_rating_avg(livro2[i].get_rating_avg());
-        livro1[i].set_rating_count(livro2[i].get_rating_count());
-        livro1[i].set_title(livro2[i].get_title());*/
     }
 
 }
 
-void MergeTripleSort(Book *Livro, int primeiro, int meio, int ultimo){
+void MergeTripleSort(Book *Livro, int primeiro, int meio, int ultimo)
+{
     int x, y;
     int a = meio - primeiro +1;
     int b = ultimo - meio;
     Book Primeiro[a], Segundo[b];
 
-    for(int x = 0; x < a; x++){
+    for(int x = 0; x < a; x++)
+    {
         Primeiro[x] = Livro[primeiro+x];
     }
-    for(int y = 0; y < b; y++){
+    for(int y = 0; y < b; y++)
+    {
         Segundo[y] = Livro[meio+1+y];
     }
     x = 0;
     y = 0;
     int z = primeiro;
 
-    while(x < a && y < b){
-        if(compara_string(Primeiro[x],Segundo[y]) == -1 || compara_string(Primeiro[x],Segundo[y]) == 0){
+    while(x < a && y < b)
+    {
+        if(compara_string(Primeiro[x],Segundo[y]) == -1 || compara_string(Primeiro[x],Segundo[y]) == 0)
+        {
             Livro[z] = Primeiro[x];
             x++;
             numCopias++;
         }
-        else{
+        else
+        {
             Livro[z] = Segundo[y];
             y++;
             numCopias++;
         }
         z++;
     }
-    while(x < a){
+    while(x < a)
+    {
         Livro[z] = Primeiro[x];
-        x++; z++;
+        x++;
+        z++;
         numCopias++;
     }
-    while(y < b){
+    while(y < b)
+    {
         Livro[z] = Segundo[y];
-        y++; z++;
+        y++;
+        z++;
         numCopias++;
     }
 }
 
-
-
-void MergeSort(Book *Livro, int primeiro, int ultimo){
+void MergeSort(Book *Livro, int primeiro, int ultimo)
+{
     int media;
-    if(primeiro < ultimo){
-       media = primeiro + (ultimo - primeiro)/2;
-       MergeSort(Livro, primeiro, media);
-       MergeSort(Livro, media+1, ultimo);
-       MergeTripleSort(Livro, primeiro, media, ultimo);
+    if(primeiro < ultimo)
+    {
+        media = primeiro + (ultimo - primeiro)/2;
+        MergeSort(Livro, primeiro, media);
+        MergeSort(Livro, media+1, ultimo);
+        MergeTripleSort(Livro, primeiro, media, ultimo);
     }
 }
 
 int main()
 {
-    //MergeSort(lista,0,tamanho-1);
-    //QuickSort(lista, 0,tamanho-1);
-    /*for(int i=0; i<tamanho; i++)
-    {
-      imprimir(lista[i]);
-    }*/
     int N = 0;
-
     ifstream entrada;
+    ofstream saida;
     entrada.open("entrada.txt");
+
+    saida.open("saida.txt");
+
 
     if(entrada.is_open())
     {
         string n;
         getline(entrada, n);
         N = std::stoi(n);
-        //cout << N << endl;
+
         int tamanho[N];
-        for (int i=0; i<N; i++)
+
+        for (int i = 0; i < N; i++)
         {
             getline(entrada, n);
             tamanho[i] = std::stoi(n);
@@ -443,233 +411,40 @@ int main()
             Book lista2[tamanho[i]];
             leituraDataSet(lista, tamanho[i]);
             igual(lista2, lista, tamanho[i]);
-
+            auto start = std::chrono::steady_clock::now();
             QuickSort(lista, 0, tamanho[i] - 1);
+            auto end = std::chrono::steady_clock::now();
+            std::chrono::duration<double> elapsed_seconds = end-start;
 
             for(int j=0; j<tamanho[i]; j++)
             {
-              imprimir(lista[j]);
+                imprimir(lista[j]);
             }
+
+            Escrita(&saida, quickk, elapsed_seconds.count(), tamanho[i]);
+
+            numComparacoes = 0;
+            numCopias = 0;
+
+            start = std::chrono::steady_clock::now();
             MergeSort(lista2, 0, tamanho[i]-1);
-            cout << "________________________" << endl;
+            end = std::chrono::steady_clock::now();
+            std::chrono::duration<double> elapsed_second = end-start;
+
+            cout << "________________________" << endl << endl;
+
+            for(int j=0; j<tamanho[i]; j++)
+            {
+                imprimir(lista2[j]);
+            }
+
+            Escrita(&saida, mergee, elapsed_second.count(), tamanho[i]);
         }
+        saida.close();
     }
     else
     {
         cout << "Poxa, que pena, nao abriu" << endl;
     }
-
-
-
-
-    /*
-    Book *lista_livros;
-    map<string,string> authors;
-    map<string,string> categories;
-    map<string,string> formats;
-    map<string,string> places;
-    ///LE OS AUTORES E ARMAZENA EM UM HASHMAP
-    ifstream arquivo;
-    arquivo.open("arquivos/authors.csv");
-    if(arquivo.is_open())
-    {
-        string line;
-        string key;
-        getline(arquivo,line);
-        while(!arquivo.eof())
-        {
-            getline(arquivo,key,',');
-            getline(arquivo,line,',');
-            authors.insert(key,line);
-        }
-        arquivo.close();
-    }
-    else
-    {
-        cout << "Erro ao abrir o arquivo";
-        //exit(1);
-    }
-    ///LE AS CATEGORIAS E ARMAZENA EM UM HASHMAP
-    ///TEM CATEGORIES QUE CONTEM VIRGULA LOGO TEREMOS QUE PENSAR COMO FAZER PARA PEGAR ELA POR COMPLETO SEM PARTIR
-    arquivo.open("arquivos/categories.csv");
-    if(arquivo.is_open())
-    {
-        string line;
-        string key;
-        getline(arquivo,line);
-        while(!arquivo.eof())
-        {
-            getline(arquivo,key,',');
-            getline(arquivo,line,',');
-            categories.insert(key,line);
-        }
-        arquivo.close();
-    }
-    else
-    {
-        cout << "Erro ao abrir o arquivo";
-    //        exit(1);
-    }
-    ///LE OS FORMATOS E ARMAZENA EM UM HASHMAP
-    arquivo.open("arquivos/formats.csv");
-    if(arquivo.is_open())
-    {
-        string line;
-        string key;
-        getline(arquivo,line);
-        while(!arquivo.eof())
-        {
-            getline(arquivo,key,',');
-            getline(arquivo,line,',');
-            formats.insert(key,line);
-        }
-        arquivo.close();
-    }
-    else
-    {
-        cout << "Erro ao abrir o arquivo";
-    //        exit(1);
-    }
-    ///LE OS LUGARES E ARMAZENA EM UM HASHMAP
-    ///TEM PLACES QUE CONTEM VIRGULA LOGO TEREMOS QUE PENSAR COMO FAZER PARA PEGAR ELA POR COMPLETO SEM PARTIR
-    arquivo.open("arquivos/places.csv");
-    if(arquivo.is_open())
-    {
-        string line;
-        string key;
-        getline(arquivo,line);
-        while(!arquivo.eof())
-        {
-            getline(arquivo,key,',');
-            getline(arquivo,line,',');
-            places.insert(key,line);
-        }
-        arquivo.close();
-    }
-    else
-    {
-        cout << "Erro ao abrir o arquivo";
-    //        exit(1);
-    }
-    arquivo.open("arquivos/dataset.csv");
-    if(arquivo.is_open())
-    {
-        string line;
-        Book livro;
-        getline(arquivo,line);
-        while(!arquivo.eof())
-        {
-            getline(arquivo,line,',');
-            int tamanho_line;
-            tamanho_line = string_size(line);
-            while(line[tamanho_line-1]!=']')
-            {
-                if(line[0]=='[')
-                {
-                    for(int i=1;i<tamanho_line;i++)
-                    {
-                        line[i-1]=line[i];
-                    }
-                }
-                livro.set_authours(line);
-                getline(arquivo,line,',');
-                tamanho_line = string_size(line);
-            }
-            line[tamanho_line-1] = '\0';
-            livro.set_authours(line);
-            line = separar(&arquivo);
-            livro.set_bestseller_rank(std::stoi(line));
-            line = separar(&arquivo);
-            tamanho_line = string_size(line);
-
-            while(line[tamanho_line-1]!=']')
-            {
-                if(line[0]=='[')
-                {
-                    for(int i=1;i<tamanho_line;i++)
-                    {
-                        line[i-1]=line[i];
-                    }
-                }
-                livro.set_categories(line);
-                line = separar(&arquivo);
-                tamanho_line = string_size(line);
-            }
-            line[tamanho_line-1]='\0';
-            livro.set_categories(line);
-
-            line = separar(&arquivo);
-            livro.set_description(line); ///TEM DESCRIPTION QUE CONTEM VIRGULA LOGO TEREMOS QUE PENSAR COMO FAZER PARA PEGAR ELA POR COMPLETO SEM PARTIR
-
-            line = separar(&arquivo);
-            livro.set_dimention_x(std::stof(line));
-
-            line = separar(&arquivo);
-            livro.set_dimention_y(std::stof(line));
-
-            line = separar(&arquivo);
-            livro.set_dimention_z(std::stof(line));
-
-            line = separar(&arquivo);
-            livro.set_edition(line); ///TEM EDITION QUE CONTEM VIRGULA LOGO TEREMOS QUE PENSAR COMO FAZER PARA PEGAR ELA POR COMPLETO SEM PARTIR
-
-            line = separar(&arquivo);
-            livro.set_edition_statement(line); ///TEM EDITION_STATEMENT QUE CONTEM VIRGULA LOGO TEREMOS QUE PENSAR COMO FAZER PARA PEGAR ELA POR COMPLETO SEM PARTIR
-
-            line = separar(&arquivo);
-            livro.set_for_ages(line);
-
-            line = separar(&arquivo);
-            livro.set_format(line);
-
-            line = separar(&arquivo);
-            livro.set_id(std::stoi(line));
-
-            line = separar(&arquivo);
-            livro.set_illustrations_note(line); ///TEM ILLUSTRATIONS_NOTE QUE CONTEM VIRGULA LOGO TEREMOS QUE PENSAR COMO FAZER PARA PEGAR ELA POR COMPLETO SEM PARTIR
-
-            line = separar(&arquivo);
-            livro.set_imprint(line); ///TEM IMPRINT QUE CONTEM VIRGULA LOGO TEREMOS QUE PENSAR COMO FAZER PARA PEGAR ELA POR COMPLETO SEM PARTIR
-
-            line = separar(&arquivo);
-            livro.set_index_date(line);
-
-            line = separar(&arquivo);
-            livro.set_isbn10(line);
-
-            line = separar(&arquivo);
-            livro.set_isbn13(line);
-
-            line = separar(&arquivo);
-            livro.set_lang(line);
-
-            line = separar(&arquivo);
-            livro.set_publication_date(line);
-
-            line = separar(&arquivo);
-            livro.set_publication_place(line);
-
-            line = separar(&arquivo);
-            livro.set_rating_avg(std::stof(line));
-
-            line = separar(&arquivo);
-            livro.set_rating_count(std::stoi(line));
-
-            line = separar(&arquivo);
-            livro.set_title(line); ///TEM TITLE QUE CONTEM VIRGULA LOGO TEREMOS QUE PENSAR COMO FAZER PARA PEGAR ELA POR COMPLETO SEM PARTIR
-
-            line = separar(&arquivo);
-            livro.set_url(line);
-
-            line = separar(&arquivo);
-            livro.set_weight(std::stof(line));
-        }
-        arquivo.close();
-    }
-    else
-    {
-        cout << "Erro ao abrir o arquivo";
-        //exit(1);
-    }*/
     return 0;
 }
