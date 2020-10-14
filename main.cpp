@@ -15,12 +15,16 @@
 
 using namespace std;
 
+#define MENOR -1
+#define IGUAL 0
+#define MAIOR 1
+
 int numComparacoes = 0;
 int numCopias = 0;
 string quickk = "QuickSort";
 string mergee = "MergeSort";
 
-///RETORNA O TAMANHO DA STRING
+///Retorna o tamanho da string
 int string_size(string s)
 {
     int i=0;
@@ -31,6 +35,7 @@ int string_size(string s)
     return i;
 }
 
+///Função para separar os parametros
 string separar(ifstream* arquivo)
 {
     string line;
@@ -39,26 +44,29 @@ string separar(ifstream* arquivo)
     return line;
 }
 
+///Função auxiliar nos testes
 void imprimir(Book leitura)
 {
     cout << leitura.get_title() << " - " << leitura.get_bestsellers_rank() << " - " << leitura.get_categories() << endl;
 }
 
+///Leitura do arquivo de entrada
 void leituraDataSet(Book* lista,int tam)
 {
     ifstream arquivo;
-    arquivo.open("testeEntrada.txt");
+    arquivo.open("dataset_simp_sem_descricao.csv");
+
     int i = 0;
     srand(time(NULL));
+
     if(arquivo.is_open())
     {
         string word, trash, line;
         string linha;
         while(i < tam)
         {
-
             arquivo.seekg(0);
-            int a = rand() % 9; ///TAMANHO DO DATASET
+            int a = rand() % 1087014; ///TAMANHO DO DATASET
             int j = 0;
             cout << a << endl;
             while(j < a)
@@ -117,10 +125,11 @@ void leituraDataSet(Book* lista,int tam)
     else
     {
         cout << "Erro ao abrir o arquivo";
-        //exit(1);
+        exit(1);
     }
 }
 
+///Escrita no arquivo de saida
 void Escrita(ofstream* Saida, string tipo_ordena, double tempo_processamento, int tamanho)
 {
     cout << tipo_ordena << endl;
@@ -129,7 +138,6 @@ void Escrita(ofstream* Saida, string tipo_ordena, double tempo_processamento, in
         *Saida << "Tempo de Processamento: " << tempo_processamento << endl;
         *Saida << "Numero de Comparacoes: " << numComparacoes << endl;
         *Saida << "Numero de Copias: " << numCopias << endl << endl;
-
 }
 
 int compara_string(Book pivo, Book qualquer) /// Retorna -1 caso pivo menor e 1 caso pivo maior, retorna 0 caso igual
@@ -137,51 +145,53 @@ int compara_string(Book pivo, Book qualquer) /// Retorna -1 caso pivo menor e 1 
     int tamanho_pivo;
     int tamanho_qualquer;
     int maiusculo_minusculo = 'a' - 'A';
+
     numComparacoes++;
+
     for(int i=0; pivo.get_title()[i] != '\0' && qualquer.get_title()[i] != '\0'; i++)
     {
         if(pivo.get_title()[i] > 'Z' && qualquer.get_title()[i] > 'Z') /// Ve se os dois são minusculos
         {
             if(pivo.get_title()[i] > qualquer.get_title()[i])
             {
-                return 1;
+                return MAIOR;
             }
             else if(qualquer.get_title()[i] > pivo.get_title()[i])
             {
-                return -1;
+                return MENOR;
             }
         }
         else if(pivo.get_title()[i] < 'a' && qualquer.get_title()[i] < 'a') /// ve se os dois são maiusculos
         {
             if(pivo.get_title()[i] > qualquer.get_title()[i])
             {
-                return 1;
+                return MAIOR;
             }
             else if(qualquer.get_title()[i] > pivo.get_title()[i])
             {
-                return -1;
+                return MENOR;
             }
         }
         else if(pivo.get_title()[i] < 'a') /// ve letra do pivo maiuscula, se for a letra do qualquer é minuscula
         {
             if(pivo.get_title()[i]+maiusculo_minusculo > qualquer.get_title()[i])
             {
-                return 1;
+                return MAIOR;
             }
             else if(qualquer.get_title()[i] > pivo.get_title()[i]+maiusculo_minusculo)
             {
-                return -1;
+                return MENOR;
             }
         }
         else /// letra do qualquer maiuscula e a letra do pivo é minuscula
         {
             if(pivo.get_title()[i] > qualquer.get_title()[i]+maiusculo_minusculo)
             {
-                return 1;
+                return MAIOR;
             }
             else if(qualquer.get_title()[i]+maiusculo_minusculo > pivo.get_title()[i])
             {
-                return -1;
+                return MENOR;
             }
         }
     }
@@ -191,15 +201,15 @@ int compara_string(Book pivo, Book qualquer) /// Retorna -1 caso pivo menor e 1 
 
     if(tamanho_pivo < tamanho_qualquer)
     {
-        return -1;
+        return MENOR;
     }
     else if(tamanho_pivo > tamanho_qualquer)
     {
-        return 1;
+        return MAIOR;
     }
     else
     {
-        return 0;
+        return IGUAL;
     }
 }
 
@@ -245,32 +255,6 @@ int Particionamento(Book *livro, int esquerda, int direita)
     pivo_indice = escolhe_pivo(livro, esquerda, meio, direita);
     Book pivo = livro[pivo_indice];
 
-    /*Book pivo;
-    int tamanho = direita - esquerda;
-    int divide_vetor;
-    int k;
-    int l;
-    int mediana1;
-    int mediana2;
-    int mediana3;
-    int mediana_final;
-
-    divide_vetor = tamanho/3;
-    divide_vetor++;
-    k = esquerda + divide_vetor;
-    l = k + divide_vetor;
-    if(tamanho>2)
-    {
-        mediana1 = escolhe_pivo(livro, esquerda, (k-1+esquerda)/2, k-1);
-        mediana2 = escolhe_pivo(livro, k, (l-1+k)/2, l-1);
-        mediana3 = escolhe_pivo(livro, l, (direita+l)/2, direita);
-        mediana_final = escolhe_pivo(livro, mediana1, mediana2, mediana3);
-    }
-    else
-    {
-        mediana_final = escolhe_pivo(livro, esquerda, (direita+esquerda)/2, direita);
-    }*/
-
     int i = esquerda;
     int j = direita;
     Book aux;
@@ -312,15 +296,16 @@ void QuickSort(Book *livro, int esquerda, int direita)
     }
 }
 
+///Função para igualar dois vetores de livros
 void igual(Book livro1[], Book livro2[], int tamanho)
 {
     for(int i = 0; i < tamanho; i++)
     {
         livro1[i] = livro2[i];
     }
-
 }
 
+///Função auxiliar no MergeSort
 void MergeTripleSort(Book *Livro, int primeiro, int meio, int ultimo)
 {
     int x, y;
@@ -372,6 +357,7 @@ void MergeTripleSort(Book *Livro, int primeiro, int meio, int ultimo)
     }
 }
 
+///Método QuickSort
 void MergeSort(Book *Livro, int primeiro, int ultimo)
 {
     int media;
@@ -387,19 +373,18 @@ void MergeSort(Book *Livro, int primeiro, int ultimo)
 int main()
 {
     int N = 0;
+
     ifstream entrada;
     ofstream saida;
+
     entrada.open("entrada.txt");
-
     saida.open("saida.txt");
-
 
     if(entrada.is_open())
     {
         string n;
         getline(entrada, n);
         N = std::stoi(n);
-
         int tamanho[N];
 
         for (int i = 0; i < N; i++)
@@ -407,19 +392,18 @@ int main()
             getline(entrada, n);
             tamanho[i] = std::stoi(n);
 
-            Book lista[tamanho[i]];
-            Book lista2[tamanho[i]];
+            Book *lista = new Book[tamanho[i]];
+            Book *lista2 = new Book[tamanho[i]];
             leituraDataSet(lista, tamanho[i]);
             igual(lista2, lista, tamanho[i]);
+
+            numComparacoes = 0;
+            numCopias = 0;
+
             auto start = std::chrono::steady_clock::now();
             QuickSort(lista, 0, tamanho[i] - 1);
             auto end = std::chrono::steady_clock::now();
             std::chrono::duration<double> elapsed_seconds = end-start;
-
-            for(int j=0; j<tamanho[i]; j++)
-            {
-                imprimir(lista[j]);
-            }
 
             Escrita(&saida, quickk, elapsed_seconds.count(), tamanho[i]);
 
@@ -431,20 +415,17 @@ int main()
             end = std::chrono::steady_clock::now();
             std::chrono::duration<double> elapsed_second = end-start;
 
-            cout << "________________________" << endl << endl;
-
-            for(int j=0; j<tamanho[i]; j++)
-            {
-                imprimir(lista2[j]);
-            }
-
             Escrita(&saida, mergee, elapsed_second.count(), tamanho[i]);
+
+            delete[] lista;
+            delete[] lista2;
         }
         saida.close();
     }
     else
     {
-        cout << "Poxa, que pena, nao abriu" << endl;
+        cout << "Erro ao abrir o arquivo" << endl;
     }
+
     return 0;
 }

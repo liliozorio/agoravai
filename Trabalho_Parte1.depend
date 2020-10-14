@@ -81,7 +81,7 @@
 	<stdlib.h>
 	"Book.h"
 
-1602106636 source:c:\ed2\book.cpp
+1602708198 source:c:\ed2\book.cpp
 	"Book.h"
 	<string>
 
@@ -89,7 +89,7 @@
 	<iostream>
 	<string>
 
-1602113101 source:c:\ed2\main.cpp
+1602708332 source:c:\ed2\main.cpp
 	<iostream>
 	<string>
 	<fstream>
