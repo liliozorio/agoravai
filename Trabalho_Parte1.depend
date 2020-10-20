@@ -81,15 +81,15 @@
 	<stdlib.h>
 	"Book.h"
 
-1602708198 source:c:\ed2\book.cpp
+1603149577 source:c:\ed2\book.cpp
 	"Book.h"
 	<string>
 
-1602106636 c:\ed2\book.h
+1603149577 c:\ed2\book.h
 	<iostream>
 	<string>
 
-1602708332 source:c:\ed2\main.cpp
+1603150442 source:c:\ed2\main.cpp
 	<iostream>
 	<string>
 	<fstream>

@@ -68,7 +68,6 @@ void leituraDataSet(Book* lista,int tam)
             arquivo.seekg(0);
             int a = rand() % 1087014; ///TAMANHO DO DATASET
             int j = 0;
-            cout << a << endl;
             while(j < a)
             {
                 getline(arquivo, line);
@@ -292,7 +291,7 @@ void QuickSort(Book *livro, int esquerda, int direita)
     {
         int particao = Particionamento(livro, esquerda, direita);
         QuickSort(livro, esquerda, particao-1);
-        QuickSort(livro, particao+1, direita);
+        QuickSort(livro, particao, direita);
     }
 }
 
@@ -311,7 +310,8 @@ void MergeTripleSort(Book *Livro, int primeiro, int meio, int ultimo)
     int x, y;
     int a = meio - primeiro +1;
     int b = ultimo - meio;
-    Book Primeiro[a], Segundo[b];
+    Book *Primeiro = new Book[a];
+    Book *Segundo = new Book[b];
 
     for(int x = 0; x < a; x++)
     {
@@ -355,9 +355,11 @@ void MergeTripleSort(Book *Livro, int primeiro, int meio, int ultimo)
         z++;
         numCopias++;
     }
+    delete [] Primeiro;
+    delete [] Segundo;
 }
 
-///Método QuickSort
+///Método MergeSort
 void MergeSort(Book *Livro, int primeiro, int ultimo)
 {
     int media;

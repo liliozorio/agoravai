@@ -1,12 +1,12 @@
 QuickSort
-Tamanho: 5000
-Tempo de Processamento: 0.587966
-Numero de Comparacoes: 80433
-Numero de Copias: 14170
+Tamanho: 100000
+Tempo de Processamento: 28.2763
+Numero de Comparacoes: 2356730
+Numero de Copias: 466777
 
 MergeSort
-Tamanho: 5000
-Tempo de Processamento: 0.393463
-Numero de Comparacoes: 82746
-Numero de Copias: 61808
+Tamanho: 100000
+Tempo de Processamento: 19.571
+Numero de Comparacoes: 2401848
+Numero de Copias: 1668928
 
