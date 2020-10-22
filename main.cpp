@@ -423,6 +423,7 @@ int main()
             delete[] lista2;
         }
         saida.close();
+        cout << "A ordenacao foi finalizada!" << endl;
     }
     else
     {
