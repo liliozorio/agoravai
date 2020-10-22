@@ -54,7 +54,7 @@ void imprimir(Book leitura)
 void leituraDataSet(Book* lista,int tam)
 {
     ifstream arquivo;
-    arquivo.open("arquivos/dataset_simp_sem_descricao.csv");
+    arquivo.open("../arquivos/dataset_simp_sem_descricao.csv");
 
     int i = 0;
     srand(time(NULL));
@@ -379,8 +379,8 @@ int main()
     ifstream entrada;
     ofstream saida;
 
-    entrada.open("arquivos/entrada.txt");
-    saida.open("arquivos/saida.txt");
+    entrada.open("../arquivos/entrada.txt");
+    saida.open("../arquivos/saida.txt");
 
     if(entrada.is_open())
     {

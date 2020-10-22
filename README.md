@@ -7,7 +7,8 @@ COMO EXECUTAR O CODIGO:
 
 - Não recebe argumentos por linha de comando para ser executado. 
 
-Entre na pasta do projeto pelo terminal e digite:
 
-LINUX: "Linux\Trabalho_Parte1_Linux"
-WINDOWS: "Windows\Trabalho_Parte1"
+
+LINUX: Entre na pasta "Linux" e digite: "Trabalho_Parte1" ou apenas entre na pasta do projeto e digite "Linux\Trabalho_Parte1".
+
+WINDOWS: Entre na pasta "Windows" e digite: "Trabalho_Parte1" ou apenas entre na pasta do projeto e digite "Windows\Trabalho_Parte1".
