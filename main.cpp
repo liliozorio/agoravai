@@ -1,7 +1,10 @@
+/********************************************************
+ * Henrique Colonese Echternacht             - 201835028
+ * LÃ­via Pereira OzÃ³rio                      - 201835011
+ * Regina Sarah Monferrari Amorim de Paula   - 201835007
+ *******************************************************/
+
 #include <iostream>
-
-#define _GLIBCXX_USE_C99 1
-
 #include <string>
 #include <fstream>
 #include <map>
@@ -15,6 +18,7 @@
 
 using namespace std;
 
+#define _GLIBCXX_USE_C99 1
 #define MENOR -1
 #define IGUAL 0
 #define MAIOR 1
@@ -35,7 +39,7 @@ int string_size(string s)
     return i;
 }
 
-///Função para separar os parametros
+///Funï¿½ï¿½o para separar os parametros
 string separar(ifstream* arquivo)
 {
     string line;
@@ -44,7 +48,7 @@ string separar(ifstream* arquivo)
     return line;
 }
 
-///Função auxiliar nos testes
+///Funï¿½ï¿½o auxiliar nos testes
 void imprimir(Book leitura)
 {
     cout << leitura.get_title() << " - " << leitura.get_bestsellers_rank() << " - " << leitura.get_categories() << endl;
@@ -90,7 +94,7 @@ void leituraDataSet(Book* lista,int tam)
             getline(arquivo,line,']');
             getline(arquivo,trash,'"');
             lista[i].set_categories(line);
-            ///EDIÇÃO
+            ///EDIï¿½ï¿½O
             line = separar(&arquivo);
             lista[i].set_edition(line);
             ///ID
@@ -114,7 +118,7 @@ void leituraDataSet(Book* lista,int tam)
             if(line == "")
                 line = '0';
             lista[i].set_rating_count(std::stoi(line));
-            ///TÍTULO
+            ///Tï¿½TULO
             line = separar(&arquivo);
             lista[i].set_title(line);
             i++;
@@ -149,7 +153,7 @@ int compara_string(Book pivo, Book qualquer) /// Retorna -1 caso pivo menor e 1 
 
     for(int i=0; pivo.get_title()[i] != '\0' && qualquer.get_title()[i] != '\0'; i++)
     {
-        if(pivo.get_title()[i] > 'Z' && qualquer.get_title()[i] > 'Z') /// Ve se os dois são minusculos
+        if(pivo.get_title()[i] > 'Z' && qualquer.get_title()[i] > 'Z') /// Ve se os dois sï¿½o minusculos
         {
             if(pivo.get_title()[i] > qualquer.get_title()[i])
             {
@@ -160,7 +164,7 @@ int compara_string(Book pivo, Book qualquer) /// Retorna -1 caso pivo menor e 1 
                 return MENOR;
             }
         }
-        else if(pivo.get_title()[i] < 'a' && qualquer.get_title()[i] < 'a') /// ve se os dois são maiusculos
+        else if(pivo.get_title()[i] < 'a' && qualquer.get_title()[i] < 'a') /// ve se os dois sï¿½o maiusculos
         {
             if(pivo.get_title()[i] > qualquer.get_title()[i])
             {
@@ -171,7 +175,7 @@ int compara_string(Book pivo, Book qualquer) /// Retorna -1 caso pivo menor e 1 
                 return MENOR;
             }
         }
-        else if(pivo.get_title()[i] < 'a') /// ve letra do pivo maiuscula, se for a letra do qualquer é minuscula
+        else if(pivo.get_title()[i] < 'a') /// ve letra do pivo maiuscula, se for a letra do qualquer ï¿½ minuscula
         {
             if(pivo.get_title()[i]+maiusculo_minusculo > qualquer.get_title()[i])
             {
@@ -182,7 +186,7 @@ int compara_string(Book pivo, Book qualquer) /// Retorna -1 caso pivo menor e 1 
                 return MENOR;
             }
         }
-        else /// letra do qualquer maiuscula e a letra do pivo é minuscula
+        else /// letra do qualquer maiuscula e a letra do pivo ï¿½ minuscula
         {
             if(pivo.get_title()[i] > qualquer.get_title()[i]+maiusculo_minusculo)
             {
@@ -212,7 +216,7 @@ int compara_string(Book pivo, Book qualquer) /// Retorna -1 caso pivo menor e 1 
     }
 }
 
-///Função para escolher o pivo do metodo QuickSort
+///Funï¿½ï¿½o para escolher o pivo do metodo QuickSort
 int escolhe_pivo(Book *livro, int id_1, int id_2, int id_3)
 {
     int compara_1_2 = compara_string(livro[id_1],livro[id_2]);
@@ -245,7 +249,7 @@ int escolhe_pivo(Book *livro, int id_1, int id_2, int id_3)
     return id_3;
 }
 
-///Função auxiliar do QuickSort
+///Funï¿½ï¿½o auxiliar do QuickSort
 int Particionamento(Book *livro, int esquerda, int direita)
 {
     int meio;
@@ -295,7 +299,7 @@ void QuickSort(Book *livro, int esquerda, int direita)
     }
 }
 
-///Função para igualar dois vetores de livros
+///Funï¿½ï¿½o para igualar dois vetores de livros
 void igual(Book livro1[], Book livro2[], int tamanho)
 {
     for(int i = 0; i < tamanho; i++)
@@ -304,7 +308,7 @@ void igual(Book livro1[], Book livro2[], int tamanho)
     }
 }
 
-///Função auxiliar no MergeSort
+///Funï¿½ï¿½o auxiliar no MergeSort
 void MergeTripleSort(Book *Livro, int primeiro, int meio, int ultimo)
 {
     int x, y;
@@ -359,7 +363,7 @@ void MergeTripleSort(Book *Livro, int primeiro, int meio, int ultimo)
     delete [] Segundo;
 }
 
-///Método MergeSort
+///Mï¿½todo MergeSort
 void MergeSort(Book *Livro, int primeiro, int ultimo)
 {
     int media;
