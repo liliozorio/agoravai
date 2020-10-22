@@ -9,6 +9,6 @@ COMO EXECUTAR O CODIGO:
 
 
 
-LINUX: Entre na pasta "Linux" e digite: "Trabalho_Parte1".
+LINUX: Entre na pasta "Linux" e digite: "./Trabalho_Parte1".
 
 WINDOWS: Entre na pasta "Windows" e digite: "Trabalho_Parte1".
