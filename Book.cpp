@@ -19,7 +19,7 @@ string Book::get_authors()
 
 void Book::set_authours(string authours)
 {
-    this->authors = this->authors + ", " + authours;
+    this->authors = authours;
 }
 
 int Book::get_bestsellers_rank()
