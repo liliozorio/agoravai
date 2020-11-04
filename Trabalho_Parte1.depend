@@ -123,3 +123,29 @@
 	<stdlib.h>
 	"Book.h"
 
+1604523000 source:c:\users\rsara\onedrive\documentos\trabalho-ed-parte2\ed2\book.cpp
+	"Book.h"
+	<string>
+
+1604522943 c:\users\rsara\onedrive\documentos\trabalho-ed-parte2\ed2\book.h
+	<iostream>
+	<string>
+
+1604526409 source:c:\users\rsara\onedrive\documentos\trabalho-ed-parte2\ed2\src\author.cpp
+	"../include/Author.h"
+	<string>
+
+1604526241 c:\users\rsara\onedrive\documentos\trabalho-ed-parte2\ed2\include\author.h
+	<iostream>
+	<string>
+
+1604527975 source:c:\users\rsara\onedrive\documentos\trabalho-ed-parte2\ed2\src\hash.cpp
+	<iostream>
+	<time.h>
+	"../include/Hash.h"
+	<math.h>
+
+1604527975 c:\users\rsara\onedrive\documentos\trabalho-ed-parte2\ed2\include\hash.h
+	<vector>
+	"Author.h"
+

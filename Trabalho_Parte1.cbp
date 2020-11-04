@@ -14,6 +14,7 @@
 				<Option parameters="testeEntrada.txt" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -23,6 +24,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -35,7 +37,11 @@
 		</Compiler>
 		<Unit filename="Book.cpp" />
 		<Unit filename="Book.h" />
+		<Unit filename="include/Author.h" />
+		<Unit filename="include/Hash.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Author.cpp" />
+		<Unit filename="src/Hash.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
