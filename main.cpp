@@ -24,6 +24,7 @@ using namespace std;
 #define MENOR -1
 #define IGUAL 0
 #define MAIOR 1
+#define INFINITO -1
 
 int numComparacoes = 0;
 int numCopias = 0;
@@ -60,28 +61,43 @@ void imprimir(Book leitura)
 void leituraAuthor(Hash* autor, int tam)
 {
     ifstream arquivoAuthors;
-    arquivoAuthors.open("../arquivos/authors.csv");
+    arquivoAuthors.open("arquivos/authors.txt");
     int i = 0;
-    vector<Author> autorAux;
+    
+    while(i < tam)
+    {
+      Author autorAux2;
+      autor->create(&autorAux2);
+      i++;
+    }
     if(arquivoAuthors.is_open())
     {
+        i = 0;
         string word, trash, line;
         string linha;
         while(i < tam)
         {
-            ///CODIGO
+            Author autorAux;
+            ///CODIGo
             line = separar(&arquivoAuthors);
             if(line == "")
                 line = '0';
-            autorAux[i].set_codigo(std::stoi(line));
+            cout << line << endl;
+            int aux=std::stoi(line);
+            autorAux.set_codigo(aux);
+            
             ///NOME
             line = separar(&arquivoAuthors);
-            autorAux[i].set_nome(line);
+            cout << line << endl;
+            autorAux.set_nome(line);
             ///inserindo na hash
+            
+            autor->insere(&autorAux);
             i++;
         }
     }
-    autor->create(tam/2, tam/2-1, tam, LINEAR, autorAux);
+    
+  
 
 }
 
@@ -89,7 +105,7 @@ void leituraAuthor(Hash* autor, int tam)
 void leituraDataSet(Book* lista,int tam)
 {
     ifstream arquivo;
-    arquivo.open("testeEntrada.txt");
+    arquivo.open("arquivos/testeEntrada.txt");
 
     int i = 0;
     srand(time(NULL));
@@ -414,8 +430,12 @@ int main()
     ifstream entrada;
     ofstream saida;
 
-    entrada.open("../arquivos/entrada.txt");
-    saida.open("../arquivos/saida.txt");
+    Hash* authors = new Hash(500);
+    leituraAuthor(authors, 500);
+    //authors->imprime();
+
+    entrada.open("arquivos/entrada.txt");
+    saida.open("arquivos/saida.txt");
 
     if(entrada.is_open())
     {

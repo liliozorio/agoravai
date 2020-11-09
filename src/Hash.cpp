@@ -36,37 +36,12 @@ int Hash::getTamanho()
 }*/
 
 
-int Hash::hashFunction(int m, int mm, int *i, int data, int tipoHash)
+int Hash::SondagemLinear(int chave, int* i)
 {
-  switch (tipoHash)
-  {
-    case LINEAR:
-      return SondagemLinear(data, m, i);
-      break;
-    case DUPLA:
-      return SondagemDupla(data, m, mm, i);
-      break;
-  }
+  return (chave + *i) % this->m;
 }
 
-int Hash::SondagemLinear(int chave, int m, int* i)
-{
-  return (chave + *i) % m;
-}
-
-int Hash::auxSondagemDupla(int chave, int m)
-{
-  return chave % m;
-}
-
-int Hash::SondagemDupla(int chave, int m, int mm, int* i)
-{
-  int h1 = auxSondagemDupla(chave, m);
-  int h2 = 1 + auxSondagemDupla(chave, mm);
-  return (h1 + *i*h2) % m;
-}
-
-void Hash::create(int m, int mm, int n, int tipoHash, vector<Author> Data)
+void Hash::create(Author* Data)
 {
     Author* auxInsere;
 
@@ -75,40 +50,39 @@ void Hash::create(int m, int mm, int n, int tipoHash, vector<Author> Data)
     aux->set_codigo(INFINITO);
     aux->set_contador(INFINITO);
 
-    for(int i = 0; i < m; i++)
-    {
-      tabela.push_back(*aux);
-    }
+    tabela.push_back(*aux);
 
-    for(int i = 0; i < n; i ++)
-    {
-      int cont = 0;
-      for(int j = 0; j < m; j++)
-      {
-        int chave = this->hashFunction(m, mm, &cont, Data[i].get_codigo(), tipoHash);
-        if(tabela[chave].get_nome() != "")
-        {
-            numColisoes++;
-            cont++;
-        }
-        else
-        {
-          this->insere(chave, &Data[i]);
-          break;
-        }
-      }
-      //if(this->Cheia(m)) break;
-    }
-    cout << endl << "Colisões: " << numColisoes << endl;
-    this->imprime();
-    cout << endl;
+    //cout << endl << "Colisï¿½es: " << numColisoes << endl;
+    //this->imprime();
+    //cout << endl;
 
 }
 
-void Hash::insere(int chave, Author* data)
+void Hash::insere(Author* data)
 {
-    tabela[chave] = *data;
-    //return tabela[chave];
+  int cont = 0;
+  for(int j = 0; j < this->m; j++)
+  {
+    int chave = this->SondagemLinear(data->get_codigo(), &cont);
+    cout << "CHAVE AQUI OH: " << chave << endl;
+    
+    if(tabela[chave].get_nome() != "")
+    {
+      cout<< "Nome:" << tabela[chave].get_nome() << endl << endl;
+      cout << "ENTREI IF" << endl;
+      numColisoes++;
+      cont++;
+    }
+    else
+    {
+      cout<< "Nome:" << tabela[chave].get_nome() << endl << endl;
+      cout << "ENTREI ELSE" << endl;
+      tabela[chave] = *data;
+      break;
+    }
+
+  }
+  cout << "PASSOU AQUI " << endl;
 }
 
 Author* Hash::lookup(int indice, Author* data)

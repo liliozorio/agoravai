@@ -3,7 +3,7 @@
 
 Author::Author()
 {
-    //ctor
+  
 }
 
 Author::~Author()

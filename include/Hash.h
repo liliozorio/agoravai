@@ -16,16 +16,14 @@ class Hash
         Hash(int tamanho);
         ~Hash();
         int hashFunction(int m, int mm, int* i, int data, int tipoHash);
-        int SondagemLinear(int chave, int m, int *i);
-        int SondagemDupla(int chave, int m, int mm, int* i);
-        int auxSondagemDupla(int chave, int m);
+        int SondagemLinear(int chave, int *i);
 
         int getTamanho();
         bool Cheia(int m);
 
-        void create(int m, int mm, int n, int tipoHash, vector<Author> Data);
+        void create(Author* Data);
 
-        void insere(int chave, Author* data);
+        void insere(Author* data);
         Author* lookup(int indice, Author* data);
         void destroy();
         void imprime();
