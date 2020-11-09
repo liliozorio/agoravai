@@ -1,9 +1,9 @@
+
 /********************************************************
  * Henrique Colonese Echternacht             - 201835028
  * Lívia Pereira Ozório                      - 201835011
  * Regina Sarah Monferrari Amorim de Paula   - 201835007
  *******************************************************/
-
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -15,6 +15,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Book.h"
+#include "Author.h"
+#include "Hash.h"
 
 using namespace std;
 
@@ -39,7 +41,7 @@ int string_size(string s)
     return i;
 }
 
-///Fun��o para separar os parametros
+///Funcao para separar os parametros
 string separar(ifstream* arquivo)
 {
     string line;
@@ -54,11 +56,40 @@ void imprimir(Book leitura)
     cout << leitura.get_title() << " - " << leitura.get_bestsellers_rank() << " - " << leitura.get_categories() << endl;
 }
 
+///Leitura do arquivo authos.csv
+void leituraAuthor(Hash* autor, int tam)
+{
+    ifstream arquivoAuthors;
+    arquivoAuthors.open("../arquivos/authors.csv");
+    int i = 0;
+    vector<Author> autorAux;
+    if(arquivoAuthors.is_open())
+    {
+        string word, trash, line;
+        string linha;
+        while(i < tam)
+        {
+            ///CODIGO
+            line = separar(&arquivoAuthors);
+            if(line == "")
+                line = '0';
+            autorAux[i].set_codigo(std::stoi(line));
+            ///NOME
+            line = separar(&arquivoAuthors);
+            autorAux[i].set_nome(line);
+            ///inserindo na hash
+            i++;
+        }
+    }
+    autor->create(tam/2, tam/2-1, tam, LINEAR, autorAux);
+
+}
+
 ///Leitura do arquivo de entrada
 void leituraDataSet(Book* lista,int tam)
 {
     ifstream arquivo;
-    arquivo.open("../arquivos/dataset_simp_sem_descricao.csv");
+    arquivo.open("testeEntrada.txt");
 
     int i = 0;
     srand(time(NULL));

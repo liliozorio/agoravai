@@ -1,0 +1,12 @@
+QuickSort
+Tamanho: 10
+Tempo de Processamento: 0
+Numero de Comparacoes: 65
+Numero de Copias: 19
+
+MergeSort
+Tamanho: 10
+Tempo de Processamento: 0
+Numero de Comparacoes: 38
+Numero de Copias: 34
+
