@@ -75,7 +75,7 @@ void leituraAuthor(Hash* autor, int tam)
             i++;
         }
     }
-    //autor.create(m, mm, n, tipoHash, autorAux);
+    autor->create(tam/2, tam/2-1, tam, LINEAR, autorAux);
 
 }
 
@@ -83,7 +83,7 @@ void leituraAuthor(Hash* autor, int tam)
 void leituraDataSet(Book* lista,int tam)
 {
     ifstream arquivo;
-    arquivo.open("dataset_simp_sem_descricao.csv");
+    arquivo.open("testeEntrada.txt");
 
     int i = 0;
     srand(time(NULL));

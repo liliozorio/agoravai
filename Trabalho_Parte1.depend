@@ -149,3 +149,18 @@
 	<vector>
 	"Author.h"
 
+1604527990 source:c:\users\rsara\onedrive\documentos\trabalho-ed-parte2\ed2\main.cpp
+	<iostream>
+	<string>
+	<fstream>
+	<map>
+	<utility>
+	<random>
+	<chrono>
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	"Book.h"
+	"Author.h"
+	"Hash.h"
+
