@@ -19,9 +19,10 @@ class Author
         void set_codigo(int c);
         void set_contador(int cont);
 
-
+        void contMaisUm();
+        
     private:
-        int contador;
+        int contador = 0;
         string nome;
         int codigo;
 };

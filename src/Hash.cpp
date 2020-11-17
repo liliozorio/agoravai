@@ -64,35 +64,35 @@ void Hash::insere(Author* data)
   for(int j = 0; j < this->m; j++)
   {
     int chave = this->SondagemLinear(data->get_codigo(), &cont);
-    cout << "CHAVE AQUI OH: " << chave << endl;
+    //cout << "CHAVE AQUI OH: " << chave << endl;
     
     if(tabela[chave].get_nome() != "")
     {
-      cout<< "Nome:" << tabela[chave].get_nome() << endl << endl;
-      cout << "ENTREI IF" << endl;
+      //cout<< "Nome:" << tabela[chave].get_nome() << endl << endl;
+      //cout << "ENTREI IF" << endl;
       numColisoes++;
       cont++;
     }
     else
     {
-      cout<< "Nome:" << tabela[chave].get_nome() << endl << endl;
-      cout << "ENTREI ELSE" << endl;
+      //cout<< "Nome:" << tabela[chave].get_nome() << endl << endl;
+      //cout << "ENTREI ELSE" << endl;
       tabela[chave] = *data;
       break;
     }
 
   }
-  cout << "PASSOU AQUI " << endl;
+  //cout << "PASSOU AQUI " << endl;
 }
 
-Author* Hash::lookup(int indice, Author* data)
+Author* Hash::lookup(int indice)
 {
     for (int i = 0; i < m; i++)
     {
-        if (tabela[i].get_nome() == data->get_nome())
+        if (tabela[i].get_codigo() == indice)
             return &tabela[i];
     }
-    return nullptr;
+    return NULL;
 }
 
 void Hash::destroy()

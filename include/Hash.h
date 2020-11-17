@@ -24,7 +24,7 @@ class Hash
         void create(Author* Data);
 
         void insere(Author* data);
-        Author* lookup(int indice, Author* data);
+        Author* lookup(int indice);
         void destroy();
         void imprime();
         int numColisoes = 0;

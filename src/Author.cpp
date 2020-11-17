@@ -36,3 +36,7 @@ void Author::set_contador(int cont)
 {
     contador = cont;
 }
+void Author::contMaisUm()
+{
+  contador++;
+}

@@ -14,6 +14,10 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <random>
+#include <algorithm>
+#include <vector> 
+#include <boost/algorithm/string.hpp>
 #include "Book.h"
 #include "Author.h"
 #include "Hash.h"
@@ -82,13 +86,13 @@ void leituraAuthor(Hash* autor, int tam)
             line = separar(&arquivoAuthors);
             if(line == "")
                 line = '0';
-            cout << line << endl;
+            //cout << line << endl;
             int aux=std::stoi(line);
             autorAux.set_codigo(aux);
             
             ///NOME
             line = separar(&arquivoAuthors);
-            cout << line << endl;
+            //cout << line << endl;
             autorAux.set_nome(line);
             ///inserindo na hash
             
@@ -96,13 +100,10 @@ void leituraAuthor(Hash* autor, int tam)
             i++;
         }
     }
-    
-  
-
 }
 
 ///Leitura do arquivo de entrada
-void leituraDataSet(Book* lista,int tam)
+/*void leituraDataSet(Book* lista,int tam)
 {
     ifstream arquivo;
     arquivo.open("arquivos/testeEntrada.txt");
@@ -177,6 +178,122 @@ void leituraDataSet(Book* lista,int tam)
         cout << "Erro ao abrir o arquivo";
         exit(1);
     }
+}*/
+
+void separaAutores(string line, Hash *h, vector<Author*> *autor_ordenado)
+{
+  vector<string> autor;
+  boost::split(autor, line, boost::is_any_of(","));
+  static int indice_autor = 0;
+  for(int i = 0; i < autor.size(); i++)
+  {
+    Author* aux;
+    aux = h->lookup(std::stoi(autor[i]));
+    
+    if(aux != NULL)
+    {
+      if(aux->get_contador() == 0)
+      {
+        aux->contMaisUm();
+        autor_ordenado->push_back(aux);
+        indice_autor++;
+      }
+      else
+      {
+        aux->contMaisUm();
+      }
+      //cout << "contador: " << aux->get_contador() << endl;
+    }
+  }
+}
+
+void imprimeContador(Hash *h)
+{/*
+  for(int i = 0; i < h->getTamanho(); i++)
+  {
+    Author* aux;
+    aux = h->lookup(i);
+    cout << h->lookup(tabela[i].get_codigo()) << " - " << h->lookup()tabela[i].get_contador() << endl;
+  }*/
+}
+void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_ordenado)
+{
+  ifstream arquivo;
+  arquivo.open("arquivos/testeEntrada.txt");
+  if(arquivo.is_open())
+  {
+    string word, trash, line, linha;
+    int vet[14];
+    for(int i = 0; i<14; i++)
+    {
+      vet[i] = i;
+    }
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    shuffle(&vet[0], &vet[14], std::default_random_engine(seed));
+    for(int i = 0; i < tamanho; i++)
+    {
+      int a = vet[i];
+      int j = 0;
+      arquivo.seekg(0);
+      while(j < a)
+      {
+        getline(arquivo, line);
+        j++;
+      }
+      ///AUTOR
+      getline(arquivo,line,'"');
+      getline(arquivo,line,'[');
+      getline(arquivo,line,']');
+      getline(arquivo,trash,'"');
+      lista[i].set_authours(line);
+      cout<< "Oi: " << line << " - " << lista[i].get_authors() << endl;
+      separaAutores(line, h, autor_ordenado);
+      ///RANK BESTSELLERS
+      line = separar(&arquivo);
+      if(line == "")
+        line = '0';
+      lista[i].set_bestseller_rank(std::stoi(line));
+      ///CATEGORIAS
+      getline(arquivo,line,'"');
+      getline(arquivo,line,'[');
+      getline(arquivo,line,']');
+      getline(arquivo,trash,'"');
+      lista[i].set_categories(line);
+      ///EDI��O
+      line = separar(&arquivo);
+      lista[i].set_edition(line);
+      ///ID
+      line = separar(&arquivo);
+      if(line == "")
+        line = '0';
+      lista[i].set_id(std::stof(line));
+      ///ISBN-10
+      line = separar(&arquivo);
+      lista[i].set_isbn10(line);
+      ///ISBN-13
+      line = separar(&arquivo);
+      lista[i].set_isbn13(line);
+      ///RATING-AVG
+      line = separar(&arquivo);
+      if(line == "")
+        line = '0';
+      lista[i].set_rating_avg(std::stof(line));
+      ///RATING-COUNT
+      line = separar(&arquivo);
+      if(line == "")
+        line = '0';
+      lista[i].set_rating_count(std::stoi(line));
+      ///T�TULO
+      line = separar(&arquivo);
+      lista[i].set_title(line);
+    }
+    arquivo.close();
+  }
+  else
+  {
+    cout << "Erro ao abrir o arquivo";
+    exit(1);
+  }
 }
 
 ///Escrita no arquivo de saida
@@ -222,7 +339,7 @@ int compara_string(Book pivo, Book qualquer) /// Retorna -1 caso pivo menor e 1 
                 return MENOR;
             }
         }
-        else if(pivo.get_title()[i] < 'a') /// ve letra do pivo maiuscula, se for a letra do qualquer � minuscula
+        else if(pivo.get_title()[i] < 'a') /// ve letra do pivo maiuscula, se for a letra do qualquer eh minuscula
         {
             if(pivo.get_title()[i]+maiusculo_minusculo > qualquer.get_title()[i])
             {
@@ -233,7 +350,7 @@ int compara_string(Book pivo, Book qualquer) /// Retorna -1 caso pivo menor e 1 
                 return MENOR;
             }
         }
-        else /// letra do qualquer maiuscula e a letra do pivo � minuscula
+        else /// letra do qualquer maiuscula e a letra do pivo eh minuscula
         {
             if(pivo.get_title()[i] > qualquer.get_title()[i]+maiusculo_minusculo)
             {
@@ -263,7 +380,7 @@ int compara_string(Book pivo, Book qualquer) /// Retorna -1 caso pivo menor e 1 
     }
 }
 
-///Fun��o para escolher o pivo do metodo QuickSort
+///Funcao para escolher o pivo do metodo QuickSort
 int escolhe_pivo(Book *livro, int id_1, int id_2, int id_3)
 {
     int compara_1_2 = compara_string(livro[id_1],livro[id_2]);
@@ -423,6 +540,74 @@ void MergeSort(Book *Livro, int primeiro, int ultimo)
     }
 }
 
+void MergeTripleSortInt(Author *autor_ordenado, int primeiro, int meio, int ultimo)
+{
+    int x, y, z;
+    int a = meio - primeiro +1;
+    int b = ultimo - meio;
+    Author *Primeiro = new Author[a];
+    Author *Segundo  = new Author[b];
+    for(int x = 0; x < a; x++)
+    {
+        Primeiro[x] = autor_ordenado[primeiro+x];
+    }
+    for(int y = 0; y < b; y++)
+    {
+        Segundo[y] = autor_ordenado[meio+1+y];
+    }
+
+    x = 0;
+    y = 0;
+    z = primeiro;
+
+    while(x < a && y < b)
+    {
+        if(Primeiro[x].get_contador() > Segundo[y].get_contador())
+        {
+            autor_ordenado[z] = Primeiro[x];
+            x++;
+            numCopias++;
+        }
+        else
+        {
+            autor_ordenado[z] = Segundo[y];
+            y++;
+            numCopias++;
+        }
+        z++;
+    }
+    while(x < a)
+    {
+        autor_ordenado[z] = Primeiro[x];
+        x++;
+        z++;
+        numCopias++;
+    }
+    while(y < b)
+    {
+        autor_ordenado[z] = Segundo[y];
+        y++;
+        z++;
+        numCopias++;
+    }
+    
+    delete [] Primeiro;
+    delete [] Segundo;
+}
+
+///M�todo MergeSort
+void MergeSortInt(Author *autor_ordenado, int primeiro, int ultimo)
+{
+    int media;
+    if(primeiro < ultimo)
+    {
+        media = primeiro + (ultimo - primeiro)/2;
+        MergeSortInt(autor_ordenado, primeiro, media);
+        MergeSortInt(autor_ordenado, media+1, ultimo);
+        MergeTripleSortInt(autor_ordenado, primeiro, media, ultimo);
+    }
+}
+
 int main()
 {
     int N = 0;
@@ -443,6 +628,7 @@ int main()
         getline(entrada, n);
         N = std::stoi(n);
         int tamanho[N];
+        vector<Author*> autor_ordenado;
 
         for (int i = 0; i < N; i++)
         {
@@ -451,12 +637,14 @@ int main()
 
             Book *lista = new Book[tamanho[i]];
             Book *lista2 = new Book[tamanho[i]];
-            leituraDataSet(lista, tamanho[i]);
+            //leituraDataSet(lista, tamanho[i]);
+            leitura_dataset(lista, tamanho[i], authors, &autor_ordenado);
+            imprimeContador(authors);
             igual(lista2, lista, tamanho[i]);
 
             numComparacoes = 0;
             numCopias = 0;
-
+            
             auto start = std::chrono::steady_clock::now();
             QuickSort(lista, 0, tamanho[i] - 1);
             auto end = std::chrono::steady_clock::now();
@@ -473,6 +661,20 @@ int main()
             std::chrono::duration<double> elapsed_second = end-start;
 
             Escrita(&saida, mergee, elapsed_second.count(), tamanho[i]);
+
+            start = std::chrono::steady_clock::now();
+            int tamOrdenado=autor_ordenado.size();
+            
+            MergeSortInt(autor_ordenado[0], 0, tamOrdenado-1);
+
+            for(int i=0; i < tamOrdenado; i++)
+            {
+              cout << "Cod: " << autor_ordenado[i]->get_codigo() << " - Cont: " << autor_ordenado[i]->get_contador() << endl;
+            }
+            end = std::chrono::steady_clock::now();
+            std::chrono::duration<double> elapsed_sec = end-start;
+
+            //Escrita(&saida, mergee, elapsed_sec.count(), tamanho[i]);
 
             delete[] lista;
             delete[] lista2;
