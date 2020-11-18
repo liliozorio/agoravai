@@ -21,10 +21,12 @@
 #include "Book.h"
 #include "Author.h"
 #include "Hash.h"
+#include "ArvoreVP.h"
+#include "NoVP.h"
+
 
 using namespace std;
 
-#define _GLIBCXX_USE_C99 1
 #define MENOR -1
 #define IGUAL 0
 #define MAIOR 1
@@ -207,16 +209,7 @@ void separaAutores(string line, Hash *h, vector<Author*> *autor_ordenado)
   }
 }
 
-void imprimeContador(Hash *h)
-{/*
-  for(int i = 0; i < h->getTamanho(); i++)
-  {
-    Author* aux;
-    aux = h->lookup(i);
-    cout << h->lookup(tabela[i].get_codigo()) << " - " << h->lookup()tabela[i].get_contador() << endl;
-  }*/
-}
-void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_ordenado)
+void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_ordenado, ArvoreVP* vp)
 {
   ifstream arquivo;
   arquivo.open("arquivos/testeEntrada.txt");
@@ -286,6 +279,7 @@ void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_
       ///T�TULO
       line = separar(&arquivo);
       lista[i].set_title(line);
+      vp->insercao(lista[i], vp->get_raiz());
     }
     arquivo.close();
   }
@@ -629,6 +623,7 @@ int main()
         N = std::stoi(n);
         int tamanho[N];
         vector<Author*> autor_ordenado;
+        ArvoreVP vp;
 
         for (int i = 0; i < N; i++)
         {
@@ -637,14 +632,26 @@ int main()
 
             Book *lista = new Book[tamanho[i]];
             Book *lista2 = new Book[tamanho[i]];
+            
             //leituraDataSet(lista, tamanho[i]);
-            leitura_dataset(lista, tamanho[i], authors, &autor_ordenado);
-            imprimeContador(authors);
+            leitura_dataset(lista, tamanho[i], authors, &autor_ordenado, &vp);
             igual(lista2, lista, tamanho[i]);
 
             numComparacoes = 0;
             numCopias = 0;
+
+            int tamOrdenado=autor_ordenado.size();
             
+            MergeSortInt(autor_ordenado[0], 0, tamOrdenado-1);
+
+            for(int i=0; i < tamOrdenado; i++)
+            {
+              cout << "Cod: " << autor_ordenado[i]->get_codigo() << " - Cont: " << autor_ordenado[i]->get_contador() << endl;
+            }
+
+            delete[] lista;
+            delete[] lista2;
+/*********************************************************            
             auto start = std::chrono::steady_clock::now();
             QuickSort(lista, 0, tamanho[i] - 1);
             auto end = std::chrono::steady_clock::now();
@@ -663,21 +670,11 @@ int main()
             Escrita(&saida, mergee, elapsed_second.count(), tamanho[i]);
 
             start = std::chrono::steady_clock::now();
-            int tamOrdenado=autor_ordenado.size();
-            
-            MergeSortInt(autor_ordenado[0], 0, tamOrdenado-1);
+            Escrita(&saida, mergee, elapsed_sec.count(), tamanho[i]);
 
-            for(int i=0; i < tamOrdenado; i++)
-            {
-              cout << "Cod: " << autor_ordenado[i]->get_codigo() << " - Cont: " << autor_ordenado[i]->get_contador() << endl;
-            }
             end = std::chrono::steady_clock::now();
             std::chrono::duration<double> elapsed_sec = end-start;
-
-            //Escrita(&saida, mergee, elapsed_sec.count(), tamanho[i]);
-
-            delete[] lista;
-            delete[] lista2;
+***************************************************************/      
         }
         saida.close();
         cout << "A ordenacao foi finalizada!" << endl;
