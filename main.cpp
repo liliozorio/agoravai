@@ -209,6 +209,20 @@ void separaAutores(string line, Hash *h, vector<Author*> *autor_ordenado)
   }
 }
 
+void imprime_arvore(NoVP *p, int espaco){
+    if (p == nullptr)
+      return;
+    espaco = espaco + 1;
+    imprime_arvore(p->get_direito(), espaco);
+    for (int i = 1; i < espaco; i++)
+    {
+        cout<<"\t";
+    }
+
+    cout<<p->get_info().get_id() << "::" << p->get_cor() <<"\n";
+    imprime_arvore(p->get_esquerdo(), espaco);
+}
+
 void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_ordenado, ArvoreVP* vp)
 {
   ifstream arquivo;
@@ -259,7 +273,7 @@ void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_
       line = separar(&arquivo);
       if(line == "")
         line = '0';
-      lista[i].set_id(std::stof(line));
+      lista[i].set_id(std::stol(line));
       ///ISBN-10
       line = separar(&arquivo);
       lista[i].set_isbn10(line);
@@ -635,6 +649,7 @@ int main()
             
             //leituraDataSet(lista, tamanho[i]);
             leitura_dataset(lista, tamanho[i], authors, &autor_ordenado, &vp);
+                      
             igual(lista2, lista, tamanho[i]);
 
             numComparacoes = 0;
@@ -649,6 +664,7 @@ int main()
               cout << "Cod: " << autor_ordenado[i]->get_codigo() << " - Cont: " << autor_ordenado[i]->get_contador() << endl;
             }
 
+            vp.~ArvoreVP();
             delete[] lista;
             delete[] lista2;
 /*********************************************************            

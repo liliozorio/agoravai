@@ -63,12 +63,12 @@ void Book::set_edition(string edition)
     this->edition = edition;
 }
 
-int Book::get_id()
+long int Book::get_id()
 {
     return this->id;
 }
 
-void Book::set_id(int id)
+void Book::set_id(long int id)
 {
     this->id = id;
 }

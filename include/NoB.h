@@ -1,31 +1,33 @@
-#ifndef NOB_H
-#define NOB_H
+#ifndef NOB_H_INCLUDED
+#define NOB_H_INCLUDED
+#include <vector>
 #include "Book.h"
 
+using namespace std;
 
 class NoB
 {
   public:
+    NoB(){};
     NoB(int tamanho);
-    int getN() {return n; };
-    int getM() {return m; };
-    bool getFolha(){return folha; };
+    ~NoB();
+    int getN();
+    int getM();
+    bool getFolha();
+    Book getChaveI(int i);
+    NoB getFilhos(int i);
 
-    void setN(int filhos) { n = filhos;};
-    void setFolha(bool ehFolha){folha = ehFolha;};
-    Book getChaveI(int i)
-    {
-      return chaves[i];
-    };
-
-    NoB* getFilhos(int i)
-    {
-      return filhos[i];
-    };
+    void setN(int N);
+    void setM(int M);
+    void setFolha(bool ehFolha);
+    void setChaveI(int i, Book novo);
+    
   private:
     int m;
     int n;
-    Book chaves[m-1];
-    NoB* filhos[m];
+    Book *key;
+    NoB *filhos;
     bool folha;
-}
+};
+
+#endif // NOB_H

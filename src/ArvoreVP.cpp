@@ -65,7 +65,7 @@ NoVP* ArvoreVP::rotacao_dupla_esquerda(NoVP* p, NoVP* pai)
     return rotacao_simples_direita(p->get_pai(), pai);
 }
 
-NoVP* ArvoreVP::chama_ajusta(NoVP* p, NoVP* pai)
+NoVP* ArvoreVP::ajusta(NoVP* p, NoVP* pai)
 {
     NoVP* irmao = nullptr;
     NoVP* filho_dir = p->get_direito();
@@ -158,25 +158,25 @@ NoVP* ArvoreVP::chama_ajusta(NoVP* p, NoVP* pai)
             {
                 pai->set_cor(1);
                 p->set_cor(0);
-                p = rotacao_simples_esquerda(p, pai);
+                p = rotacao_simples_direita(p, pai);
             }
             else if(pai->get_esquerdo() == p && p->get_esquerdo()->get_cor() == 1)
-            {
+            { 
                 pai->set_cor(1);
                 p->set_cor(0);
-                p = rotacao_simples_direita(p, pai);
+                p = rotacao_simples_esquerda(p, pai);
             }
             else if(pai->get_direito() == p && p->get_esquerdo()->get_cor() == 1)
             {
                 p->get_esquerdo()->set_cor(0);
                 pai->set_cor(1);
-                p = rotacao_dupla_esquerda(p, pai);
+                p = rotacao_dupla_direita(p, pai);
             }
             else if(pai->get_esquerdo() == p && p->get_direito()->get_cor() == 1)
             {
                 p->get_direito()->set_cor(0);
                 pai->set_cor(1);
-                p = rotacao_dupla_direita(p, pai);
+                p = rotacao_dupla_esquerda(p, pai);
             }
         }
         else if(p->get_direito() != nullptr)
@@ -214,6 +214,7 @@ NoVP* ArvoreVP::chama_ajusta(NoVP* p, NoVP* pai)
     {
         if(p->get_direito()->get_cor() == 1 && irmao->get_cor() == 1)
         {
+            pai->set_cor(1);
             p->set_cor(0);
             irmao->set_cor(0);
         }
@@ -222,6 +223,7 @@ NoVP* ArvoreVP::chama_ajusta(NoVP* p, NoVP* pai)
     {
         if(p->get_esquerdo()->get_cor() == 1 && irmao->get_cor() == 1)
         {
+            pai->set_cor(1);
             p->set_cor(0);
             irmao->set_cor(0);
         }
@@ -262,7 +264,7 @@ NoVP* ArvoreVP::insercao(Book info, NoVP* p)
         }
         if(p->get_cor() == 1)
         {
-            p = chama_ajusta(p, p->get_pai());
+            p = ajusta(p, p->get_pai());
         }
         if(p != nullptr)
         {
@@ -282,7 +284,7 @@ NoVP* ArvoreVP::insercao(Book info, NoVP* p)
         }
         if(p->get_cor() == 1)
         {
-            p = chama_ajusta(p, p->get_pai());
+            p = ajusta(p, p->get_pai());
         }
         if(p != nullptr)
         {
@@ -308,7 +310,7 @@ NoVP* ArvoreVP::remocao(Book info, NoVP* p)
         p->set_esquerdo(remocao(info, p->get_esquerdo()));
         if(p->get_cor() == 1)
         {
-            p = chama_ajusta(p, p->get_pai());
+            p = ajusta(p, p->get_pai());
         }
         if(p != nullptr)
         {
@@ -324,7 +326,7 @@ NoVP* ArvoreVP::remocao(Book info, NoVP* p)
         p->set_direito(remocao(info, p->get_direito()));
         if(p->get_cor() == 1)
         {
-            p = chama_ajusta(p, p->get_pai());
+            p = ajusta(p, p->get_pai());
         }
         if(p != nullptr)
         {

@@ -1,5 +1,5 @@
 #include "ArvoreB.h"
-
+/*
 ArvoreB::ArvoreB()
 {
     //ctor
@@ -12,19 +12,17 @@ ArvoreB::~ArvoreB()
 
 NoB* ArvoreB::insercao(Book info)
 {
-  BUSCA AQUI
-  depois faz inserção
-  
   if(raiz == nullptr)
   {
     NoB* p = new NoB(this->m);
     raiz = p;
   }
+  /*
   else if()
   {
     
-  }
-}
+  }*/
+/*}
 
 NoB* ArvoreB::remocao(Book info)
 {
@@ -58,4 +56,4 @@ NoB* ArvoreB::busca(Book info)
 
   return p->getFilho(i)->busca(info);
   
-}
+}*/

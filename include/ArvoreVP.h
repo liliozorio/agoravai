@@ -16,7 +16,7 @@ class ArvoreVP
         NoVP* rotacao_simples_esquerda(NoVP* p, NoVP* pai);
         NoVP* rotacao_dupla_esquerda(NoVP* p, NoVP* pai);
         NoVP* rotacao_dupla_direita(NoVP* p, NoVP* pai);
-        NoVP* chama_ajusta(NoVP* p, NoVP* pai);
+        NoVP* ajusta(NoVP* p, NoVP* pai);
         NoVP* get_raiz();
 
     private:

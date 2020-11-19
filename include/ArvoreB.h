@@ -1,11 +1,13 @@
 #ifndef ARVOREB_H
 #define ARVOREB_H
 
+#include "NoB.h"
 
 class ArvoreB
 {
     public:
-        ArvoreB(int MM){this->m=M;};
+        ArvoreB();
+        ArvoreB(int M){this->m=M;};
         ~ArvoreB();
         NoB* insercao(Book info);
         NoB* remocao(Book info);
