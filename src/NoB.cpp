@@ -1,22 +1,25 @@
 #include "../include/NoB.h"
 
-/*
+
 NoB::NoB(int tamanho)
 {  
     m = tamanho;
     folha = true;
+    filhos = new NoB* [tamanho];
+    key = new Book* [tamanho];
     for(int i = 0; i < m-1; i++)
     {
       filhos[i] = nullptr;
       key[i] = nullptr;
     }
-    filhos[m-1] = nullptr;
+    filhos[m] = nullptr;
     n = 0;
 }
 
 NoB::~NoB()
 {
-    
+    delete [] key;
+    delete [] filhos;
 }
 
 int NoB::getN() 
@@ -29,12 +32,12 @@ int NoB::getM()
   return m;
 }
 
-Book* getChaveI(int i)
+Book* NoB::getChaveI(int i)
 {
-  return *key[i];
+  return key[i];
 }
 
-NoB NoB::getFilhos(int i)
+NoB* NoB::getFilhos(int i)
 {
   return filhos[i];
 }
@@ -59,8 +62,7 @@ void NoB::setFolha(bool ehFolha)
   folha = ehFolha;
 }
     
-void setChaveI(int i, Book novo)
+void NoB::setChaveI(int i, Book novo)
 {
-  key[i] = novo;
+  key[i] = &novo;
 }
-*/

@@ -14,8 +14,8 @@ class NoB
     int getN();
     int getM();
     bool getFolha();
-    Book getChaveI(int i);
-    NoB getFilhos(int i);
+    Book* getChaveI(int i);
+    NoB* getFilhos(int i);
 
     void setN(int N);
     void setM(int M);
@@ -25,8 +25,8 @@ class NoB
   private:
     int m;
     int n;
-    Book *key;
-    NoB *filhos;
+    Book **key;
+    NoB **filhos;
     bool folha;
 };
 
