@@ -12,18 +12,22 @@ class NoB
     NoB(int tamanho);
     ~NoB();
     int getN();
-    int getM();
+    int getT();
     bool getFolha();
     Book* getChaveI(int i);
-    NoB* getFilhos(int i);
-
+    NoB* getFilho(int i);
+    
+    void auxInsere(Book *info, NoB *aux3);
+    void overflow(int i, NoB *aux, NoB *aux2);
+    void imprime(); 
     void setN(int N);
-    void setM(int M);
+    void setT(int T);
     void setFolha(bool ehFolha);
-    void setChaveI(int i, Book novo);
+    void setChaveI(int i, Book* novo);
+    void setFilho(int i, NoB *novo);
     
   private:
-    int m;
+    int t;
     int n;
     Book **key;
     NoB **filhos;

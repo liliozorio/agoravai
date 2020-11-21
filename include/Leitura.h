@@ -16,6 +16,7 @@
 #include "Author.h"
 #include "Hash.h"
 #include "ArvoreVP.h"
+#include "ArvoreB.h"
 
 using namespace std;
 
@@ -113,7 +114,21 @@ void leituraAuthor(Hash* autor, int tam)
     }
 }
 
-void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_ordenado, ArvoreVP* vp)
+void imprime_arvore(NoVP *p, int espaco){
+    if (p == nullptr)
+      return;
+    espaco = espaco + 1;
+    imprime_arvore(p->get_direito(), espaco);
+    for (int i = 1; i < espaco; i++)
+    {
+        cout<<"\t";
+    }
+
+    cout<<p->get_info().get_id() << "::" << p->get_cor() <<"\n";
+    imprime_arvore(p->get_esquerdo(), espaco);
+}
+
+void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_ordenado, ArvoreVP* vp, ArvoreB* b)
 {
   ifstream arquivo;
   arquivo.open("arquivos/testeEntrada.txt");
@@ -183,7 +198,13 @@ void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_
       ///T�TULO
       line = separar(&arquivo);
       lista[i].set_title(line);
+      b->insercao(&lista[i]);
+      b->getRaiz()->imprime();
+      cout << "-----------------------" << endl;
+      //cout << "Insere: " << lista[i].get_id() << endl;
       //vp->insercao(lista[i], vp->get_raiz());
+      //imprime_arvore(vp->get_raiz(), 0);
+      //cout << "-----------------------" << endl;
     }
     arquivo.close();
   }

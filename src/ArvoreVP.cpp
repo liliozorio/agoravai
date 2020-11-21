@@ -90,7 +90,7 @@ NoVP* ArvoreVP::ajusta(NoVP* p, NoVP* pai)
 
     else if(irmao == nullptr)
     {
-        if(pai->get_direito() != nullptr && pai->get_esquerdo() != nullptr)
+        if(p->get_direito() != nullptr && p->get_esquerdo() != nullptr)
         {
             if(pai->get_direito() == p && p->get_direito()->get_cor() == 1)
             {
@@ -117,7 +117,7 @@ NoVP* ArvoreVP::ajusta(NoVP* p, NoVP* pai)
                 p = rotacao_dupla_esquerda(p, pai);
             }
         }
-        else if(p->get_direito() != nullptr)
+        if(p->get_direito() != nullptr)
         {
             if(pai->get_direito() == p && p->get_direito()->get_cor() == 1)
             {
@@ -152,31 +152,31 @@ NoVP* ArvoreVP::ajusta(NoVP* p, NoVP* pai)
 
     else if(irmao->get_cor() == 0)
     {
-        if(pai->get_direito() != nullptr && pai->get_esquerdo() != nullptr)
+        if(p->get_direito() != nullptr && p->get_esquerdo() != nullptr)
         {
             if(pai->get_direito() == p && p->get_direito()->get_cor() == 1)
             {
                 pai->set_cor(1);
                 p->set_cor(0);
-                p = rotacao_simples_direita(p, pai);
+                p = rotacao_simples_esquerda(p, pai);
             }
             else if(pai->get_esquerdo() == p && p->get_esquerdo()->get_cor() == 1)
             { 
                 pai->set_cor(1);
                 p->set_cor(0);
-                p = rotacao_simples_esquerda(p, pai);
+                p = rotacao_simples_direita(p, pai);
             }
             else if(pai->get_direito() == p && p->get_esquerdo()->get_cor() == 1)
             {
                 p->get_esquerdo()->set_cor(0);
                 pai->set_cor(1);
-                p = rotacao_dupla_direita(p, pai);
+                p = rotacao_dupla_esquerda(p, pai);
             }
             else if(pai->get_esquerdo() == p && p->get_direito()->get_cor() == 1)
             {
                 p->get_direito()->set_cor(0);
                 pai->set_cor(1);
-                p = rotacao_dupla_esquerda(p, pai);
+                p = rotacao_dupla_direita(p, pai);
             }
         }
         else if(p->get_direito() != nullptr)

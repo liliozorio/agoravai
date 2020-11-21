@@ -1,10 +1,11 @@
 #include "ArvoreB.h"
 #include "NoB.h"
 
-ArvoreB::ArvoreB(int M)
+ArvoreB::ArvoreB(int T)
 {
     raiz = nullptr;
-    this->m = M;
+    this->t = T;
+    
 }
 
 ArvoreB::~ArvoreB()
@@ -12,90 +13,70 @@ ArvoreB::~ArvoreB()
     //dtor
 }
 
-void ArvoreB::insercao(Book info)
+void ArvoreB::insercao(Book* info)
 {
   if(raiz == nullptr)
   {
-    NoB* p = new NoB(this->m);
+    NoB* p = new NoB(t);
     raiz = p;
     raiz->setN(1);
     raiz->setChaveI(0, info);
   }
-  
   else
   {
+    NoB *aux2 = new NoB(raiz->getT());
     ///caso que arvore n vazia
-    NoB aux = *busca(info, this->raiz);
-    if(aux.getN() < (m-1)) ///caso que n eh cisao
+    if(raiz->getN() == ((t*2)-1)) ///caso que n eh cisao
     {
-      cisao(&aux);
+      cisao(info, raiz);
     }
     else
     {
-      auxInsere(info, &aux);
+      raiz->auxInsere(info, aux2);
     }
   }
-}
-
-void ArvoreB::auxInsere(Book info, NoB* aux)
-{
-  int i = aux->getM() - 1;
-  if(aux->getFolha())
-  {
-    while(i >= 0 && aux->getChaveI(i)->get_id() > info.get_id())
-    {
-      aux->setChaveI(i+1, *aux->getChaveI(i));
-      i--;
-    }
-
-    aux->setChaveI(i+1, info);
-    aux->setM(aux->getM() + 1);
-  }
-  else
-  {
-    while(i >= 0 && aux->getChaveI(i)->get_id() > info.get_id())
-    {
-      i--;
-    }
-    if(aux->getFilhos(i+1)->getM() == aux->getM() - 1)
-    {
-      //overflow(i+1, aux->getFilhos(i+1));
-      if(aux->getChaveI(i+1)->get_id() < info.get_id())
-        i++;
-    }
-    auxInsere(info, aux->getFilhos(i+1));
-  }
-}
-
-void ArvoreB::overflow(int i, NoB *aux)
-{
   
 }
 
-NoB* ArvoreB::cisao(NoB* c)
+void ArvoreB::cisao(Book* info, NoB* d)
 {
+  NoB* aux = new NoB(t);
+  NoB* aux2 = new NoB(t);
+  aux->setFolha(false);
+  aux->setFilho(0, raiz);
 
-}
-
-NoB* ArvoreB::remocao(Book info)
-{
-
-}
-
-NoB* ArvoreB::busca(Book info, NoB *p)
-{
+  cout<<"antes overflow"<<endl;
+  aux->overflow(0, raiz, aux2);
+  cout<<"dps overflow"<<endl;
   
+  int i = 0;
+
+  if(aux->getChaveI(0)->get_id() < info->get_id())
+    i++;
+  cout<<"antes insere"<<endl;  
+  aux->getFilho(i)->auxInsere(info, aux2);
+  raiz = aux;
+  //cout << "!!" << endl;
+}
+
+NoB* ArvoreB::remocao(Book *info)
+{
+
+}
+
+NoB* ArvoreB::busca(Book *info, NoB *p)
+{
   if(raiz == nullptr)
     return NULL;
 
   int i = 0;
 
-  while(i < p->getN() && p->getChaveI(i)->get_id() < info.get_id())
+  while(i < p->getN() && p->getChaveI(i)->get_id() < info->get_id())
   {
     i++;
   }
 
-  if(p->getChaveI(i)->get_id() == info.get_id())
+  if(p->getChaveI(i)->get_id() == info->get_id())
   {
     return p;
     //return p->getChaveI(i);
@@ -106,6 +87,6 @@ NoB* ArvoreB::busca(Book info, NoB *p)
     return NULL;
   }
 
-  return busca(info, p->getFilhos(i));
+  return busca(info, p->getFilho(i));
   
 }

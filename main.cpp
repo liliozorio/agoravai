@@ -25,7 +25,7 @@
 #include "Hash.h"
 #include "ArvoreVP.h"
 #include "NoVP.h"
-
+#include "ArvoreB.h"
 
 using namespace std;
 
@@ -53,7 +53,7 @@ void Escrita(ofstream* Saida, string tipo_ordena, double tempo_processamento, in
 
 
 
-void imprime_arvore(NoVP *p, int espaco){
+/*void imprime_arvore(NoVP *p, int espaco){
     if (p == nullptr)
       return;
     espaco = espaco + 1;
@@ -65,7 +65,7 @@ void imprime_arvore(NoVP *p, int espaco){
 
     cout<<p->get_info().get_id() << "::" << p->get_cor() <<"\n";
     imprime_arvore(p->get_esquerdo(), espaco);
-}
+}*/
 
 
 int main()
@@ -90,7 +90,8 @@ int main()
         int tamanho[N];
         vector<Author*> autor_ordenado;
         ArvoreVP vp;
-
+        ArvoreB b(2);
+        
         for (int i = 0; i < N; i++)
         {
             getline(entrada, n);
@@ -100,7 +101,7 @@ int main()
             Book *lista2 = new Book[tamanho[i]];
             
             //leituraDataSet(lista, tamanho[i]);
-            leitura_dataset(lista, tamanho[i], authors, &autor_ordenado, &vp);
+            leitura_dataset(lista, tamanho[i], authors, &autor_ordenado, &vp, &b);
                       
             igual(lista2, lista, tamanho[i]);
 
@@ -111,7 +112,6 @@ int main()
             
             MergeSortInt(autor_ordenado[0], 0, tamOrdenado-1);
 
-            cout << "è aqui?" << endl;
             for(int i=0; i < tamOrdenado; i++)
             {
               cout << "Cod: " << autor_ordenado[i]->get_codigo() << " - Cont: " << autor_ordenado[i]->get_contador() << endl;
