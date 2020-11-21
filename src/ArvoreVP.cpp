@@ -264,17 +264,15 @@ NoVP* ArvoreVP::insercao(Book info, NoVP* p)
         }
         if(p->get_cor() == 1)
         {
-            p = ajusta(p, pai);
-            if(pai != nullptr)
-            p = pai->get_direito();
+            p = ajusta(p, p->get_pai());
         }
-        /*if(p != nullptr)
+        if(p != nullptr)
         {
             while(p->get_pai() != pai)
             {
                 p = p->get_pai();
             }
-        }*/
+        }
     }
     else
     {
@@ -286,18 +284,15 @@ NoVP* ArvoreVP::insercao(Book info, NoVP* p)
         }
         if(p->get_cor() == 1)
         {
-            p = ajusta(p, pai);
-            if(pai != nullptr)
-            p = pai->get_esquerdo();
+            p = ajusta(p, p->get_pai());
         }
-        /*if(p != nullptr)
+        if(p != nullptr)
         {
             while(p->get_pai() != pai)
             {
                 p = p->get_pai();
             }
-        }*/
-
+        }
     }
     return p;
 }

@@ -198,12 +198,12 @@ void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_
       ///T�TULO
       line = separar(&arquivo);
       lista[i].set_title(line);
-      b->insercao(&lista[i]);
+      //b->insercao(&lista[i]);
       //b->getRaiz()->imprime(get_raiz);
       //cout << endl<< "-----------------------" << endl;
-      //vp->insercao(lista[i], vp->get_raiz());
-      //imprime_arvore(vp->get_raiz(), 0);
-      //cout << "-----------------------" << endl;
+      vp->insercao(lista[i], vp->get_raiz());
+      imprime_arvore(vp->get_raiz(), 0);
+      cout << "-----------------------" << endl;
     }
     arquivo.close();
   }
