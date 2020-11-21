@@ -10,7 +10,27 @@ ArvoreB::ArvoreB(int T)
 
 ArvoreB::~ArvoreB()
 {
-    //dtor
+    NoB* aux = raiz;
+    int i = 0;
+    while(aux != nullptr)
+    {
+      
+      if(!aux->getFolha())
+        aux = aux->getFilho(i);
+      else
+        aux = remocao(aux->getChaveI(0));
+      i++;
+    }
+}
+
+void ArvoreB::imprimirRaiz()
+{
+  cout << endl << "Imprimindo Raiz:" << endl;
+  for(int i = 0; i < raiz->getN(); i++)
+  {
+    cout << " " <<raiz->getChaveI(i)->get_id();
+  }
+  cout << endl << endl;
 }
 
 void ArvoreB::insercao(Book* info)
@@ -32,37 +52,50 @@ void ArvoreB::insercao(Book* info)
     }
     else
     {
-      raiz->auxInsere(info, aux2);
+      raiz->auxInsere(info);
     }
   }
-  
 }
 
 void ArvoreB::cisao(Book* info, NoB* d)
 {
   NoB* aux = new NoB(t);
-  NoB* aux2 = new NoB(t);
+  //NoB* aux2 = new NoB(t);
   aux->setFolha(false);
-  aux->setFilho(0, raiz);
+  aux->setFilho(0, d);
 
-  cout<<"antes overflow"<<endl;
-  aux->overflow(0, raiz, aux2);
-  cout<<"dps overflow"<<endl;
+  aux->overflow(0, d);
   
   int i = 0;
 
   if(aux->getChaveI(0)->get_id() < info->get_id())
-    i++;
-  cout<<"antes insere"<<endl;  
-  aux->getFilho(i)->auxInsere(info, aux2);
+    i++; 
+  aux->getFilho(i)->auxInsere(info);
   raiz = aux;
-  //cout << "!!" << endl;
 }
 
 NoB* ArvoreB::remocao(Book *info)
-{
+{ 
+    if (raiz == nullptr) 
+    { 
+        cout << "A arvore esta vazia" << endl; 
+        return nullptr; 
+    } 
+ 
+    raiz->remove(info); 
 
-}
+    if (raiz->getN() == 0) 
+    { 
+        NoB *aux = raiz; 
+        if (raiz->getFolha()) 
+            raiz = NULL; 
+        else
+            raiz = raiz->getFilho(0); 
+
+        delete aux; 
+    } 
+    return raiz; 
+} 
 
 NoB* ArvoreB::busca(Book *info, NoB *p)
 {

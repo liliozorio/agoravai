@@ -10,6 +10,7 @@ class ArvoreB
         //ArvoreB(int M){this->m=M;};
         ~ArvoreB();
         void insercao(Book *info);
+        void imprimirRaiz();
         //void cisao(Book info);
         NoB* remocao(Book *info);
         NoB* busca(Book *info, NoB *p);

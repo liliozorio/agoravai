@@ -43,7 +43,6 @@ string mergee = "MergeSort";
 ///Escrita no arquivo de saida
 void Escrita(ofstream* Saida, string tipo_ordena, double tempo_processamento, int tamanho)
 {
-    cout << tipo_ordena << endl;
         *Saida << tipo_ordena << endl;
         *Saida << "Tamanho: " << tamanho << endl;
         *Saida << "Tempo de Processamento: " << tempo_processamento << endl;
@@ -103,6 +102,23 @@ int main()
             //leituraDataSet(lista, tamanho[i]);
             leitura_dataset(lista, tamanho[i], authors, &autor_ordenado, &vp, &b);
                       
+            b.getRaiz()->imprime();
+            cout << endl << lista[0].get_id() << endl ;
+            b.remocao(&lista[0]);
+            cout << endl << endl;
+            b.getRaiz()->imprime();
+            
+            cout << endl << lista[4].get_id() << endl ;
+            b.remocao(&lista[4]);
+            cout << endl << endl;
+            b.getRaiz()->imprime();
+            igual(lista2, lista, tamanho[i]);
+
+            
+            //cout << endl << lista[5].get_id() << endl ;
+            //b.remocao(&lista[5]);
+            cout << endl << endl;
+            b.getRaiz()->imprime();
             igual(lista2, lista, tamanho[i]);
 
             numComparacoes = 0;
@@ -111,13 +127,7 @@ int main()
             int tamOrdenado=autor_ordenado.size();
             
             MergeSortInt(autor_ordenado[0], 0, tamOrdenado-1);
-
-            for(int i=0; i < tamOrdenado; i++)
-            {
-              cout << "Cod: " << autor_ordenado[i]->get_codigo() << " - Cont: " << autor_ordenado[i]->get_contador() << endl;
-            }
-            cout << "è aqui?" << endl;
-            vp.~ArvoreVP();
+  
             delete[] lista;
             delete[] lista2;
 /*********************************************************            
@@ -152,6 +162,5 @@ int main()
     {
         cout << "Erro ao abrir o arquivo" << endl;
     }
-
     return 0;
 }
