@@ -69,14 +69,13 @@ void Escrita_parte2(ofstream* Saida, vector<Author*> autor, int m)
 int main()
 {
     int N = 0;
-    int M = 500;
+    int M = 1000;
     ifstream entrada;
     ofstream saida;
-
     Hash* authors = new Hash(M);
     leituraAuthor(authors, M);
     //authors->imprime();
-
+    
     entrada.open("arquivos/entrada.txt");
     saida.open("arquivos/saida.txt");
 

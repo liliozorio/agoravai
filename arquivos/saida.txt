@@ -2,15 +2,16 @@ PARTE 2
 M = 500
 
 PARTE3
+
 Arvore B
 Tamanho: 10
-Tempo de Processamento: 0.000237602
-Numero de Comparacoes: 11
-Numero de Copias: 10
+Tempo de Processamento: 0.000345872
+Numero de Comparacoes: 10
+Numero de Copias: 6
 
 Arvore Vermelha e Preta
 Tamanho: 10
-Tempo de Processamento: 3.8245e-05
+Tempo de Processamento: 3.8145e-05
 Numero de Comparacoes: 33
-Numero de Copias: 5
+Numero de Copias: 3
 

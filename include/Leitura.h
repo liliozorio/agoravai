@@ -77,9 +77,7 @@ void imprimir(Book leitura)
 void leituraAuthor(Hash* autor, int tam)
 {
     ifstream arquivoAuthors;
-    arquivoAuthors.open("arquivos/authors.txt");
-    int i = 0;
-    
+    arquivoAuthors.open("authors.csv");
     while(i < tam)
     {
       Author autorAux2;
@@ -91,10 +89,12 @@ void leituraAuthor(Hash* autor, int tam)
         i = 0;
         string word, trash, line;
         string linha;
+        getline(arquivo,trash);
         while(i < tam)
         {
+          
             Author autorAux;
-            ///CODIGo
+            ///CODIGO
             line = separar(&arquivoAuthors);
             if(line == "")
                 line = '0';
@@ -114,7 +114,8 @@ void leituraAuthor(Hash* autor, int tam)
     }
 }
 
-/*void imprime_arvore(NoVP *p, int espaco){
+/// Imprime arvore VP
+void imprime_arvore(NoVP *p, int espaco){
     if (p == nullptr)
       return;
     espaco = espaco + 1;
@@ -126,23 +127,23 @@ void leituraAuthor(Hash* autor, int tam)
 
     cout<<p->get_info().get_id() << "::" << p->get_cor() <<"\n";
     imprime_arvore(p->get_esquerdo(), espaco);
-}*/
+}
 
 /// Função de leitura para arquivo 
 void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_ordenado, ArvoreVP* vp, ArvoreB* b)
 {
   ifstream arquivo;
-  arquivo.open("arquivos/testeEntrada.txt");
+  arquivo.open("testee.txt");
   if(arquivo.is_open())
   {
     string word, trash, line, linha;
-    int vet[14];
-    for(int i = 0; i < 14; i++)
+    int vet[558880];
+    for(int i = 0; i < 558880; i++)
     {
       vet[i] = i;
     }
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-    shuffle(&vet[0], &vet[14], std::default_random_engine(seed));
+    shuffle(&vet[0], &vet[558880], std::default_random_engine(seed));
     for(int i = 0; i < tamanho; i++)
     {
       int a = vet[i];
@@ -165,6 +166,7 @@ void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_
       line = separar(&arquivo);
       if(line == "")
         line = '0';
+      cout << "e aqui" << endl;
       lista[i].set_bestseller_rank(std::stoi(line));
       ///CATEGORIAS
       getline(arquivo,line,'"');
