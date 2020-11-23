@@ -1,15 +1,16 @@
 PARTE 2
 M = 500
-Nome Autor: 'Abd Al-Rahman Al-Jaziri Frequencia: 1
+
+PARTE3
 Arvore B
 Tamanho: 10
-Tempo de Processamento: 0.000100363
-Numero de Comparacoes: 10
-Numero de Copias: 4
+Tempo de Processamento: 0.000237602
+Numero de Comparacoes: 11
+Numero de Copias: 10
 
 Arvore Vermelha e Preta
 Tamanho: 10
-Tempo de Processamento: 3.4445e-05
+Tempo de Processamento: 3.8245e-05
 Numero de Comparacoes: 33
-Numero de Copias: 4
+Numero de Copias: 5
 

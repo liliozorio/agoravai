@@ -113,6 +113,7 @@ int main()
             Escrita_parte2(&saida, autor_ordenado, M);
 
             ///PARTE 3
+            saida << endl << "PARTE3" << endl << endl;
             auto start = std::chrono::steady_clock::now();
             insercao_b(lista, &b, tamanho[i]);
             auto end = std::chrono::steady_clock::now();
