@@ -53,32 +53,28 @@ void Escrita(ofstream* Saida, string tipo_arvore, double tempo_processamento, in
         *Saida << "Numero de Copias: " << numCopias << endl << endl;
 }
 
+void Escrita_parte2(ofstream* Saida, vector<Author*> autor, int m)
+{
+        *Saida << "PARTE 2" << endl;
+        *Saida << "M = " << m << endl;
+        for(int i = 0; i < autor.size(); i++)
+        {
+          *Saida << "Nome Autor: " << autor[i]->get_nome()  << " Frequencia: " << autor[i]->get_contador() << endl;
+        }
+        cout << endl;
+}
 
-
-/*void imprime_arvore(NoVP *p, int espaco){
-    if (p == nullptr)
-      return;
-    espaco = espaco + 1;
-    imprime_arvore(p->get_direito(), espaco);
-    for (int i = 1; i < espaco; i++)
-    {
-        cout<<"\t";
-    }
-
-    cout<<p->get_info().get_id() << "::" << p->get_cor() <<"\n";
-    imprime_arvore(p->get_esquerdo(), espaco);
-}*/
 
 
 int main()
 {
     int N = 0;
-
+    int M = 500;
     ifstream entrada;
     ofstream saida;
 
-    Hash* authors = new Hash(500);
-    leituraAuthor(authors, 500);
+    Hash* authors = new Hash(M);
+    leituraAuthor(authors, M);
     //authors->imprime();
 
     entrada.open("arquivos/entrada.txt");
@@ -91,79 +87,53 @@ int main()
         N = std::stoi(n);
         int tamanho[N];
         vector<Author*> autor_ordenado;
+
         ArvoreVP vp;
         ArvoreB b(2);
-        
+       
         for (int i = 0; i < N; i++)
         {
             getline(entrada, n);
             tamanho[i] = std::stoi(n);
 
             Book *lista = new Book[tamanho[i]];
+
             Book *lista2 = new Book[tamanho[i]];
-            
-            //leituraDataSet(lista, tamanho[i]);
             leitura_dataset(lista, tamanho[i], authors, &autor_ordenado, &vp, &b);
-/*
-            NoB* search;  
-            b.get_raiz()->imprime();
-            cout << endl << lista[0].get_id() << endl ;
-            b.remocao(&lista[0]);
-          
-            b.get_raiz()->imprime();
-            
 
-            cout << endl << lista[10].get_id() << endl ;
-            b.remocao(&lista[10]);
-            cout << endl << endl;
-            b.get_raiz()->imprime();
-            igual(lista2, lista, tamanho[i]);
-
-*/          
-            cout << endl << lista[5].get_id() << endl ;
-            b.remocao(&lista[5]);
-            cout << endl << endl;
-
-            b.get_raiz()->imprime();
             igual(lista2, lista, tamanho[i]);
 
             numComparacoes = 0;
             numCopias = 0;
 
             int tamOrdenado=autor_ordenado.size();
-            
+            ///PARTE 2
             MergeSortInt(autor_ordenado[0], 0, tamOrdenado-1);
-            cout << "Vamos desalocar? " << endl;
-            vp.~ArvoreVP();
-            cout << "vp desalocada" << endl;
-            b.~ArvoreB();
-            cout << "b desalocada" << endl;
-            delete[] lista;
-            delete[] lista2;
-/*********************************************************            
+
+            Escrita_parte2(&saida, autor_ordenado, M);
+
+            ///PARTE 3
             auto start = std::chrono::steady_clock::now();
-            QuickSort(lista, 0, tamanho[i] - 1);
+            insercao_b(lista, &b, tamanho[i]);
             auto end = std::chrono::steady_clock::now();
             std::chrono::duration<double> elapsed_seconds = end-start;
 
-            Escrita(&saida, quickk, elapsed_seconds.count(), tamanho[i]);
-
-            numComparacoes = 0;
-            numCopias = 0;
-
+            Escrita(&saida, arvore_b, elapsed_seconds.count(), tamanho[i]);
+            cout << "testes";
+/*
             start = std::chrono::steady_clock::now();
-            MergeSort(lista2, 0, tamanho[i]-1);
+            insercao_vp(lista, &vp, tamanho[i]);
             end = std::chrono::steady_clock::now();
             std::chrono::duration<double> elapsed_second = end-start;
 
-            Escrita(&saida, mergee, elapsed_second.count(), tamanho[i]);
-
-            start = std::chrono::steady_clock::now();
-            Escrita(&saida, mergee, elapsed_sec.count(), tamanho[i]);
-
-            end = std::chrono::steady_clock::now();
-            std::chrono::duration<double> elapsed_sec = end-start;
-***************************************************************/      
+            Escrita(&saida, arvore_vp, elapsed_second.count(), tamanho[i]);*/
+            //vp.~ArvoreVP();
+            cout << "Finalizou arvore vp" << endl;
+            //b.~ArvoreB();
+            cout << "Finalizou arvore b" << endl;
+            
+            delete[] lista;
+            delete[] lista2;     
         }
         saida.close();
         cout << "A ordenacao foi finalizada!" << endl;

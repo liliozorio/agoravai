@@ -5,11 +5,13 @@
 
 using namespace std;
 
+/// Construtor ArvoreVP
 ArvoreVP::ArvoreVP()
 {
     raiz = nullptr;
 }
 
+/// Destrutor ArvoreVP
 ArvoreVP::~ArvoreVP()
 {
     NoVP* aux;
@@ -20,11 +22,13 @@ ArvoreVP::~ArvoreVP()
     }
 }
 
+/// Retorna raiz 
 NoVP* ArvoreVP::get_raiz()
 {
     return this->raiz;
 }
 
+/// Rotação simples a esquerda
 NoVP* ArvoreVP::rotacao_simples_esquerda(NoVP* p, NoVP* pai)
 {
     pai->set_direito(p->get_esquerdo());
@@ -42,6 +46,7 @@ NoVP* ArvoreVP::rotacao_simples_esquerda(NoVP* p, NoVP* pai)
     return p;
 }
 
+/// Rotação simples a direita
 NoVP* ArvoreVP::rotacao_simples_direita(NoVP* p, NoVP* pai)
 {
     pai->set_esquerdo(p->get_direito());
@@ -59,18 +64,21 @@ NoVP* ArvoreVP::rotacao_simples_direita(NoVP* p, NoVP* pai)
     return p;
 }
 
+/// Rotação dupla a direita
 NoVP* ArvoreVP::rotacao_dupla_direita(NoVP* p, NoVP* pai)
 {
     pai->set_esquerdo(rotacao_simples_esquerda(p->get_direito(), p));
     return rotacao_simples_direita(p->get_pai(), pai);;
 }
 
+/// Rotação dupla a esquerda
 NoVP* ArvoreVP::rotacao_dupla_esquerda(NoVP* p, NoVP* pai)
 {
     pai->set_direito(rotacao_simples_direita(p->get_esquerdo(), p));
     return rotacao_simples_esquerda(p->get_pai(), pai);
 }
 
+/// Escolhe qual ajuste a arvore deve sofrer e se deve caso NoVP tenha cor vermelha
 NoVP* ArvoreVP::ajusta(NoVP* p, NoVP* pai)
 {
     NoVP* irmao = nullptr;
@@ -264,6 +272,7 @@ NoVP* ArvoreVP::ajusta(NoVP* p, NoVP* pai)
     return p;
 }
 
+/// Insere NoVP na arvore
 NoVP* ArvoreVP::insercao(Book info, NoVP* p)
 {
     if(p == nullptr)
@@ -327,6 +336,7 @@ NoVP* ArvoreVP::insercao(Book info, NoVP* p)
     return p;
 }
 
+/// Remove NoVP da arvore
 NoVP* ArvoreVP::remocao(Book info, NoVP* p)
 {
     if(p == nullptr)
@@ -410,6 +420,7 @@ NoVP* ArvoreVP::remocao(Book info, NoVP* p)
     return p;
 }
 
+/// Busca informação na arvore
 NoVP* ArvoreVP::busca(Book info, NoVP* p)
 {
     if(p == nullptr)

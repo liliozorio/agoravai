@@ -10,7 +10,7 @@ ArvoreB::ArvoreB(int T)
 
 ArvoreB::~ArvoreB()
 {
-    NoB* aux = new NoB(t);
+    /*NoB* aux = new NoB(t);
     aux = raiz;
     int i = 0;
     while(aux != nullptr)
@@ -20,7 +20,24 @@ ArvoreB::~ArvoreB()
       else
         aux = remocao(aux->get_chave_i(0));
       i++;
+    }*/
+    remove(raiz);
+}
+
+void ArvoreB::remove(NoB* p)
+{
+  if(p->get_folha())
+  {
+    p->~NoB();
+  }
+  else
+  {
+    for(int i = 0; i <= p->get_n(); i++)
+    {
+      remove(p->get_filho(i));
     }
+    p->set_folha(true);
+  }
 }
 
 int ArvoreB::get_t()
@@ -28,16 +45,19 @@ int ArvoreB::get_t()
   return t;
 }
 
+/// Atulaizar 
 void ArvoreB::set_t(int T)
 {
   this->t = t;
 }
-  
+
+/// Retorna raiz  
 NoB* ArvoreB::get_raiz()
 {
   return raiz;
 } 
- 
+
+/// Atualiza raiz 
 void ArvoreB::set_raiz(NoB* raiz)
 {
   this->raiz = raiz;
@@ -138,7 +158,6 @@ NoB* ArvoreB::busca(Book *info, NoB *p)
   if(p->get_chave_i(i)->get_id() == info->get_id())
   {
     return p;
-    //return p->get_chave_i(i);
   }
 
   if(p->get_folha())

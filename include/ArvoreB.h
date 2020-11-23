@@ -15,7 +15,7 @@ class ArvoreB
         void set_raiz(NoB* raiz);
 
         void imprimir_raiz();
-
+        void remove(NoB* p);
         void insercao(Book* info); 
         NoB* remocao(Book* info);
         NoB* busca(Book* info, NoB *p);

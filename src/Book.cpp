@@ -1,6 +1,18 @@
 #include "Book.h"
 #include <string>
 
+/// Construtor Book
+Book::Book()
+{
+
+}
+
+/// Destrutor Book 
+Book::~Book()
+{
+
+}
+
 /// Retorna authours
 string Book::get_authors()
 {

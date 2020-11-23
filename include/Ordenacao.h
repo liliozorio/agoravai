@@ -29,7 +29,8 @@ using namespace std;
 int numComparacoes = 0;
 int numCopias = 0;
 
-int compara_string(Book pivo, Book qualquer) /// Retorna -1 caso pivo menor e 1 caso pivo maior, retorna 0 caso igual
+/// Retorna -1 caso pivo menor e 1 caso pivo maior, retorna 0 caso igual
+int compara_string(Book pivo, Book qualquer) 
 {
     int tamanho_pivo;
     int tamanho_qualquer;
@@ -135,7 +136,7 @@ int escolhe_pivo(Book *livro, int id_1, int id_2, int id_3)
     return id_3;
 }
 
-///Fun��o auxiliar do QuickSort
+///Função auxiliar do QuickSort
 int Particionamento(Book *livro, int esquerda, int direita)
 {
     int meio;
@@ -185,7 +186,7 @@ void QuickSort(Book *livro, int esquerda, int direita)
     }
 }
 
-///Fun��o para igualar dois vetores de livros
+///Função para igualar dois vetores de livros
 void igual(Book livro1[], Book livro2[], int tamanho)
 {
     for(int i = 0; i < tamanho; i++)
@@ -194,7 +195,7 @@ void igual(Book livro1[], Book livro2[], int tamanho)
     }
 }
 
-///Fun��o auxiliar no MergeSort
+///Função auxiliar no MergeSort
 void MergeTripleSort(Book *Livro, int primeiro, int meio, int ultimo)
 {
     int x, y;
@@ -249,7 +250,7 @@ void MergeTripleSort(Book *Livro, int primeiro, int meio, int ultimo)
     delete [] Segundo;
 }
 
-///M�todo MergeSort
+///Metodo MergeSort
 void MergeSort(Book *Livro, int primeiro, int ultimo)
 {
     int media;
@@ -262,6 +263,7 @@ void MergeSort(Book *Livro, int primeiro, int ultimo)
     }
 }
 
+///Auxiliar MergeSort para inteiro
 void MergeTripleSortInt(Author *autor_ordenado, int primeiro, int meio, int ultimo)
 {
     int x, y, z;
@@ -317,7 +319,7 @@ void MergeTripleSortInt(Author *autor_ordenado, int primeiro, int meio, int ulti
     delete [] Segundo;
 }
 
-///M�todo MergeSort
+///Metodo MergeSort para inteiro
 void MergeSortInt(Author *autor_ordenado, int primeiro, int ultimo)
 {
     int media;

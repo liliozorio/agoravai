@@ -11,6 +11,12 @@ NoVP::NoVP(Book info)
     this->pai = nullptr;
 }
 
+/// Destrutor NoVP
+NoVP::~NoVP()
+{
+
+}
+
 /// Atualiza a informação do NoVP
 void NoVP::set_info(Book info)
 {

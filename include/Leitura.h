@@ -40,6 +40,7 @@ string separar(ifstream* arquivo)
     return line;
 }
 
+/// Separa string de autores
 void separaAutores(string line, Hash *h, vector<Author*> *autor_ordenado)
 {
   vector<string> autor;
@@ -62,12 +63,11 @@ void separaAutores(string line, Hash *h, vector<Author*> *autor_ordenado)
       {
         aux->cont_mais_um();
       }
-      //cout << "contador: " << aux->get_contador() << endl;
     }
   }
 }
 
-///Fun��o auxiliar nos testes
+///Função auxiliar nos testes
 void imprimir(Book leitura)
 {
     cout << leitura.get_title() << " - " << leitura.get_bestsellers_rank() << " - " << leitura.get_categories() << endl;
@@ -114,7 +114,7 @@ void leituraAuthor(Hash* autor, int tam)
     }
 }
 
-void imprime_arvore(NoVP *p, int espaco){
+/*void imprime_arvore(NoVP *p, int espaco){
     if (p == nullptr)
       return;
     espaco = espaco + 1;
@@ -126,8 +126,9 @@ void imprime_arvore(NoVP *p, int espaco){
 
     cout<<p->get_info().get_id() << "::" << p->get_cor() <<"\n";
     imprime_arvore(p->get_esquerdo(), espaco);
-}
+}*/
 
+/// Função de leitura para arquivo 
 void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_ordenado, ArvoreVP* vp, ArvoreB* b)
 {
   ifstream arquivo;
@@ -171,7 +172,7 @@ void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_
       getline(arquivo,line,']');
       getline(arquivo,trash,'"');
       lista[i].set_categories(line);
-      ///EDI��O
+      ///EDICAO
       line = separar(&arquivo);
       lista[i].set_edition(line);
       ///ID
@@ -195,15 +196,9 @@ void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_
       if(line == "")
         line = '0';
       lista[i].set_rating_count(std::stoi(line));
-      ///T�TULO
+      ///TITULO
       line = separar(&arquivo);
       lista[i].set_title(line);
-      b->insercao(&lista[i]);
-      b->get_raiz()->imprime();
-      cout << endl<< "-----------------------" << endl;
-      vp->insercao(lista[i], vp->get_raiz());
-      imprime_arvore(vp->get_raiz(), 0);
-      cout << "-----------------------" << endl;
     }
     arquivo.close();
   }
@@ -212,82 +207,40 @@ void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_
     cout << "Erro ao abrir o arquivo";
     exit(1);
   }
-  cout << "Saí" << endl;
 }
-///Leitura do arquivo de entrada
-/*void leituraDataSet(Book* lista,int tam)
+
+/// Insere livros na arvore B
+void insercao_b(Book *lista, ArvoreB *b, int tamanho)
 {
-    ifstream arquivo;
-    arquivo.open("arquivos/testeEntrada.txt");
+  for(int i = 0; i < tamanho; i++)
+  {
+    b->insercao(&lista[i]);
+  }
+}
 
-    int i = 0;
-    srand(time(NULL));
+/// Insere livros na arvore vermelha e preta
+void insercao_vp(Book *lista, ArvoreVP *vp, int tamanho)
+{
+  for(int i = 0; i < tamanho; i++)
+  {
+    vp->insercao(lista[i], vp->get_raiz());
+  }
+}
 
-    if(arquivo.is_open())
-    {
-        string word, trash, line;
-        string linha;
-        while(i < tam)
-        {
-            arquivo.seekg(0);
-            int a = rand() % 1087014; ///TAMANHO DO DATASET
-            int j = 0;
-            while(j < a)
-            {
-                getline(arquivo, line);
-                j++;
-            }
-            ///AUTOR
-            getline(arquivo,line,'"');
-            getline(arquivo,line,'[');
-            getline(arquivo,line,']');
-            getline(arquivo,trash,'"');
-            lista[i].set_authours(line);
-            ///RANK BESTSELLERS
-            line = separar(&arquivo);
-            if(line == "")
-                line = '0';
-            lista[i].set_bestseller_rank(std::stoi(line));
-            ///CATEGORIAS
-            getline(arquivo,line,'"');
-            getline(arquivo,line,'[');
-            getline(arquivo,line,']');
-            getline(arquivo,trash,'"');
-            lista[i].set_categories(line);
-            ///EDI��O
-            line = separar(&arquivo);
-            lista[i].set_edition(line);
-            ///ID
-            line = separar(&arquivo);
-            if(line == "")
-                line = '0';
-            lista[i].set_id(std::stof(line));
-            ///ISBN-10
-            line = separar(&arquivo);
-            lista[i].set_isbn10(line);
-            ///ISBN-13
-            line = separar(&arquivo);
-            lista[i].set_isbn13(line);
-            ///RATING-AVG
-            line = separar(&arquivo);
-            if(line == "")
-                line = '0';
-            lista[i].set_rating_avg(std::stof(line));
-            ///RATING-COUNT
-            line = separar(&arquivo);
-            if(line == "")
-                line = '0';
-            lista[i].set_rating_count(std::stoi(line));
-            ///T�TULO
-            line = separar(&arquivo);
-            lista[i].set_title(line);
-            i++;
-        }
-        arquivo.close();
-    }
-    else
-    {
-        cout << "Erro ao abrir o arquivo";
-        exit(1);
-    }
-}*/
+/// busca livro na arvore B
+void busca_b(Book *info, ArvoreB *b, int tamanho)
+{
+  for(int i = 0; i < tamanho; i++)
+  {
+    b->busca(&info[i], b->get_raiz());
+  }
+}
+
+/// busca livro na arvore vermelha e preta
+void busca_vp(Book *info, ArvoreVP *vp, int tamanho)
+{
+  for(int i = 0; i < tamanho; i++)
+  {
+    vp->busca(info[i], vp->get_raiz());
+  }
+}
