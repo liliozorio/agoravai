@@ -7,18 +7,20 @@ class ArvoreB
 {
     public:
         ArvoreB(int T);
-        //ArvoreB(int M){this->m=M;};
         ~ArvoreB();
-        void insercao(Book *info);
-        void imprimirRaiz();
-        //void cisao(Book info);
-        NoB* remocao(Book *info);
-        NoB* busca(Book *info, NoB *p);
-        void cisao(Book *info, NoB* c);
-        int getT(){return t;};
-        void setT(int T){this->t = t;};
-        NoB* getRaiz(){return raiz;}; 
-        void setRaiz(NoB* raiz){this->raiz = raiz;};
+
+        int get_t();
+        void set_t(int T);
+        NoB* get_raiz(); 
+        void set_raiz(NoB* raiz);
+
+        void imprimir_raiz();
+
+        void insercao(Book* info); 
+        NoB* remocao(Book* info);
+        NoB* busca(Book* info, NoB *p);
+        void cisao(Book* info, NoB* c);
+        
     private:
       NoB* raiz;
       int t;

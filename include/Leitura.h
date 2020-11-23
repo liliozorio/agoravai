@@ -54,13 +54,13 @@ void separaAutores(string line, Hash *h, vector<Author*> *autor_ordenado)
     {
       if(aux->get_contador() == 0)
       {
-        aux->contMaisUm();
+        aux->cont_mais_um();
         autor_ordenado->push_back(aux);
         indice_autor++;
       }
       else
       {
-        aux->contMaisUm();
+        aux->cont_mais_um();
       }
       //cout << "contador: " << aux->get_contador() << endl;
     }
@@ -140,10 +140,10 @@ void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_
     {
       vet[i] = i;
     }
-    /*unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-    shuffle(&vet[0], &vet[14], std::default_random_engine(seed));*/
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    shuffle(&vet[0], &vet[14], std::default_random_engine(seed));
     for(int i = 0; i < tamanho; i++)
-    {/*
+    {
       int a = vet[i];
       int j = 0;
       arquivo.seekg(0);
@@ -151,7 +151,7 @@ void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_
       {
         getline(arquivo, line);
         j++;
-      }*/
+      }
       ///AUTOR
       getline(arquivo,line,'"');
       getline(arquivo,line,'[');
@@ -198,9 +198,9 @@ void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_
       ///T�TULO
       line = separar(&arquivo);
       lista[i].set_title(line);
-      //b->insercao(&lista[i]);
-      //b->getRaiz()->imprime(get_raiz);
-      //cout << endl<< "-----------------------" << endl;
+      b->insercao(&lista[i]);
+      b->get_raiz()->imprime();
+      cout << endl<< "-----------------------" << endl;
       vp->insercao(lista[i], vp->get_raiz());
       imprime_arvore(vp->get_raiz(), 0);
       cout << "-----------------------" << endl;

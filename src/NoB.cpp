@@ -1,6 +1,6 @@
 #include "../include/NoB.h"
 
-
+/// Construtor NoB
 NoB::NoB(int tamanho)
 {  
     folha = true;
@@ -16,62 +16,74 @@ NoB::NoB(int tamanho)
     n = 0;
 }
 
+/// Destrutor NoB
 NoB::~NoB()
 {
     delete [] key;
     delete [] filhos;
 }
 
-int NoB::getN() 
+/// Retorna n do NoB
+int NoB::get_n() 
 {
   return n; 
 }
 
-int NoB::getT() 
+/// Retorna t do NoB
+int NoB::get_t() 
 {
   return t;
 }
 
-Book* NoB::getChaveI(int i)
+/// Retorna chava[i] do NoB
+Book* NoB::get_chave_i(int i)
 {
   return key[i];
 }
 
-NoB* NoB::getFilho(int i)
+/// Retorna filho[i] do NoB
+NoB* NoB::get_filho(int i)
 {
   return filhos[i];
 }
     
-bool NoB::getFolha()
+/// Retorna se o NoB é folha ou não
+bool NoB::get_folha()
 {
   return folha; 
 }
 
-void NoB::setT(int T)
+/// Atualiza o t do NoB
+void NoB::set_t(int T)
 {
   t = T;
 }
 
-void NoB::setN(int N) 
+/// Atualiza o n do NoB
+void NoB::set_n(int N) 
 { 
   n = N;
 }
 
-void NoB::setFolha(bool ehFolha)
+/// Atualiza se o NoB é folha ou não
+void NoB::set_folha(bool ehFolha)
 {
   folha = ehFolha;
 }
-    
-void NoB::setChaveI(int i, Book* novo)
+
+/// Atualiza chave[i] no NoB
+void NoB::set_chave_i(int i, Book* novo)
 {
   this->key[i] = novo;
 }
 
-void NoB::setFilho(int i, NoB* novo)
+/// Atualiza filho[i] no NoB
+void NoB::set_filho(int i, NoB* novo)
 {
   filhos[i] = novo;
 }
 
+/// Imprime
 void NoB::imprime() 
 { 
     int i;
@@ -79,14 +91,15 @@ void NoB::imprime()
     {
       if (folha == false) 
         filhos[i]->imprime();  
-      cout << " " << key[i]->get_id(); 
+      cout << " " << key[i]->get_id() << "::" << n; 
     } 
     cout << endl;
     if (folha == false) 
       filhos[i]->imprime(); 
 }
 
-void NoB::auxInsere(Book *info)
+/// Auxiliar da inserção
+void NoB::aux_insere(Book *info)
 {
   int i = this->n - 1;
   if(this->folha)
@@ -105,38 +118,39 @@ void NoB::auxInsere(Book *info)
     {
       i--;
     }
-    if(this->filhos[i+1]->getN() == 2*t - 1)
+    if(this->filhos[i+1]->get_n() == 2*t - 1)
     {
       overflow(i+1, this->filhos[i+1]);
       if(this->key[i+1]->get_id() < info->get_id())
         i++;
     }
-    this->filhos[i+1]->auxInsere(info);
+    this->filhos[i+1]->aux_insere(info);
   }
 }
 
+/// Função que executa a cisão do NoB
 void NoB::overflow(int i, NoB *aux)
 {
   NoB *aux2 = new NoB(t);
-  aux2->setN(t - 1);
+  aux2->set_n(t - 1);
   int g = 0;
   while(g < (t - 1))
   {
-    aux2->setChaveI(g, aux->getChaveI(g+t));
+    aux2->set_chave_i(g, aux->get_chave_i(g+t));
     g = g + 1;
   }
    
-  if(!aux->getFolha())
+  if(!aux->get_folha())
   {
     int j = 0;
     while(j < t)
     {
-      aux2->setFilho(j, aux->getFilho(j + t));
+      aux2->set_filho(j, aux->get_filho(j + t));
       j++;
     }
   }
 
-  aux->setN(t - 1);
+  aux->set_n(t - 1);
 
   for(int j = n; j >= i+1; j--)
   {
@@ -150,61 +164,63 @@ void NoB::overflow(int i, NoB *aux)
     key[j+1] = key[j];
   }
   
-  key[i] = aux->getChaveI(t-1);
+  key[i] = aux->get_chave_i(t-1);
 
   n = n + 1;
 }
-int NoB::achaPosicao(Book* info) 
+
+/// Acha posição em que a chave ficaria no NoB
+int NoB::acha_posicao(Book* info) 
 { 
-    int i = 0; 
-    cout << "Valor n: " << n << endl;
+    int i = 0;
     while (i < n && key[i]->get_id() < info->get_id()) 
         i++;
     return i; 
 } 
 
+/// Funçao de remoção do NoB
 void NoB::remove(Book* info)
 {
-  cout << "entrei remove" << endl;
-  int i = achaPosicao(info);
-  cout << "Valor i: " << i << endl;
+  int i = acha_posicao(info);
+
   if(i < n && key[i]->get_id() == info->get_id())
   {
     if(folha)
     {
-      cout << "entrei sei lá qual" << endl;
-      removeFolha(i);
+      remove_folha(i);
     }
     else
-      removeNaoFolha(i);
+      remove_nao_folha(i);
   }
-  if(this->folha == true)
-  {
-    cout << info->get_id() << endl;
-    cout << "entrei" << endl;
-    return;
-  }
-  bool ehFilho;
-  if(i == n)
-    ehFilho = true;
   else
-    ehFilho = false;
+  {
+    if(this->folha == true)
+    {
+      return;
+    }
+    bool ehFilho;
+    if(i == n)
+      ehFilho = true;
+    else
+      ehFilho = false;
   
-  if(filhos[i]->getN() < t)
-  {
-    preenche(i);
-  }
-  if(ehFilho && i > n)
-  {
-    filhos[i-1]->remove(info);
-  }
-  else
-  {
-    filhos[i]->remove(info);
+    if(filhos[i]->get_n() < t)
+    {
+      preenche(i);
+    }
+    if(ehFilho && i > n)
+    {
+      filhos[i-1]->remove(info);
+    }
+    else
+    {
+      filhos[i]->remove(info);
+    }
   }
 }
 
-void NoB::removeFolha(int i)
+/// Remove se o NoB for folha
+void NoB::remove_folha(int i)
 {
   for(int j = i+1; j < n; j++)
   {
@@ -213,38 +229,41 @@ void NoB::removeFolha(int i)
   n--;
 }
 
-Book* NoB::getAnterior(int i)
+/// Chega na folha pegando o filho a esquerda do NoB
+Book* NoB::get_anterior(int i)
 {
   NoB* aux = filhos[i];
-  while(aux->getFolha() == false)
+  while(aux->get_folha() == false)
   {
-    aux = aux->getFilho(aux->getN());
+    aux = aux->get_filho(aux->get_n());
   }
-  return aux->getChaveI(aux->getN() - 1);
+  return aux->get_chave_i(aux->get_n() - 1);
 }
 
-Book* NoB::getProximo(int i)
+/// Chega na folha pegando o filho a direita do NoB
+Book* NoB::get_proximo(int i)
 {
   NoB* aux = filhos[i + 1];
-  while(aux->getFolha() == false)
+  while(aux->get_folha() == false)
   {
-    aux = aux->getFilho(0);
+    aux = aux->get_filho(0);
   }
-  return aux->getChaveI(0);
+  return aux->get_chave_i(0);
 }
 
-void NoB::removeNaoFolha(int i)
+/// Remove se o NoB não for folha
+void NoB::remove_nao_folha(int i)
 {
   Book* k = key[i];
-  if(filhos[i]->getN() >= t)
+  if(filhos[i]->get_n() >= t)
   {
-    Book* anterior = getAnterior(i);
+    Book* anterior = get_anterior(i);
     key[i] = anterior;
     filhos[i]->remove(anterior);
   } 
-  else if(filhos[i+1]->getN() >= t)
+  else if(filhos[i+1]->get_n() >= t)
   {
-    Book* proximo = getProximo(i);
+    Book* proximo = get_proximo(i);
     key[i] = proximo;
     filhos[i+1]->remove(proximo);
   }
@@ -253,18 +272,19 @@ void NoB::removeNaoFolha(int i)
     juncao(i);
     filhos[i]->remove(k);
   }
-  n--;
+  //n--;
 }
 
+/// Seleciona qual procedimento executar: redistribuição ou junção
 void NoB::preenche(int i) 
 { 
-    if (i != 0 && filhos[i-1]->getN() >= t)
+    if (i != 0 && filhos[i-1]->get_n() >= t)
     {
-      redistribuicaoAnterior(i); 
+      redistribuicao_anterior(i); 
     }
-    else if (i != n && filhos[i+1]->getN() >= t)
+    else if (i != n && filhos[i+1]->get_n() >= t)
     { 
-      redistribuicaoProximo(i); 
+      redistribuicao_proximo(i); 
     }
     else
     { 
@@ -275,20 +295,21 @@ void NoB::preenche(int i)
     }
 } 
 
+/// Junção 
 void NoB::juncao(int i)
 {
   NoB* filho = filhos[i];
   NoB* irmao = filhos[i+1];
-  filho->setChaveI(t-1, filho->getChaveI(t));
-  for(int j = 0; j < irmao->getN(); j++)
+  filho->set_chave_i(t-1, key[i]);
+  for(int j = 0; j < irmao->get_n(); j++)
   {
-    filho->setChaveI(t+1, irmao->getChaveI(j));
+    filho->set_chave_i(t+j, irmao->get_chave_i(j));
   }
-  if(!filho->getFolha())
+  if(!filho->get_folha())
   {
-    for(int j = 0; j <= irmao->getN(); j++)
+    for(int j = 0; j <= irmao->get_n(); j++)
     {
-      filho->setFilho(j+t, irmao->getFilho(j));
+      filho->set_filho(j+t, irmao->get_filho(j));
     }
   }
   for(int j = i+1; j < n; j++)
@@ -300,69 +321,66 @@ void NoB::juncao(int i)
     filho[j-1] = filho[j];
   }
   int aux_n;
-  aux_n = filho->getN() + irmao->getN() + 1;
-  filho->setN(aux_n);
+  aux_n = filho->get_n() + irmao->get_n() + 1;
+  filho->set_n(aux_n);
   n = n-1;
-  delete irmao;
 }
 
-void NoB::redistribuicaoAnterior(int i) 
+/// Redistribui no NoB anterior
+void NoB::redistribuicao_anterior(int i) 
 { 
     NoB *f = filhos[i]; 
-    NoB *irmao = filhos[i-1]; 
+    NoB *irmao = filhos[i-1];  
  
-    for (int j = f->getN()-1; j >= 0; j--) 
-        f->setChaveI(j+1, f->getChaveI(j)); 
+    for (int j = f->get_n()-1; j >= 0; j--) 
+        f->set_chave_i(j+1, f->get_chave_i(j)); 
    
-    if (f->getFolha() == false) 
+    if (f->get_folha() == false) 
     { 
-      for(int j = f->getN(); j >= 0; j--) 
-        f->setFilho(i+1, f->getFilho(i)); 
+      for(int j = f->get_n(); j >= 0; j--) 
+        f->set_filho(i+1, f->get_filho(i)); 
     } 
-    f->setChaveI(0, key[i-1]); 
+    f->set_chave_i(0, key[i-1]); 
 
-    if(f->getFolha() == false) 
-        f->setFilho(0, irmao->getFilho(irmao->getN())); 
+    if(f->get_folha() == false) 
+        f->set_filho(0, irmao->get_filho(irmao->get_n())); 
   
-    key[i-1] = irmao->getChaveI(irmao->getN()-1); 
+    key[i-1] = irmao->get_chave_i(irmao->get_n()-1); 
   
-    f->setN(f->getN() + 1); 
-    irmao->setN(irmao->getN() - 1); 
+    f->set_n(f->get_n() + 1); 
+    irmao->set_n(irmao->get_n() - 1);
     //return; 
 } 
 
-void NoB::redistribuicaoProximo(int i) 
+/// Redistribui no NoB posterior
+void NoB::redistribuicao_proximo(int i) 
 { 
   
-    NoB *f = new NoB(t);
-    f = filhos[i]; 
-    NoB *irmao = new NoB(t);
-    irmao = filhos[i+1]; 
+    NoB *f = filhos[i]; 
+    NoB *irmao = filhos[i+1]; 
   
-    f->setChaveI((f->getN()), key[i]); 
+    f->set_chave_i((f->get_n()), key[i]); 
   
-    if (!(f->getFolha())) 
+    if (!(f->get_folha())) 
     {
-        f->setFilho((f->getN())+1, irmao->getFilho(0)); 
+        f->set_filho((f->get_n())+1, irmao->get_filho(0)); 
     } 
     
    
-    key[i] = irmao->getChaveI(0); 
+    key[i] = irmao->get_chave_i(0); 
   
-    for (int j = 1; j < irmao->getN(); j++) 
+    for (int j = 1; j < irmao->get_n(); j++) 
     {
-        irmao->setChaveI(j-1, irmao->getChaveI(j)); 
+        irmao->set_chave_i(j-1, irmao->get_chave_i(j)); 
     }
   
-    if (!irmao->getFolha()) 
+    if (!irmao->get_folha()) 
     { 
-        for(int j = 1; j <= irmao->getN(); j++) 
-            irmao->setFilho(j-1, irmao->getFilho(j)); 
+        for(int j = 1; j <= irmao->get_n(); j++) 
+            irmao->set_filho(j-1, irmao->get_filho(j)); 
     } 
   
-    f->setN(f->getN() + 1); 
-    irmao->setN(irmao->getN() - 1); 
-  
-    //return; 
+    f->set_n(f->get_n() + 1); 
+    irmao->set_n(irmao->get_n() - 1); 
 } 
   

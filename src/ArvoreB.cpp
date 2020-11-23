@@ -10,70 +10,94 @@ ArvoreB::ArvoreB(int T)
 
 ArvoreB::~ArvoreB()
 {
-    NoB* aux = raiz;
+    NoB* aux = new NoB(t);
+    aux = raiz;
     int i = 0;
     while(aux != nullptr)
     {
-      
-      if(!aux->getFolha())
-        aux = aux->getFilho(i);
+      if(!aux->get_folha())
+        aux = aux->get_filho(i);
       else
-        aux = remocao(aux->getChaveI(0));
+        aux = remocao(aux->get_chave_i(0));
       i++;
     }
 }
 
-void ArvoreB::imprimirRaiz()
+int ArvoreB::get_t()
+{
+  return t;
+}
+
+void ArvoreB::set_t(int T)
+{
+  this->t = t;
+}
+  
+NoB* ArvoreB::get_raiz()
+{
+  return raiz;
+} 
+ 
+void ArvoreB::set_raiz(NoB* raiz)
+{
+  this->raiz = raiz;
+}
+
+/// Imprime as chaves contidas na raiz da arvore
+void ArvoreB::imprimir_raiz()
 {
   cout << endl << "Imprimindo Raiz:" << endl;
-  for(int i = 0; i < raiz->getN(); i++)
+  for(int i = 0; i < raiz->get_n(); i++)
   {
-    cout << " " <<raiz->getChaveI(i)->get_id();
+    cout << " " <<raiz->get_chave_i(i)->get_id();
   }
   cout << endl << endl;
 }
 
+/// Insere chave 
 void ArvoreB::insercao(Book* info)
 {
   if(raiz == nullptr)
   {
     NoB* p = new NoB(t);
     raiz = p;
-    raiz->setN(1);
-    raiz->setChaveI(0, info);
+    raiz->set_n(1);
+    raiz->set_chave_i(0, info);
   }
   else
   {
-    NoB *aux2 = new NoB(raiz->getT());
+    NoB *aux2 = new NoB(raiz->get_t());
     ///caso que arvore n vazia
-    if(raiz->getN() == ((t*2)-1)) ///caso que n eh cisao
+    if(raiz->get_n() == ((t*2)-1)) ///caso que n eh cisao
     {
       cisao(info, raiz);
     }
     else
     {
-      raiz->auxInsere(info);
+      raiz->aux_insere(info);
     }
   }
 }
 
+/// Chama a cisão dentro do no
 void ArvoreB::cisao(Book* info, NoB* d)
 {
   NoB* aux = new NoB(t);
   //NoB* aux2 = new NoB(t);
-  aux->setFolha(false);
-  aux->setFilho(0, d);
+  aux->set_folha(false);
+  aux->set_filho(0, d);
 
   aux->overflow(0, d);
   
   int i = 0;
 
-  if(aux->getChaveI(0)->get_id() < info->get_id())
+  if(aux->get_chave_i(0)->get_id() < info->get_id())
     i++; 
-  aux->getFilho(i)->auxInsere(info);
+  aux->get_filho(i)->aux_insere(info);
   raiz = aux;
 }
 
+/// Remove chave
 NoB* ArvoreB::remocao(Book *info)
 { 
     if (raiz == nullptr) 
@@ -84,19 +108,21 @@ NoB* ArvoreB::remocao(Book *info)
  
     raiz->remove(info); 
 
-    if (raiz->getN() == 0) 
+    if (raiz->get_n() == 0) 
     { 
-        NoB *aux = raiz; 
-        if (raiz->getFolha()) 
+        NoB *aux = new NoB(t);
+        aux = raiz; 
+        if (raiz->get_folha()) 
             raiz = NULL; 
         else
-            raiz = raiz->getFilho(0); 
+            raiz = raiz->get_filho(0); 
 
         delete aux; 
     } 
     return raiz; 
 } 
 
+/// Busca 
 NoB* ArvoreB::busca(Book *info, NoB *p)
 {
   if(raiz == nullptr)
@@ -104,22 +130,22 @@ NoB* ArvoreB::busca(Book *info, NoB *p)
 
   int i = 0;
 
-  while(i < p->getN() && p->getChaveI(i)->get_id() < info->get_id())
+  while(i < p->get_n() && p->get_chave_i(i)->get_id() < info->get_id())
   {
     i++;
   }
 
-  if(p->getChaveI(i)->get_id() == info->get_id())
+  if(p->get_chave_i(i)->get_id() == info->get_id())
   {
     return p;
-    //return p->getChaveI(i);
+    //return p->get_chave_i(i);
   }
 
-  if(p->getFolha())
+  if(p->get_folha())
   {
     return NULL;
   }
 
-  return busca(info, p->getFilho(i));
+  return busca(info, p->get_filho(i));
   
 }

@@ -5,18 +5,19 @@
 
 using namespace std;
 
+/// Construtor Hash
 Hash::Hash(int tamanho)
-{
-    //ctor
+{    
     this->m = tamanho;
-  }
+}
 
 Hash::~Hash()
 {
 
 }
 
-int Hash::getTamanho()
+/// Retorna tamanho da Hash
+int Hash::get_tamanho()
 {
    return this->m;
 }
@@ -36,11 +37,13 @@ int Hash::getTamanho()
 }*/
 
 
-int Hash::SondagemLinear(int chave, int* i)
+/// Realiza a sondagem na Hash
+int Hash::sondagem_linear(int chave, int* i)
 {
   return (chave + *i) % this->m;
 }
 
+/// Cria a Hash
 void Hash::create(Author* Data)
 {
     Author* auxInsere;
@@ -58,12 +61,13 @@ void Hash::create(Author* Data)
 
 }
 
+/// Insere informação na Hash
 void Hash::insere(Author* data)
 {
   int cont = 0;
   for(int j = 0; j < this->m; j++)
   {
-    int chave = this->SondagemLinear(data->get_codigo(), &cont);
+    int chave = this->sondagem_linear(data->get_codigo(), &cont);
     //cout << "CHAVE AQUI OH: " << chave << endl;
     
     if(tabela[chave].get_nome() != "")
@@ -85,6 +89,7 @@ void Hash::insere(Author* data)
   //cout << "PASSOU AQUI " << endl;
 }
 
+/// Procura informação na Hash
 Author* Hash::lookup(int indice)
 {
     for (int i = 0; i < m; i++)
@@ -100,6 +105,7 @@ void Hash::destroy()
     //delete [] tabela;
 }
 
+/// Imprime Hash
 void Hash::imprime()
 {
   for(int i = 0; i < m; i++)

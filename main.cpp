@@ -39,11 +39,14 @@ using namespace std;
 string quickk = "QuickSort";
 string mergee = "MergeSort";
 
+string arvore_b = "Arvore B";
+string arvore_vp = "Arvore Vermelha e Preta";
+
 
 ///Escrita no arquivo de saida
-void Escrita(ofstream* Saida, string tipo_ordena, double tempo_processamento, int tamanho)
+void Escrita(ofstream* Saida, string tipo_arvore, double tempo_processamento, int tamanho)
 {
-        *Saida << tipo_ordena << endl;
+        *Saida << tipo_arvore << endl;
         *Saida << "Tamanho: " << tamanho << endl;
         *Saida << "Tempo de Processamento: " << tempo_processamento << endl;
         *Saida << "Numero de Comparacoes: " << numComparacoes << endl;
@@ -101,24 +104,27 @@ int main()
             
             //leituraDataSet(lista, tamanho[i]);
             leitura_dataset(lista, tamanho[i], authors, &autor_ordenado, &vp, &b);
-                      
-            b.getRaiz()->imprime();
+/*
+            NoB* search;  
+            b.get_raiz()->imprime();
             cout << endl << lista[0].get_id() << endl ;
             b.remocao(&lista[0]);
-            cout << endl << endl;
-            b.getRaiz()->imprime();
+          
+            b.get_raiz()->imprime();
             
-            cout << endl << lista[4].get_id() << endl ;
-            b.remocao(&lista[4]);
+
+            cout << endl << lista[10].get_id() << endl ;
+            b.remocao(&lista[10]);
             cout << endl << endl;
-            b.getRaiz()->imprime();
+            b.get_raiz()->imprime();
             igual(lista2, lista, tamanho[i]);
 
-            
-            //cout << endl << lista[5].get_id() << endl ;
-            //b.remocao(&lista[5]);
+*/          
+            cout << endl << lista[5].get_id() << endl ;
+            b.remocao(&lista[5]);
             cout << endl << endl;
-            b.getRaiz()->imprime();
+
+            b.get_raiz()->imprime();
             igual(lista2, lista, tamanho[i]);
 
             numComparacoes = 0;
@@ -127,7 +133,11 @@ int main()
             int tamOrdenado=autor_ordenado.size();
             
             MergeSortInt(autor_ordenado[0], 0, tamOrdenado-1);
-  
+            cout << "Vamos desalocar? " << endl;
+            vp.~ArvoreVP();
+            cout << "vp desalocada" << endl;
+            b.~ArvoreB();
+            cout << "b desalocada" << endl;
             delete[] lista;
             delete[] lista2;
 /*********************************************************            
