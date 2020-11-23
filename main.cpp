@@ -44,13 +44,13 @@ string arvore_vp = "Arvore Vermelha e Preta";
 
 
 ///Escrita no arquivo de saida
-void Escrita(ofstream* Saida, string tipo_arvore, double tempo_processamento, int tamanho)
+void Escrita(ofstream* Saida, string tipo_arvore, double tempo_processamento, int comparacoes, int copias, int tamanho)
 {
         *Saida << tipo_arvore << endl;
         *Saida << "Tamanho: " << tamanho << endl;
         *Saida << "Tempo de Processamento: " << tempo_processamento << endl;
-        *Saida << "Numero de Comparacoes: " << numComparacoes << endl;
-        *Saida << "Numero de Copias: " << numCopias << endl << endl;
+        *Saida << "Numero de Comparacoes: " << comparacoes << endl;
+        *Saida << "Numero de Copias: " << copias << endl << endl;
 }
 
 void Escrita_parte2(ofstream* Saida, vector<Author*> autor, int m)
@@ -61,7 +61,7 @@ void Escrita_parte2(ofstream* Saida, vector<Author*> autor, int m)
         {
           *Saida << "Nome Autor: " << autor[i]->get_nome()  << " Frequencia: " << autor[i]->get_contador() << endl;
         }
-        cout << endl;
+        cout << endl << endl;
 }
 
 
@@ -118,19 +118,17 @@ int main()
             auto end = std::chrono::steady_clock::now();
             std::chrono::duration<double> elapsed_seconds = end-start;
 
-            Escrita(&saida, arvore_b, elapsed_seconds.count(), tamanho[i]);
-            cout << "testes";
-/*
+            Escrita(&saida, arvore_b, elapsed_seconds.count(), b.num_comparacoes, b.num_copias, tamanho[i]);
+
             start = std::chrono::steady_clock::now();
             insercao_vp(lista, &vp, tamanho[i]);
             end = std::chrono::steady_clock::now();
             std::chrono::duration<double> elapsed_second = end-start;
 
-            Escrita(&saida, arvore_vp, elapsed_second.count(), tamanho[i]);*/
-            //vp.~ArvoreVP();
-            cout << "Finalizou arvore vp" << endl;
-            //b.~ArvoreB();
-            cout << "Finalizou arvore b" << endl;
+            Escrita(&saida, arvore_vp, elapsed_second.count(), vp.num_comparacoes, vp.num_copias, tamanho[i]);
+
+            vp.~ArvoreVP();
+            b.~ArvoreB();
             
             delete[] lista;
             delete[] lista2;     

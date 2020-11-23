@@ -1,9 +1,15 @@
 PARTE 2
 M = 500
-Nome Autor: 'Abd Al-Qadir Al-Jilani Frequencia: 1
+Nome Autor: 'Abd Al-Rahman Al-Jaziri Frequencia: 1
 Arvore B
 Tamanho: 10
-Tempo de Processamento: 1.0202e-05
-Numero de Comparacoes: 0
-Numero de Copias: 0
+Tempo de Processamento: 0.000100363
+Numero de Comparacoes: 10
+Numero de Copias: 4
+
+Arvore Vermelha e Preta
+Tamanho: 10
+Tempo de Processamento: 3.4445e-05
+Numero de Comparacoes: 33
+Numero de Copias: 4
 

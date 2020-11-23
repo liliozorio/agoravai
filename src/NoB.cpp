@@ -99,8 +99,9 @@ void NoB::imprime()
 }
 
 /// Auxiliar da inserção
-void NoB::aux_insere(Book *info)
+void NoB::aux_insere(Book *info, int* num_comparacoes, int* num_copias)
 {
+  cout << *num_comparacoes << " - " << *num_copias << endl;
   int i = this->n - 1;
   if(this->folha)
   {
@@ -108,6 +109,7 @@ void NoB::aux_insere(Book *info)
     {
       this->key[i+1] = this->key[i] ;
       i--;
+      *num_comparacoes = *num_comparacoes + 1;
     } 
     this->key[i+1] = info;
     this->n = n+1;
@@ -116,20 +118,21 @@ void NoB::aux_insere(Book *info)
   {
     while(i >= 0 && this->key[i]->get_id() > info->get_id())
     {
+      *num_comparacoes = *num_comparacoes + 1;
       i--;
     }
     if(this->filhos[i+1]->get_n() == 2*t - 1)
     {
-      overflow(i+1, this->filhos[i+1]);
+      overflow(i+1, this->filhos[i+1], num_copias);
       if(this->key[i+1]->get_id() < info->get_id())
         i++;
     }
-    this->filhos[i+1]->aux_insere(info);
+    this->filhos[i+1]->aux_insere(info, num_comparacoes, num_copias);
   }
 }
 
 /// Função que executa a cisão do NoB
-void NoB::overflow(int i, NoB *aux)
+void NoB::overflow(int i, NoB *aux, int* num_copias)
 {
   NoB *aux2 = new NoB(t);
   aux2->set_n(t - 1);
@@ -138,6 +141,7 @@ void NoB::overflow(int i, NoB *aux)
   {
     aux2->set_chave_i(g, aux->get_chave_i(g+t));
     g = g + 1;
+    *num_copias = *num_copias + 1;
   }
    
   if(!aux->get_folha())
@@ -147,6 +151,7 @@ void NoB::overflow(int i, NoB *aux)
     {
       aux2->set_filho(j, aux->get_filho(j + t));
       j++;
+      *num_copias = *num_copias + 1;
     }
   }
 
@@ -155,6 +160,7 @@ void NoB::overflow(int i, NoB *aux)
   for(int j = n; j >= i+1; j--)
   {
     filhos[j + 1] = filhos[j];
+    *num_copias = *num_copias + 1;
   }
 
   filhos[i + 1] = aux2;
@@ -162,6 +168,7 @@ void NoB::overflow(int i, NoB *aux)
   for (int j = n - 1; j >= i; j--) 
   {
     key[j+1] = key[j];
+    *num_copias = *num_copias + 1;
   }
   
   key[i] = aux->get_chave_i(t-1);

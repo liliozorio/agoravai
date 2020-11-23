@@ -31,6 +31,7 @@ NoVP* ArvoreVP::get_raiz()
 /// Rotação simples a esquerda
 NoVP* ArvoreVP::rotacao_simples_esquerda(NoVP* p, NoVP* pai)
 {
+    num_copias++;
     pai->set_direito(p->get_esquerdo());
     p->set_esquerdo(pai);
     p->set_pai(pai->get_pai());
@@ -49,6 +50,7 @@ NoVP* ArvoreVP::rotacao_simples_esquerda(NoVP* p, NoVP* pai)
 /// Rotação simples a direita
 NoVP* ArvoreVP::rotacao_simples_direita(NoVP* p, NoVP* pai)
 {
+  num_copias++;
     pai->set_esquerdo(p->get_direito());
     p->set_direito(pai);
     p->set_pai(pai->get_pai());
@@ -275,6 +277,7 @@ NoVP* ArvoreVP::ajusta(NoVP* p, NoVP* pai)
 /// Insere NoVP na arvore
 NoVP* ArvoreVP::insercao(Book info, NoVP* p)
 {
+    num_comparacoes++;
     if(p == nullptr)
     {
         p = new NoVP(info);
@@ -423,6 +426,7 @@ NoVP* ArvoreVP::remocao(Book info, NoVP* p)
 /// Busca informação na arvore
 NoVP* ArvoreVP::busca(Book info, NoVP* p)
 {
+    num_comparacoes++;
     if(p == nullptr)
     {
         return nullptr;

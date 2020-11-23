@@ -1,6 +1,7 @@
 #include "ArvoreB.h"
 #include "NoB.h"
 
+/// Construção
 ArvoreB::ArvoreB(int T)
 {
     raiz = nullptr;
@@ -8,22 +9,13 @@ ArvoreB::ArvoreB(int T)
     
 }
 
+/// Destrutor da ArvoreB
 ArvoreB::~ArvoreB()
 {
-    /*NoB* aux = new NoB(t);
-    aux = raiz;
-    int i = 0;
-    while(aux != nullptr)
-    {
-      if(!aux->get_folha())
-        aux = aux->get_filho(i);
-      else
-        aux = remocao(aux->get_chave_i(0));
-      i++;
-    }*/
     remove(raiz);
 }
 
+/// Remove NoB da ArvoreB
 void ArvoreB::remove(NoB* p)
 {
   if(p->get_folha())
@@ -40,12 +32,13 @@ void ArvoreB::remove(NoB* p)
   }
 }
 
+/// Retorna t da ArvoreB
 int ArvoreB::get_t()
 {
   return t;
 }
 
-/// Atulaizar 
+/// Atualizar t da ArvoreB
 void ArvoreB::set_t(int T)
 {
   this->t = t;
@@ -94,7 +87,7 @@ void ArvoreB::insercao(Book* info)
     }
     else
     {
-      raiz->aux_insere(info);
+      raiz->aux_insere(info, &num_comparacoes, &num_copias);
     }
   }
 }
@@ -107,13 +100,13 @@ void ArvoreB::cisao(Book* info, NoB* d)
   aux->set_folha(false);
   aux->set_filho(0, d);
 
-  aux->overflow(0, d);
+  aux->overflow(0, d, &num_copias);
   
   int i = 0;
 
   if(aux->get_chave_i(0)->get_id() < info->get_id())
     i++; 
-  aux->get_filho(i)->aux_insere(info);
+  aux->get_filho(i)->aux_insere(info, &num_comparacoes, &num_copias);
   raiz = aux;
 }
 

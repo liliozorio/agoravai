@@ -21,6 +21,8 @@ class ArvoreB
         NoB* busca(Book* info, NoB *p);
         void cisao(Book* info, NoB* c);
         
+        int num_comparacoes = 0;
+        int num_copias = 0;
     private:
       NoB* raiz;
       int t;

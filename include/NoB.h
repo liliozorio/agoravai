@@ -17,8 +17,8 @@ class NoB
     Book* get_chave_i(int i);
     NoB* get_filho(int i);
     
-    void aux_insere(Book *info);
-    void overflow(int i, NoB *aux);
+    void aux_insere(Book *info, int* num_comparacoes, int* num_copias);
+    void overflow(int i, NoB *aux, int* num_copias);
     
     void imprime();
     void set_n(int N);

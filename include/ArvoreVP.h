@@ -19,6 +19,8 @@ class ArvoreVP
         NoVP* ajusta(NoVP* p, NoVP* pai);
         NoVP* get_raiz();
 
+        int num_comparacoes = 0;
+        int num_copias = 0;
     private:
         NoVP* raiz;
 
