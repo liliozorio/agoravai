@@ -39,7 +39,8 @@ using namespace std;
 string quickk = "QuickSort";
 string mergee = "MergeSort";
 
-string arvore_b = "Arvore B";
+string arvore_b_2 = "Arvore B (2)";
+string arvore_b_10 = "Arvore B (10)";
 string arvore_vp = "Arvore Vermelha e Preta";
 
 
@@ -61,7 +62,7 @@ void Escrita_parte2(ofstream* Saida, vector<Author*> autor, int m)
         {
           *Saida << "Nome Autor: " << autor[i]->get_nome()  << " Frequencia: " << autor[i]->get_contador() << endl;
         }
-        cout << endl << endl;
+        //cout << endl << endl;
 }
 
 
@@ -70,7 +71,7 @@ int main()
 {
     int N = 0;
     int M = 703200;
-    int m = 1000;
+    int m = 1;
     ifstream entrada;
     ofstream saida;
     Hash* authors = new Hash(M);
@@ -87,7 +88,8 @@ int main()
         int tamanho[N];
         vector<Author*> autor_ordenado;
         ArvoreVP vp;
-        ArvoreB b(2);
+        ArvoreB b_2(2);
+        ArvoreB b_10(10);
        
         for (int i = 0; i < N; i++)
         {
@@ -97,7 +99,7 @@ int main()
             Book *lista = new Book[tamanho[i]];
 
             Book *lista2 = new Book[tamanho[i]];
-            leitura_dataset(lista, tamanho[i], authors, &autor_ordenado, &vp, &b);
+            leitura_dataset(lista, tamanho[i], authors, &autor_ordenado);
 
             igual(lista2, lista, tamanho[i]);
 
@@ -105,7 +107,6 @@ int main()
             numCopias = 0;
 
             int tamOrdenado=autor_ordenado.size();
-            cout<<"tam2 :"<<tamOrdenado<<endl;
             ///PARTE 2
             MergeSortInt(autor_ordenado[0], 0, tamOrdenado-1);
 
@@ -114,16 +115,21 @@ int main()
             ///PARTE 3
             saida << endl << "PARTE3" << endl << endl;
             auto start = std::chrono::steady_clock::now();
-            insercao_b(lista, &b, tamanho[i]);
+            insercao_b(lista, &b_2, tamanho[i]);
             auto end = std::chrono::steady_clock::now();
             std::chrono::duration<double> elapsed_seconds = end-start;
 
-            Escrita(&saida, arvore_b, elapsed_seconds.count(), b.num_comparacoes, b.num_copias, tamanho[i]);
+            Escrita(&saida, arvore_b_2, elapsed_seconds.count(), b_2.num_comparacoes, b_2.num_copias, tamanho[i]);
+
+            start = std::chrono::steady_clock::now();
+            insercao_b(lista, &b_10, tamanho[i]);
+            end = std::chrono::steady_clock::now();
+            std::chrono::duration<double> elapsed_sec = end-start;
+
+            Escrita(&saida, arvore_b_10, elapsed_sec.count(), b_10.num_comparacoes, b_10.num_copias, tamanho[i]);
             
             start = std::chrono::steady_clock::now();
-            cout << "oo" << endl;
             insercao_vp(lista, &vp, tamanho[i]);
-            cout << "oo" << endl;
             end = std::chrono::steady_clock::now();
             std::chrono::duration<double> elapsed_second = end-start;
 

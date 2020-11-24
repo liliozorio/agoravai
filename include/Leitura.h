@@ -132,7 +132,7 @@ void imprime_arvore(NoVP *p, int espaco){
 }
 
 /// Função de leitura para arquivo 
-void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_ordenado, ArvoreVP* vp, ArvoreB* b)
+void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_ordenado)
 {
   ifstream arquivo;
   arquivo.open("testee.txt");
@@ -229,10 +229,8 @@ void insercao_b(Book *lista, ArvoreB *b, int tamanho)
 /// Insere livros na arvore vermelha e preta
 void insercao_vp(Book *lista, ArvoreVP *vp, int tamanho)
 {
-  cout << "entrei" << endl;
   for(int i = 0; i < tamanho; i++)
   {
-    cout << i << endl;
     vp->insercao(lista[i], vp->get_raiz());
   }
 }
