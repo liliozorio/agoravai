@@ -1,0 +1,1023 @@
+PARTE 2
+M = 1000
+Nome Autor: Michael Sallah Frequencia: 2
+Nome Autor: Committee on Pain and Distress in Laboratory Animals Frequencia: 3
+Nome Autor: Alexander Volgin Frequencia: 1
+Nome Autor: Catherine Fyans Frequencia: 1
+Nome Autor: Leslie Korn Frequencia: 1
+Nome Autor: Pamela N. Munster Frequencia: 1
+Nome Autor: Kevin Ronan Frequencia: 1
+Nome Autor: Konrad Mengel Frequencia: 1
+Nome Autor: Renaud Frequencia: 1
+Nome Autor: Jennifer Whedon Frequencia: 1
+Nome Autor: COOPER B Frequencia: 1
+Nome Autor: Federica M. Marelli-Berg Frequencia: 1
+Nome Autor: Nicola King Frequencia: 1
+Nome Autor: Sridar V. Chittur Frequencia: 1
+Nome Autor: Funny Dog Sudoku Master Frequencia: 1
+Nome Autor: Susana Damy Frequencia: 1
+Nome Autor: Kenneth Crump Frequencia: 1
+Nome Autor: David Beazley Frequencia: 1
+Nome Autor: Dalway J. Swaine Frequencia: 1
+Nome Autor: David A. Grimes Frequencia: 1
+Nome Autor: Steve Lichtenberg Frequencia: 1
+Nome Autor: Zoe Jordan Frequencia: 1
+Nome Autor: Alan Pearson Frequencia: 1
+Nome Autor: Charles William Woodworth Frequencia: 1
+Nome Autor: Warren Lee Cohen Frequencia: 1
+Nome Autor: Rachel Ormston Frequencia: 1
+Nome Autor: J David F Windish Frequencia: 1
+Nome Autor: Chu Sung-Chi Frequencia: 1
+Nome Autor: Klaus Endrullat Frequencia: 1
+Nome Autor: Diana M. Miller Frequencia: 1
+Nome Autor: Steven G. Poskanzer Frequencia: 1
+Nome Autor: Nick Veronico Frequencia: 1
+Nome Autor: Robert C. Tasker Frequencia: 1
+Nome Autor: Okan Fistikoglu Frequencia: 1
+Nome Autor: Stanislas Dehaene Frequencia: 1
+Nome Autor: Roger L. Timings Frequencia: 1
+Nome Autor: Geoffrey Waller Frequencia: 1
+Nome Autor: Bruce E. Deal Frequencia: 1
+Nome Autor: Hua Nong Ting Frequencia: 1
+Nome Autor: Charles J. R. Williams Frequencia: 1
+Nome Autor: N.A. Abu Osman Frequencia: 1
+Nome Autor: John Rooke Frequencia: 1
+Nome Autor: Julian P. Scott Frequencia: 1
+Nome Autor: De Goes Maciel Edisson Savio Frequencia: 1
+Nome Autor: Turlough Neary Frequencia: 1
+Nome Autor: Rebecca Razo Frequencia: 1
+Nome Autor: Karlheinz Schaber Frequencia: 1
+Nome Autor: Robert Lacoste Frequencia: 1
+Nome Autor: John A. Joule Frequencia: 1
+Nome Autor: Kokhichko Andrey Frequencia: 1
+Nome Autor: Dr. Richard Buckley Frequencia: 1
+Nome Autor: Sloan E. Dendy Frequencia: 1
+Nome Autor: Chrissa Kioussi Frequencia: 1
+Nome Autor: John McDonnell Frequencia: 1
+Nome Autor: Julian Richards Frequencia: 1
+Nome Autor: Abraham John Valpy Frequencia: 1
+Nome Autor: S. N. Deming Frequencia: 1
+Nome Autor: Chernet Woju Frequencia: 1
+Nome Autor: Dore Gardner Frequencia: 1
+Nome Autor: Irving Kirsch Frequencia: 1
+Nome Autor: Alan E. Wilner Frequencia: 1
+Nome Autor: Hong Guan Frequencia: 1
+Nome Autor: Sir Martin Sorrell Frequencia: 1
+Nome Autor: Katharine Hill Frequencia: 1
+Nome Autor: Amy Brown Frequencia: 1
+Nome Autor: Gunther Nausch Frequencia: 1
+Nome Autor: Oliver Michalski Frequencia: 1
+Nome Autor: Jukka Riekki Frequencia: 1
+Nome Autor: Cap Sease Frequencia: 1
+Nome Autor: A Lincolnshire Grazier Frequencia: 1
+Nome Autor: Louis Benjamin Frequencia: 1
+Nome Autor: M. Schüssler Frequencia: 1
+Nome Autor: Suryadipta Majumdar Frequencia: 1
+Nome Autor: Guoping Zhang Frequencia: 1
+Nome Autor: Andrew Zbar Frequencia: 1
+Nome Autor: Steven T. Wax Frequencia: 1
+Nome Autor: Richard Marson Frequencia: 1
+Nome Autor: Justin McLachlan Frequencia: 1
+Nome Autor: Steve Hockensmith Frequencia: 1
+Nome Autor: Mary McGarry Morris Frequencia: 1
+Nome Autor: Sax Rohmer Frequencia: 1
+Nome Autor: Milton L. Scott Frequencia: 1
+Nome Autor: Todd May Frequencia: 1
+Nome Autor: W. Darlene Reid Frequencia: 1
+Nome Autor: Aric Rindfleisch Frequencia: 1
+Nome Autor: Ellen Chung Frequencia: 1
+Nome Autor: Melissa Michaels Frequencia: 1
+Nome Autor: Safe Havens International Frequencia: 1
+Nome Autor: Jonathan Bernstein Frequencia: 1
+Nome Autor: Jo Turner Frequencia: 1
+Nome Autor: Michael D'Orso Frequencia: 1
+Nome Autor: Lotus Publishing Amber Frequencia: 1
+Nome Autor: George A Martin Frequencia: 1
+Nome Autor: Lyle A Wolfskill Frequencia: 1
+Nome Autor: Agency For International Development Frequencia: 1
+Nome Autor: Thomas M Zelker Frequencia: 1
+Nome Autor: Sanghamitra Mohanty Frequencia: 2
+Nome Autor: Christine C. Forner Frequencia: 1
+Nome Autor: Giles Downes Frequencia: 1
+Nome Autor: Ariane Ruff Frequencia: 1
+Nome Autor: Melike Erol-Kantarci Frequencia: 1
+Nome Autor: Patrick Devine-Wright Frequencia: 1
+Nome Autor: Nick Raeside Frequencia: 1
+Nome Autor: Gergory a Boyd J D Frequencia: 1
+Nome Autor: Herman J. Selderhuis Frequencia: 1
+Nome Autor: OTW Dogs Frequencia: 1
+Nome Autor: Jimmy Evans Frequencia: 1
+Nome Autor: Sandro Mecozzi Frequencia: 1
+Nome Autor: Daniel Borlik Frequencia: 1
+Nome Autor: Andrew G Spyrou Frequencia: 1
+Nome Autor: Ingrid Bay-larsen Frequencia: 1
+Nome Autor: Norio Fukami Frequencia: 1
+Nome Autor: Roma M. Harris Frequencia: 1
+Nome Autor: Gerard Beaur Frequencia: 1
+Nome Autor: Theresa Byrd Frequencia: 1
+Nome Autor: Elizabeth Beall Frequencia: 1
+Nome Autor: Kanwal Rai Frequencia: 1
+Nome Autor: Paul McRae Frequencia: 1
+Nome Autor: F. Horan Frequencia: 1
+Nome Autor: Mohamed Djemai Frequencia: 1
+Nome Autor: Bae P. Chu Frequencia: 1
+Nome Autor: Jeannette Woodward Frequencia: 1
+Nome Autor: Jonathan W. Kanter Frequencia: 1
+Nome Autor: Ewa Szczyglowska Frequencia: 1
+Nome Autor: Radha Viswanath Frequencia: 1
+Nome Autor: Heather Kenyon Casey Frequencia: 1
+Nome Autor: Arthur Clay Magill Frequencia: 1
+Nome Autor: Kathryn L Wiens Frequencia: 1
+Nome Autor: Stephen Rainbow Frequencia: 1
+Nome Autor: Severino Baraldi Frequencia: 1
+Nome Autor: Jacqueline McIntyre Frequencia: 1
+Nome Autor: T. P. Mommsen Frequencia: 1
+Nome Autor: Ehsan Samei Frequencia: 1
+Nome Autor: Bo Xu Frequencia: 2
+Nome Autor: T. Macko Frequencia: 1
+Nome Autor: Zbigniew Suraj Frequencia: 1
+Nome Autor: Tanja Zimmerman Frequencia: 1
+Nome Autor: Sally Edmondson Frequencia: 1
+Nome Autor: Marco Roffi Frequencia: 1
+Nome Autor: William Thomas Frequencia: 1
+Nome Autor: Michael Tsang Frequencia: 1
+Nome Autor: Bryan Hanson Frequencia: 1
+Nome Autor: Muscle & Fitness Frequencia: 1
+Nome Autor: Amy Lucas Frequencia: 1
+Nome Autor: P Proud Frequencia: 1
+Nome Autor: Mary Jung Frequencia: 1
+Nome Autor: Alfred F. Tallia Frequencia: 1
+Nome Autor: Debra Klamen Frequencia: 1
+Nome Autor: Larry Bird Frequencia: 1
+Nome Autor: Jean Nisbett Frequencia: 1
+Nome Autor: Dr Rameck Hunt Frequencia: 1
+Nome Autor: Malcolm Jeeves Frequencia: 1
+Nome Autor: David Spiegel Frequencia: 1
+Nome Autor: Kate Elias Frequencia: 1
+Nome Autor: Gerald C. Ruppenthal Frequencia: 1
+Nome Autor: Simon Biggs Frequencia: 1
+Nome Autor: Charles Monroe-Kane Frequencia: 2
+Nome Autor: Vicky Bell Frequencia: 1
+Nome Autor: William J. Kraemer Frequencia: 1
+Nome Autor: Heinrich J. Volk Frequencia: 1
+Nome Autor: Ronald M. Shapiro Frequencia: 1
+Nome Autor: Retired Technical Services Librarian David Powell Frequencia: 1
+Nome Autor: William Waldron Frequencia: 1
+Nome Autor: Mira Kartiwi Frequencia: 1
+Nome Autor: Charles Roger Frequencia: 1
+Nome Autor: Paul A. Moore Frequencia: 1
+Nome Autor: Jane Richards Frequencia: 1
+Nome Autor: Professional Languageprep Frequencia: 1
+Nome Autor: Arkadii Kh. Gelig Frequencia: 1
+Nome Autor: Alexander N. Churilov Frequencia: 1
+Nome Autor: R O Blechman Frequencia: 1
+Nome Autor: Rogue Monk Frequencia: 1
+Nome Autor: Janice Singer Frequencia: 3
+Nome Autor: Sadie Lane Frequencia: 1
+Nome Autor: Louis-Therese De Jesus-Agonisant Frequencia: 1
+Nome Autor: Patrick Goodman Frequencia: 1
+Nome Autor: Brian S. Beale Frequencia: 1
+Nome Autor: David E. Perry Frequencia: 1
+Nome Autor: La Belle Femme Frequencia: 1
+Nome Autor: Nadia Papamichail Frequencia: 1
+Nome Autor: Simon French Frequencia: 1
+Nome Autor: Leo Bormans Frequencia: 1
+Nome Autor: Mayorga M Paloma Frequencia: 1
+Nome Autor: Lauren Lopez Frequencia: 1
+Nome Autor: Nicolas Trembley Frequencia: 1
+Nome Autor: Clara Ernst Frequencia: 1
+Nome Autor: H M Gousha Frequencia: 1
+Nome Autor: Mary Durack Frequencia: 1
+Nome Autor: Holly Koelling Frequencia: 1
+Nome Autor: M Arts Frequencia: 1
+Nome Autor: Aleksandr Breshenkov Frequencia: 1
+Nome Autor: Sarah Smith Jones Frequencia: 1
+Nome Autor: Marshall Cavendish Corporation Frequencia: 1
+Nome Autor: Doris L. Jones Frequencia: 1
+Nome Autor: A. C.  PH. B. Dingwall Frequencia: 1
+Nome Autor: Randall T. Higashida Frequencia: 1
+Nome Autor: Rajesh Joseph Abraham Frequencia: 1
+Nome Autor: Steve Coulter Frequencia: 1
+Nome Autor: Jacquie Barker Frequencia: 1
+Nome Autor: Elise Marie Collins Frequencia: 1
+Nome Autor: Jamie Pittock Frequencia: 1
+Nome Autor: Nguyen X. Vinh Frequencia: 1
+Nome Autor: Carme Torras Frequencia: 1
+Nome Autor: Andreas Frommer Frequencia: 1
+Nome Autor: Albrecht Darimont Frequencia: 1
+Nome Autor: Johannes Retti Frequencia: 1
+Nome Autor: Karl Leidlmair Frequencia: 1
+Nome Autor: Michael Curry Frequencia: 1
+Nome Autor: Paul Brown Frequencia: 1
+Nome Autor: Niraj Mahajan Frequencia: 1
+Nome Autor: Malgorzata Pankowska Frequencia: 1
+Nome Autor: Sherrie Krantz Frequencia: 1
+Nome Autor: The Sun Frequencia: 1
+Nome Autor: H.Joe Bearden Frequencia: 2
+Nome Autor: Andre Ramirez Frequencia: 1
+Nome Autor: Anita Slivey Frequencia: 1
+Nome Autor: Andrey Kuznetsov Frequencia: 1
+Nome Autor: Guillermo Valencia Frequencia: 1
+Nome Autor: Yanjun Qiu Frequencia: 2
+Nome Autor: Gary Saul Morson Frequencia: 1
+Nome Autor: Kartogr Afiai V Allalat Szerkeszt Obizotts Aga Frequencia: 1
+Nome Autor: Becky Paton Frequencia: 1
+Nome Autor: Marie Segal Frequencia: 1
+Nome Autor: Sandy Black Frequencia: 1
+Nome Autor: Cecilia Heffernan Frequencia: 1
+Nome Autor: Norman Richard Draper Frequencia: 1
+Nome Autor: Christopher Harding Frequencia: 1
+Nome Autor: Derek Roberts Frequencia: 1
+Nome Autor: A. J. Edwards Frequencia: 1
+Nome Autor: Abdulla S. Rangwala Frequencia: 1
+Nome Autor: Denny K. Miu Frequencia: 1
+Nome Autor: John Darby Frequencia: 1
+Nome Autor: Journals to Write in Frequencia: 1
+Nome Autor: Katy Smail Frequencia: 1
+Nome Autor: Helmut Waibl Frequencia: 1
+Nome Autor: Wilfrid Lefer Frequencia: 1
+Nome Autor: Peter J. Taub Frequencia: 1
+Nome Autor: Danny O. Jacobs Frequencia: 1
+Nome Autor: Ashok Garg Frequencia: 1
+Nome Autor: Miranda Threlfall-Holmes Frequencia: 1
+Nome Autor: David Sadzin Frequencia: 1
+Nome Autor: K. Kobayashi Frequencia: 1
+Nome Autor: Victoria Kimbrough Frequencia: 1
+Nome Autor: Joyce Geisler Frequencia: 1
+Nome Autor: Jeanette Zaichkin Frequencia: 1
+Nome Autor: Michele Wilcox Frequencia: 1
+Nome Autor: Sato Watanabe Frequencia: 1
+Nome Autor: Jacqueline Mroz Frequencia: 1
+Nome Autor: Måns Söderbom Frequencia: 1
+Nome Autor: Anna Winterbottom Frequencia: 1
+Nome Autor: Richard Louv Frequencia: 1
+Nome Autor: Spak Frequencia: 1
+Nome Autor: George M Keen Frequencia: 1
+Nome Autor: Rudolph Ballentine Frequencia: 1
+Nome Autor: Guido Visconti Frequencia: 1
+Nome Autor: Doreen M McFarlane Frequencia: 1
+Nome Autor: Paul W Worth Frequencia: 1
+Nome Autor: Guido Roberto Deiro Frequencia: 1
+Nome Autor: Masami Hagiya Frequencia: 1
+Nome Autor: Lisa Tortell Frequencia: 1
+Nome Autor: David Songstad Frequencia: 1
+Nome Autor: Min-Ling Zhang Frequencia: 1
+Nome Autor: Rachel Lane & Noel Whittaker Frequencia: 1
+Nome Autor: Jay Liu Frequencia: 1
+Nome Autor: Charles Olivier Frequencia: 1
+Nome Autor: Christine Orengo Frequencia: 1
+Nome Autor: Elger Heere Frequencia: 1
+Nome Autor: Virginia Gleser Frequencia: 1
+Nome Autor: O Eckel Frequencia: 1
+Nome Autor: Bruno Bonifacio Frequencia: 1
+Nome Autor: D. N. Schulz Frequencia: 1
+Nome Autor: G.A. Stahl Frequencia: 1
+Nome Autor: Stephen Lax Frequencia: 1
+Nome Autor: Dr. Kaushik Roy Frequencia: 1
+Nome Autor: Jeffrey H. Siewerdsen Frequencia: 1
+Nome Autor: Ken Carter Frequencia: 1
+Nome Autor: Fiametta Rocco Frequencia: 1
+Nome Autor: Loretta Ann Shepherd Frequencia: 1
+Nome Autor: Maurice B. Mittelmark Frequencia: 1
+Nome Autor: Cemal Cingi Frequencia: 1
+Nome Autor: Orin Bloch Frequencia: 1
+Nome Autor: Alejandro Alonso Leal Frequencia: 1
+Nome Autor: Kevin Haaland Frequencia: 1
+Nome Autor: James Cruikshank Roger Frequencia: 1
+Nome Autor: June Etta Downey Frequencia: 1
+Nome Autor: Marian Van Eyk McCain Frequencia: 1
+Nome Autor: Sinem Avci Frequencia: 1
+Nome Autor: Frank H. Netter Frequencia: 1
+Nome Autor: Wild & Free Lifestyle Journals Frequencia: 1
+Nome Autor: Ana Paula Ferreira Frequencia: 1
+Nome Autor: A. Suryanarayana Frequencia: 1
+Nome Autor: Charles C. Snow Frequencia: 1
+Nome Autor: Alain Boublil Frequencia: 1
+Nome Autor: Herbert Kretzmer Frequencia: 1
+Nome Autor: Claude-Michel Schonberg Frequencia: 1
+Nome Autor: Yashwant Pathak Frequencia: 1
+Nome Autor: Alan Blakeman Frequencia: 1
+Nome Autor: Loukas Tsoukalis Frequencia: 1
+Nome Autor: Cathryn L. Lombardi Frequencia: 1
+Nome Autor: Tamer Shaban Frequencia: 1
+Nome Autor: Raymond Chip Tafrate Frequencia: 1
+Nome Autor: Evette Rose Frequencia: 1
+Nome Autor: Peter Samis Frequencia: 1
+Nome Autor: Password Books Frequencia: 1
+Nome Autor: Euan Morton Frequencia: 1
+Nome Autor: Louis Heyse-Moore Frequencia: 1
+Nome Autor: George a Duckett Frequencia: 1
+Nome Autor: Jonas Gomes Frequencia: 1
+Nome Autor: Mimi Planners Frequencia: 1
+Nome Autor: Asran Khan Frequencia: 1
+Nome Autor: John R Gribbin Frequencia: 1
+Nome Autor: Jason De Medeiros Frequencia: 1
+Nome Autor: John M. Weeks Frequencia: 1
+Nome Autor: King Solomon Frequencia: 1
+Nome Autor: Qishan Zhang Frequencia: 1
+Nome Autor: Heather Salter Frequencia: 1
+Nome Autor: Jody Failoni Frequencia: 1
+Nome Autor: Brent Hall Frequencia: 1
+Nome Autor: Simon Garner Frequencia: 1
+Nome Autor: Archana Venkataraman Frequencia: 1
+Nome Autor: John Rinaldi Frequencia: 1
+Nome Autor: Wim Vanhaverbeke Frequencia: 1
+Nome Autor: Ed Goshe Frequencia: 1
+Nome Autor: John Cochrane Frequencia: 1
+Nome Autor: David S. Percy Frequencia: 1
+Nome Autor: Stephen Wander Frequencia: 1
+Nome Autor: Greg Lenburg Frequencia: 1
+Nome Autor: Agostoni Stefano Frequencia: 1
+Nome Autor: Pascal Villard Frequencia: 1
+Nome Autor: Yang Yang Frequencia: 1
+Nome Autor: Soren Gray Frequencia: 1
+Nome Autor: Annu Jalais Frequencia: 1
+Nome Autor: Colin Watson Frequencia: 2
+Nome Autor: Rex D. Pieper Frequencia: 1
+Nome Autor: A. T. Williams Frequencia: 1
+Nome Autor: F.B. Schneider Frequencia: 1
+Nome Autor: Katy Archer Frequencia: 1
+Nome Autor: Peter F Biehl Frequencia: 1
+Nome Autor: Flavia Bruni Frequencia: 1
+Nome Autor: Beth Fischer Frequencia: 1
+Nome Autor: Dee Lane Frequencia: 1
+Nome Autor: Rob Sperry Frequencia: 1
+Nome Autor: Kirsten Asmussen Frequencia: 1
+Nome Autor: GTI Specialists Frequencia: 1
+Nome Autor: Andrew Beckerman-Rodau Frequencia: 1
+Nome Autor: James B. Cox Frequencia: 1
+Nome Autor: Yuan Yan Tang Frequencia: 1
+Nome Autor: Hans-Peter Kuhnen Frequencia: 1
+Nome Autor: Adam L. Kushner Frequencia: 1
+Nome Autor: Joe Walewski Frequencia: 1
+Nome Autor: Robert A. Grace Frequencia: 1
+Nome Autor: Jeanenne Bell Frequencia: 1
+Nome Autor: Monalisa Biswal Frequencia: 1
+Nome Autor: Suzy Kline Frequencia: 1
+Nome Autor: ROY LIVERMORE Frequencia: 1
+Nome Autor: C. F. Tunnicliffe Frequencia: 1
+Nome Autor: Verma Pawan Kumar Frequencia: 1
+Nome Autor: Mark Horninger Frequencia: 1
+Nome Autor: Francis A. Kwansa Frequencia: 1
+Nome Autor: Jennifer Tucker Frequencia: 1
+Nome Autor: Kevin Kulp Frequencia: 1
+Nome Autor: Per Teodor Cleve Frequencia: 1
+Nome Autor: Henry Maple Frequencia: 1
+Nome Autor: Jacob Sheep Society Frequencia: 1
+Nome Autor: Melvin T. Tyree Frequencia: 1
+Nome Autor: Ilan Stavans Frequencia: 1
+Nome Autor: Scott Weidensaul Frequencia: 1
+Nome Autor: Steven Wright Frequencia: 1
+Nome Autor: Gordon S. Wood Frequencia: 1
+Nome Autor: Michael Burleigh Frequencia: 1
+Nome Autor: J Michael Dixon Frequencia: 1
+Nome Autor: Rakesh P. Patel Frequencia: 1
+Nome Autor: Eibhlin Conneally Frequencia: 1
+Nome Autor: Compass Frequencia: 1
+Nome Autor: Autism Publishing Frequencia: 1
+Nome Autor: Leslie A. Curry Frequencia: 1
+Nome Autor: Eva Krois Frequencia: 1
+Nome Autor: A.D. Godley Frequencia: 2
+Nome Autor: David C. Evans Frequencia: 1
+Nome Autor: Wolf Schamberger Frequencia: 1
+Nome Autor: Larry Heinemann Frequencia: 1
+Nome Autor: Gavin Stamp Frequencia: 1
+Nome Autor: Atty Wanda Naylor Frequencia: 1
+Nome Autor: Institute of Food Research Frequencia: 1
+Nome Autor: Jeremy Naydler Frequencia: 1
+Nome Autor: Paul Gardner Frequencia: 1
+Nome Autor: Passionate Publishing Frequencia: 2
+Nome Autor: Loriene Roy Frequencia: 1
+Nome Autor: Donald Edward Kendall Frequencia: 1
+Nome Autor: Shmuel Zaks Frequencia: 1
+Nome Autor: Susan Rennie Frequencia: 1
+Nome Autor: Barb Tourtillotte Frequencia: 1
+Nome Autor: Marsha Fralick Frequencia: 1
+Nome Autor: Peter Fritsch Frequencia: 1
+Nome Autor: Tiao-Virirak Kattygnarath MD Frequencia: 1
+Nome Autor: Kyan Douglas Frequencia: 1
+Nome Autor: Jonathan Maberry Frequencia: 1
+Nome Autor: Al Winseman Frequencia: 1
+Nome Autor: Jonathan McKee Frequencia: 1
+Nome Autor: Niamh O'Keeffe Frequencia: 1
+Nome Autor: Subhangi Dutta Frequencia: 1
+Nome Autor: Kumar Rakesh Frequencia: 1
+Nome Autor: David Gaughan Frequencia: 1
+Nome Autor: Andreas Wittlinger Frequencia: 1
+Nome Autor: Uwe Sonnewald Frequencia: 1
+Nome Autor: James Nelson Fraser Frequencia: 1
+Nome Autor: Ann Parsons Holte Frequencia: 1
+Nome Autor: Mandeep S. Dhillon Frequencia: 1
+Nome Autor: Marco Santonico Frequencia: 1
+Nome Autor: P. S. Panesar Frequencia: 1
+Nome Autor: Committee on Human Spaceflight Crew Operations Frequencia: 2
+Nome Autor: J A Summers Frequencia: 1
+Nome Autor: Wayne Weaver Frequencia: 1
+Nome Autor: Enterprises Pvt Ltd Frequencia: 1
+Nome Autor: Johannes Stein Frequencia: 1
+Nome Autor: Casey Lewis Frequencia: 1
+Nome Autor: Lisa Akbari Frequencia: 1
+Nome Autor: K. John Holmes Frequencia: 1
+Nome Autor: James B. Jacobs Frequencia: 2
+Nome Autor: Amber Heintzberger Frequencia: 1
+Nome Autor: Joris Corin Heyder Frequencia: 1
+Nome Autor: Geographia Ltd Frequencia: 1
+Nome Autor: Diana Munoz Stewart Frequencia: 1
+Nome Autor: Ellen DeGeneres Frequencia: 1
+Nome Autor: Qin Leng Frequencia: 1
+Nome Autor: Malcolm Eames Frequencia: 1
+Nome Autor: Simon Lannon Frequencia: 1
+Nome Autor: Marianna Korcyl-Wolska Frequencia: 1
+Nome Autor: John E. E. Sharpe Frequencia: 1
+Nome Autor: Judith Leigh Frequencia: 1
+Nome Autor: Joseph P. Messina Frequencia: 1
+Nome Autor: Chihiro Suematsu Frequencia: 1
+Nome Autor: Daphne Burleson Frequencia: 1
+Nome Autor: Tom Price Frequencia: 1
+Nome Autor: R.J. Sidman Frequencia: 1
+Nome Autor: Peter A. Robless Frequencia: 1
+Nome Autor: Brent Yacobucci Frequencia: 1
+Nome Autor: Paul J. Du Plessis Frequencia: 1
+Nome Autor: Shin-ming Cheng Frequencia: 1
+Nome Autor: Allison Yarrow Frequencia: 0
+Nome Autor: Min-yuh Day Frequencia: 1
+Nome Autor: R Hegnauer Frequencia: 1
+Nome Autor: J. P. Miksche Frequencia: 1
+Nome Autor: Kevin Tsang Frequencia: 1
+Nome Autor: P Mueller Frequencia: 1
+Nome Autor: Bobbie Peers Frequencia: 1
+Nome Autor: William McIlvanney Frequencia: 0
+Nome Autor: Joint working Group of ACDP and SEAC Frequencia: 1
+Nome Autor: Nick Watson Frequencia: 1
+Nome Autor: Tracy Lapworth Frequencia: 1
+Nome Autor: Sameena Mulla Frequencia: 1
+Nome Autor: Chantal Balley Frequencia: 1
+Nome Autor: Alan E. Sanderfoot Frequencia: 1
+Nome Autor: Judith Kolberg Frequencia: 1
+Nome Autor: Connor Jones Frequencia: 1
+Nome Autor: Bo Brock Frequencia: 1
+Nome Autor: O. L. Dvorkin Frequencia: 1
+Nome Autor: Sirong Yi Frequencia: 1
+Nome Autor: Martha Maeda Frequencia: 1
+Nome Autor: Gerald M. Bennett Frequencia: 1
+Nome Autor: Chryssa Kouveliotou Frequencia: 1
+Nome Autor: Walter Hes Frequencia: 1
+Nome Autor: Naxos Classic Cds Frequencia: 1
+Nome Autor: S y M Wong-A-Ton Frequencia: 1
+Nome Autor: Antonio Portero Frequencia: 1
+Nome Autor: Sean Dillon Frequencia: 1
+Nome Autor: Martyn Underwood Frequencia: 1
+Nome Autor: Ian Whitelaw Frequencia: 1
+Nome Autor: Bruce Turkel Frequencia: 1
+Nome Autor: Michelle Louise Atkin Frequencia: 1
+Nome Autor: Michael A. Gropper Frequencia: 1
+Nome Autor: Barbara Griggs Frequencia: 1
+Nome Autor: Joachim Vette Frequencia: 1
+Nome Autor: D.B.v. Bassewitz Frequencia: 1
+Nome Autor: Philip Langdon Frequencia: 1
+Nome Autor: Mark Selden Frequencia: 1
+Nome Autor: Dr Paul Miller Frequencia: 1
+Nome Autor: Una McMahon-Beattie Frequencia: 1
+Nome Autor: Harold Goldwhite Frequencia: 1
+Nome Autor: Tara Cottrell Frequencia: 1
+Nome Autor: Emily Burbank Frequencia: 1
+Nome Autor: Mark Bryant Frequencia: 1
+Nome Autor: J. Wright Frequencia: 1
+Nome Autor: Imma Pla Frequencia: 1
+Nome Autor: Claire Bruton Frequencia: 1
+Nome Autor: Sean Ahlquist Frequencia: 1
+Nome Autor: Brendan Dooley Frequencia: 1
+Nome Autor: MapEasy Inc. Frequencia: 1
+Nome Autor: Robert G. Weiner Frequencia: 1
+Nome Autor: Carol J. Buck Frequencia: 1
+Nome Autor: Sami Paavola Frequencia: 1
+Nome Autor: Linda Dalrymple Henderson Frequencia: 1
+Nome Autor: Anne Moen Frequencia: 1
+Nome Autor: Charlotte J Barel Frequencia: 1
+Nome Autor: Charles V. Rades Frequencia: 1
+Nome Autor: Loch K. Johnson Frequencia: 1
+Nome Autor: Matt Merritt Frequencia: 1
+Nome Autor: Chye Tan Frequencia: 1
+Nome Autor: Heidi Gildemeister Frequencia: 1
+Nome Autor: Marcel Veenswijk Frequencia: 2
+Nome Autor: Phat Dog Vintage Frequencia: 3
+Nome Autor: Carroll Siu Frequencia: 1
+Nome Autor: Adoración  Pérez Sánchez Frequencia: 1
+Nome Autor: Shaun Greenhalgh Frequencia: 1
+Nome Autor: Lori D. Daniels Frequencia: 1
+Nome Autor: T S Rana Frequencia: 1
+Nome Autor: Ursula S Bechert Frequencia: 1
+Nome Autor: Gregg Korrol Frequencia: 1
+Nome Autor: Joseph E. Taylor Frequencia: 1
+Nome Autor: Kate Rawson Frequencia: 1
+Nome Autor: David Southwell Frequencia: 1
+Nome Autor: Herb Weisser Frequencia: 1
+Nome Autor: Emerole Christopher Frequencia: 1
+Nome Autor: Robin A. Vaughan Frequencia: 1
+Nome Autor: En Hsun Choi Frequencia: 1
+Nome Autor: Jacques Patuelli Frequencia: 1
+Nome Autor: Deepak Subedi Frequencia: 1
+Nome Autor: Enid Bagnold Frequencia: 1
+Nome Autor: Charles Nordhoff Frequencia: 1
+Nome Autor: Lane Frequencia: 1
+Nome Autor: Mike Langman Frequencia: 1
+Nome Autor: O. Lopez-Cruz Frequencia: 1
+Nome Autor: D. Hughes Frequencia: 1
+Nome Autor: Carsten Brinkschulte Frequencia: 1
+Nome Autor: John A. McDermid Frequencia: 1
+Nome Autor: D. E. Rydeheard Frequencia: 1
+Nome Autor: David Beever Frequencia: 1
+Nome Autor: Marie Pinak Carr Frequencia: 1
+Nome Autor: J. A. Roth Frequencia: 1
+Nome Autor: H. R. Parsani Frequencia: 1
+Nome Autor: Inge Lotsberg Frequencia: 1
+Nome Autor: Florence A Merriam Frequencia: 1
+Nome Autor: A. Croxton Smith Frequencia: 1
+Nome Autor: Bhupendra P. Doctor Frequencia: 1
+Nome Autor: Leszek Drobiazgiewicz Frequencia: 1
+Nome Autor: A.S. Balasubramanian Frequencia: 1
+Nome Autor: Amal K. Mukhopadhyay Frequencia: 1
+Nome Autor: Alexandru Dumitrescu Frequencia: 1
+Nome Autor: Bernard Pajot Frequencia: 1
+Nome Autor: Daisuke Okabe Frequencia: 1
+Nome Autor: S W Straus Frequencia: 1
+Nome Autor: David Pearce Frequencia: 1
+Nome Autor: Clare Carlisle Frequencia: 1
+Nome Autor: C L Patten Frequencia: 1
+Nome Autor: Piotr Tereszkiewicz Frequencia: 1
+Nome Autor: Kellie Ploeger Cox Frequencia: 1
+Nome Autor: Angie Smibert Frequencia: 1
+Nome Autor: Francesco Lacava Frequencia: 1
+Nome Autor: Guillaume Ginot Frequencia: 1
+Nome Autor: Hwa Young Jeong Frequencia: 1
+Nome Autor: William V. Bernard Frequencia: 1
+Nome Autor: John Kenneth Galbraith Frequencia: 1
+Nome Autor: Scott Stuart Frequencia: 1
+Nome Autor: Jonathan Benger Frequencia: 1
+Nome Autor: Marsden Epworth Frequencia: 1
+Nome Autor: Daniel A Martens Yaverbaum Frequencia: 1
+Nome Autor: Andrea Sommariva Frequencia: 1
+Nome Autor: Walter Huda Frequencia: 1
+Nome Autor: Dickon Ross Frequencia: 1
+Nome Autor: Nicholas Turland Frequencia: 1
+Nome Autor: Fiona Gallagher Frequencia: 1
+Nome Autor: Suzanne Gilad Frequencia: 1
+Nome Autor: Elaine Mohn-Brown Frequencia: 1
+Nome Autor: Karen M. Burke Frequencia: 1
+Nome Autor: Fred Nind Frequencia: 1
+Nome Autor: Stefano Fiorito Frequencia: 1
+Nome Autor: Ward Farnsworth Frequencia: 1
+Nome Autor: Robert Tamsma Frequencia: 1
+Nome Autor: Eric J. Levitt Frequencia: 1
+Nome Autor: Lyesse Laloui Frequencia: 1
+Nome Autor: Lenthall Wyman Frequencia: 1
+Nome Autor: Shuliang Wang Frequencia: 1
+Nome Autor: Xufeng Zhao Frequencia: 1
+Nome Autor: Steven D Waldman MD Jd Frequencia: 1
+Nome Autor: Sam Sommers Frequencia: 1
+Nome Autor: John P. Paone Frequencia: 1
+Nome Autor: Balasubramanian T Frequencia: 1
+Nome Autor: Ajith Kumar T T Frequencia: 1
+Nome Autor: Przemyslaw Ciszek Frequencia: 1
+Nome Autor: Bendithodson Frequencia: 1
+Nome Autor: Jon Moscone Frequencia: 1
+Nome Autor: Dorin Bogdan Mihalache Frequencia: 1
+Nome Autor: Anton MarkoS Frequencia: 1
+Nome Autor: Gary Fisher Dawson Frequencia: 1
+Nome Autor: Mary Bauer Frequencia: 1
+Nome Autor: Desi Nrothup Frequencia: 1
+Nome Autor: BradyGames Frequencia: 1
+Nome Autor: Piggyback Frequencia: 1
+Nome Autor: Stefanie Schroer Frequencia: 1
+Nome Autor: Victoria Bishop Kendzia Frequencia: 1
+Nome Autor: S. P. Udayakumar Frequencia: 1
+Nome Autor: Rene Monnier Frequencia: 1
+Nome Autor: David F. Tolin Frequencia: 2
+Nome Autor: Michael A. Dopita Frequencia: 1
+Nome Autor: Bill Gunston Frequencia: 1
+Nome Autor: John F. Prescott Frequencia: 1
+Nome Autor: David Gibbs Frequencia: 1
+Nome Autor: Alec Willows Frequencia: 1
+Nome Autor: G. H. Mendell Frequencia: 1
+Nome Autor: Vida L. Midgelow Frequencia: 1
+Nome Autor: Hugh Williams Frequencia: 1
+Nome Autor: Jun Mitsuhashi Frequencia: 1
+Nome Autor: Jean Bottero Frequencia: 1
+Nome Autor: Tim Bliss Frequencia: 1
+Nome Autor: Raymond D Modglin Frequencia: 1
+Nome Autor: Porus Munshi Frequencia: 1
+Nome Autor: Coyne Steven Sanders Frequencia: 1
+Nome Autor: Bernd Jähne Frequencia: 1
+Nome Autor: Melanie McCabe White Frequencia: 1
+Nome Autor: Andreas Fickers Frequencia: 1
+Nome Autor: Stefan Kaczmarek Frequencia: 1
+Nome Autor: Megan Farwell Frequencia: 1
+Nome Autor: R. Guy Rothwell Frequencia: 1
+Nome Autor: Ben Lerner Frequencia: 1
+Nome Autor: Robyn MacDonald Frequencia: 1
+Nome Autor: A. V. Bruschke Frequencia: 1
+Nome Autor: Singh Ajit Frequencia: 1
+Nome Autor: Augustus D. Mazzocca Frequencia: 1
+Nome Autor: Richard E. Thompson Frequencia: 1
+Nome Autor: Amber Green Frequencia: 1
+Nome Autor: Heymann-Reder Dorothea Frequencia: 1
+Nome Autor: Major William Chamberlaine Frequencia: 1
+Nome Autor: Jonathan Rushton Frequencia: 1
+Nome Autor: Dominique Kaehler Schweizer Frequencia: 1
+Nome Autor: Mikel A. Rothenberg Frequencia: 1
+Nome Autor: Roland Tschudin-Zulehner Frequencia: 1
+Nome Autor: Andrea Rowland-Fisher Frequencia: 1
+Nome Autor: Gabrielle Bell Frequencia: 1
+Nome Autor: National Learning Corporation Frequencia: 2
+Nome Autor: Harbrace Frequencia: 1
+Nome Autor: Naxos Audiobooks Frequencia: 1
+Nome Autor: Leon Sun Frequencia: 1
+Nome Autor: Joint Fao Who Expert Committee on Food Additives Frequencia: 1
+Nome Autor: Kent Zimmerman Frequencia: 1
+Nome Autor: Charles F Haanel Frequencia: 2
+Nome Autor: Majella J. Taylor Frequencia: 1
+Nome Autor: Demetrio Filocamo Frequencia: 1
+Nome Autor: M. C. Howatson Frequencia: 1
+Nome Autor: Gary Dorrien Frequencia: 1
+Nome Autor: Anita Schoebel Frequencia: 1
+Nome Autor: Sunny Journals Frequencia: 1
+Nome Autor: Sunandha Raghunathan Frequencia: 1
+Nome Autor: Sealion Press Frequencia: 1
+Nome Autor: Geninne D Zlatkis Frequencia: 1
+Nome Autor: Babanana Kids Frequencia: 1
+Nome Autor: J E Creighton Frequencia: 1
+Nome Autor: Arnaud Chevallier Frequencia: 1
+Nome Autor: A M Villon Frequencia: 1
+Nome Autor: Rein Tideiksaar Frequencia: 1
+Nome Autor: Steven M. Girvin Frequencia: 1
+Nome Autor: The Marquess Reading Frequencia: 1
+Nome Autor: Rajendra Sukhadeorao Dongre Frequencia: 1
+Nome Autor: K.N. Boorman Frequencia: 1
+Nome Autor: Simon Dobson Frequencia: 1
+Nome Autor: Min Kwan Kim Frequencia: 1
+Nome Autor: Mary M. Cornish Frequencia: 1
+Nome Autor: James D. Kiras Frequencia: 1
+Nome Autor: Edward F Dolan Frequencia: 1
+Nome Autor: Luis Alejandro Galeano Frequencia: 1
+Nome Autor: Edward Aguado Frequencia: 1
+Nome Autor: Paul O'Neill Ed D Frequencia: 1
+Nome Autor: Andrew Holmes Frequencia: 1
+Nome Autor: Brigid Delaney Frequencia: 1
+Nome Autor: John Moubray Frequencia: 1
+Nome Autor: Red Hawk Frequencia: 1
+Nome Autor: Martin Shenkman Frequencia: 1
+Nome Autor: Hannah Crawford Frequencia: 1
+Nome Autor: Lissa Coffey Frequencia: 1
+Nome Autor: Black & Gray Books Frequencia: 1
+Nome Autor: Annie Evans Frequencia: 1
+Nome Autor: Susan Warner Frequencia: 1
+Nome Autor: Glenn Harrold Frequencia: 1
+Nome Autor: Janet Kay Frequencia: 1
+Nome Autor: Eduard Aved'yan Frequencia: 1
+Nome Autor: Anita Zaleski Weinraub Frequencia: 1
+Nome Autor: Dariusz Kujawski Frequencia: 1
+Nome Autor: Michael Joseph Golden Frequencia: 1
+Nome Autor: Oscar Guttmann Frequencia: 1
+Nome Autor: Chrissie Astell Frequencia: 1
+Nome Autor: Gerhard Borner Frequencia: 1
+Nome Autor: Morton Wagman Frequencia: 1
+Nome Autor: James C. Peterson Frequencia: 1
+Nome Autor: Lu Ruan Frequencia: 1
+Nome Autor: Akthb Arbeitsgemeinschaft Katholisch-Theologischer Bibliotheken Frequencia: 1
+Nome Autor: David C. Marsh Frequencia: 1
+Nome Autor: Dileep Rao Frequencia: 1
+Nome Autor: James Carcaterra Frequencia: 1
+Nome Autor: Megan Amis Frequencia: 2
+Nome Autor: J. Grimm Frequencia: 1
+Nome Autor: Kevin Teasdale Frequencia: 2
+Nome Autor: Paul S.  PMP Royer Frequencia: 1
+Nome Autor: Charles Inlander Frequencia: 1
+Nome Autor: Mark Steffka Frequencia: 1
+Nome Autor: Reinmar Wolff Frequencia: 1
+Nome Autor: Divya Bhatnagar Frequencia: 1
+Nome Autor: Valentin Diaconov Frequencia: 1
+Nome Autor: Lewis Thomas Frequencia: 1
+Nome Autor: Joey Leaming Frequencia: 1
+Nome Autor: Ruth Ann Gingerich Frequencia: 2
+Nome Autor: Lilian Whiting Frequencia: 1
+Nome Autor: Antoine Labeyrie Frequencia: 1
+Nome Autor: Dietrich Manstetten Frequencia: 1
+Nome Autor: Christine Spiers Frequencia: 1
+Nome Autor: Fiona Creed Frequencia: 1
+Nome Autor: Rolf Boldrewood Frequencia: 1
+Nome Autor: Julie J. Ingersoll Frequencia: 1
+Nome Autor: Edwina Wren Frequencia: 1
+Nome Autor: Centurion Logbook Frequencia: 1
+Nome Autor: Ashish Kothari Frequencia: 1
+Nome Autor: David L. Kent Frequencia: 1
+Nome Autor: Patti Putnicki Frequencia: 1
+Nome Autor: Robert S. Menchin Frequencia: 1
+Nome Autor: Robert L Harned Frequencia: 1
+Nome Autor: Dumitru Roman Frequencia: 1
+Nome Autor: Scott La Counte Frequencia: 1
+Nome Autor: Jose Apraiz Barreiro Frequencia: 1
+Nome Autor: Simon Oskolniy Frequencia: 1
+Nome Autor: Ivan A. Parinov Frequencia: 1
+Nome Autor: Lilly J. Goren Frequencia: 1
+Nome Autor: Professor John Lea Frequencia: 1
+Nome Autor: Michael Falk Frequencia: 1
+Nome Autor: Yoel Rak Frequencia: 1
+Nome Autor: Motorcycle Safety Foundation Staff Frequencia: 1
+Nome Autor: David M. Goldenberg Frequencia: 1
+Nome Autor: Giuseppe Tucci Frequencia: 1
+Nome Autor: R P Jefferies Frequencia: 1
+Nome Autor: Richard Holdener Frequencia: 1
+Nome Autor: Xiaozhu Liu Frequencia: 2
+Nome Autor: Ron Mancini Frequencia: 1
+Nome Autor: Dewey Gram Frequencia: 1
+Nome Autor: Werner T Angress Frequencia: 1
+Nome Autor: David Crist Frequencia: 1
+Nome Autor: Hilmar Orn Hilmarsson Frequencia: 1
+Nome Autor: Michael J. Morris Frequencia: 1
+Nome Autor: Mark Lawson Frequencia: 1
+Nome Autor: Samira Yahya Frequencia: 1
+Nome Autor: Dietrich Eggers Frequencia: 0
+Nome Autor: Hugh Fielder Frequencia: 1
+Nome Autor: Sherif Aaron Abdel Latif Frequencia: 1
+Nome Autor: P. Gaillon Frequencia: 1
+Nome Autor: Steve Thorpe Frequencia: 1
+Nome Autor: Pere Lavega Burgues Frequencia: 1
+Nome Autor: Loral Langemeier Frequencia: 1
+Nome Autor: Guido De Grande Frequencia: 1
+Nome Autor: John Baechtel Frequencia: 1
+Nome Autor: I. H. McNicoll Frequencia: 1
+Nome Autor: Maurice Thompson Frequencia: 1
+Nome Autor: Daniel Cook Johnson Frequencia: 1
+Nome Autor: John L. MacKay Frequencia: 1
+Nome Autor: Laminating Services Frequencia: 1
+Nome Autor: Vladimir Vantsevich Frequencia: 1
+Nome Autor: Caroline Dunford Frequencia: 1
+Nome Autor: Annie Aldington Frequencia: 1
+Nome Autor: Penny Kline Frequencia: 1
+Nome Autor: Anthony Quinn Frequencia: 1
+Nome Autor: J.W. Clarke Frequencia: 1
+Nome Autor: Erik Nelson Frequencia: 1
+Nome Autor: Gaga Umukoro Frequencia: 1
+Nome Autor: Acls Gift Frequencia: 1
+Nome Autor: A. Gurgui Frequencia: 1
+Nome Autor: Scott W Berg Frequencia: 1
+Nome Autor: Mark Woolard Frequencia: 1
+Nome Autor: Jayne Doe Frequencia: 1
+Nome Autor: Xinheng Wang Frequencia: 1
+Nome Autor: Rodrigo Possamai Bastos Frequencia: 1
+Nome Autor: John D. Brewer Frequencia: 1
+Nome Autor: Shinya Miyagishima Frequencia: 2
+Nome Autor: Tony Buick Frequencia: 1
+Nome Autor: Kevin Lee Frequencia: 1
+Nome Autor: David W Gill Frequencia: 1
+Nome Autor: Adrian M Leske Frequencia: 1
+Nome Autor: Iria Neri Frequencia: 1
+Nome Autor: Christophe Swal Frequencia: 1
+Nome Autor: Desiree S. Ratner Frequencia: 1
+Nome Autor: Eze Aso Frequencia: 1
+Nome Autor: G. Schulz-Ekloff Frequencia: 1
+Nome Autor: Elena Kalashnikova Frequencia: 1
+Nome Autor: Dr Alice Roberts Frequencia: 1
+Nome Autor: Jackie Arundale Frequencia: 1
+Nome Autor: Jeremy Green Frequencia: 1
+Nome Autor: Lollys Publishing Frequencia: 1
+Nome Autor: Robin G. Jordan Frequencia: 1
+Nome Autor: Lynn Toler Frequencia: 1
+Nome Autor: Organized & Successfull Press Frequencia: 1
+Nome Autor: William Lyon Phelps Frequencia: 1
+Nome Autor: Mia Ahern Frequencia: 1
+Nome Autor: Victoria Alexander Frequencia: 1
+Nome Autor: James Kavanagh Frequencia: 1
+Nome Autor: Ruben Verborgh Frequencia: 1
+Nome Autor: Elna McCall Frequencia: 1
+Nome Autor: Erika Catalan Frequencia: 1
+Nome Autor: Ayala-Martinez Maricela Frequencia: 1
+Nome Autor: Antonio Bonomi Frequencia: 1
+Nome Autor: Zoran Zivkovic Frequencia: 1
+Nome Autor: Martin A. Ratcliffe Frequencia: 1
+Nome Autor: Robert Peiffer Frequencia: 1
+Nome Autor: Carolyn V. Norwood Frequencia: 1
+Nome Autor: N. Kossowsky Frequencia: 1
+Nome Autor: Bernd Brunner Frequencia: 1
+Nome Autor: Toni K Ruth Frequencia: 1
+Nome Autor: Manfred Wolff Frequencia: 1
+Nome Autor: Chelly Saenz Frequencia: 1
+Nome Autor: Family Time Frequencia: 1
+Nome Autor: Whimsical Press Frequencia: 1
+Nome Autor: Lee Anne Fennell Frequencia: 1
+Nome Autor: Bram Nauta Frequencia: 1
+Nome Autor: Jagdish Telangrao Shahu Frequencia: 1
+Nome Autor: Randall K. Martin Frequencia: 1
+Nome Autor: S.P. Tiwari Frequencia: 1
+Nome Autor: Ronald Fry Frequencia: 1
+Nome Autor: Michael Nielsen Frequencia: 1
+Nome Autor: John L. McIntosh Frequencia: 1
+Nome Autor: Donna Rehman Frequencia: 1
+Nome Autor: Hugh B Shocked Frequencia: 1
+Nome Autor: James Buffington Frequencia: 1
+Nome Autor: Jeremy W. Hayward Frequencia: 1
+Nome Autor: Johannes Kuhl Frequencia: 1
+Nome Autor: Alokendu Chatterjee Frequencia: 1
+Nome Autor: Durdica Ugarkovic Frequencia: 1
+Nome Autor: Edward J. Jennerich Frequencia: 1
+Nome Autor: Ya Li Huang Frequencia: 1
+Nome Autor: Dorothy T Firman Frequencia: 1
+Nome Autor: Jacky Akoka Frequencia: 1
+Nome Autor: Myra Arnold Frequencia: 1
+Nome Autor: Robert Pritchard Frequencia: 2
+Nome Autor: Kelting Frequencia: 1
+Nome Autor: Dereick Rushton Frequencia: 1
+Nome Autor: Jocelyn Mott Frequencia: 1
+Nome Autor: James J. Licari Frequencia: 1
+Nome Autor: Susan Bouce Frequencia: 1
+Nome Autor: Daniel John Jeffrey Frequencia: 1
+Nome Autor: Kerri Mommer Frequencia: 1
+Nome Autor: American Medical Society for Sports Medicine Frequencia: 1
+Nome Autor: J.M. Wraith Frequencia: 1
+Nome Autor: Ilchi Lee Frequencia: 1
+Nome Autor: Rick Freedman Frequencia: 1
+Nome Autor: MR Gareth Morgan Thomas Frequencia: 1
+Nome Autor: Alexis S. Tan Frequencia: 1
+Nome Autor: Andrew Ajani Frequencia: 1
+Nome Autor: Ron Waksman Frequencia: 1
+Nome Autor: Graeme Milligan Frequencia: 1
+Nome Autor: Sir George Webbe Dasent Frequencia: 1
+Nome Autor: Nicholas Raison Frequencia: 1
+Nome Autor: A. Carrella Frequencia: 1
+Nome Autor: Loudon Frequencia: 1
+Nome Autor: Arabella Boxer Frequencia: 1
+Nome Autor: Jeffrey N Pennell Frequencia: 1
+Nome Autor: Jianyong Qiao Frequencia: 1
+Nome Autor: Malcolm Jukes Frequencia: 1
+Nome Autor: Sandra Depukat Frequencia: 1
+Nome Autor: Garden Planner Frequencia: 1
+Nome Autor: Myriam Paredes Frequencia: 1
+Nome Autor: Ulrich Schmid Frequencia: 1
+Nome Autor: Nic Cameron Frequencia: 1
+Nome Autor: Auto Editors of Consumer Guide Frequencia: 1
+Nome Autor: Antonio Morilla Frequencia: 1
+Nome Autor: Mioljub Jovanovic Frequencia: 1
+Nome Autor: Wolfgang Banzhaf Frequencia: 1
+Nome Autor: Ruth Wolverton Frequencia: 1
+Nome Autor: Ross Kilburn Frequencia: 1
+Nome Autor: Rupert Belsey Frequencia: 1
+Nome Autor: Michael Wolf-Branigin Frequencia: 1
+Nome Autor: Justin McGowan Frequencia: 1
+Nome Autor: Peter Greener Frequencia: 1
+Nome Autor: Claire Rourke Frequencia: 1
+Nome Autor: David L. Brock Frequencia: 1
+Nome Autor: Shikha Nutiyal Frequencia: 1
+Nome Autor: Nicci Moorman Frequencia: 1
+Nome Autor: Henry C. Lukaski Frequencia: 1
+Nome Autor: D. Prentice Frequencia: 1
+Nome Autor: Sonia Del Carmen Cortassa Frequencia: 1
+Nome Autor: Frank G. Ashbrook Frequencia: 1
+Nome Autor: David Boud Frequencia: 1
+Nome Autor: Rodnee Wimberly Frequencia: 1
+Nome Autor: Zac Tchoundjeu Frequencia: 1
+Nome Autor: Brian J. Kirby Frequencia: 1
+Nome Autor: Gilles Delisle Frequencia: 1
+Nome Autor: Jianhua Shen Frequencia: 1
+Nome Autor: Printed Bliss Planners Frequencia: 1
+Nome Autor: Hilda L. Jay Frequencia: 1
+Nome Autor: Thomas Collins Simon Frequencia: 1
+Nome Autor: Juliana Kolesova Frequencia: 1
+Nome Autor: Masoud Aryanpour Frequencia: 1
+Nome Autor: Kathryn Reiss Frequencia: 1
+Nome Autor: Eugene Morelli Frequencia: 1
+Nome Autor: Joshua Weingreen Frequencia: 1
+Nome Autor: Mary Christensen Frequencia: 1
+Nome Autor: Eric A. Wiebke Frequencia: 1
+Nome Autor: Jim Lewis Frequencia: 1
+Nome Autor: Mansourpoor Mojtaba Frequencia: 1
+Nome Autor: Meike Herbers Frequencia: 1
+Nome Autor: Song Guo Frequencia: 1
+Nome Autor: Charles Wankel Frequencia: 1
+Nome Autor: James Newsome Frequencia: 1
+Nome Autor: Lesley A. Dickie Frequencia: 1
+Nome Autor: Steven Zangan Frequencia: 1
+Nome Autor: Tobias Beisel Frequencia: 1
+Nome Autor: Kate Hudgins Frequencia: 1
+Nome Autor: Inc Intellichoice Frequencia: 1
+Nome Autor: Layton Green Frequencia: 2
+Nome Autor: Duane Stapp Frequencia: 1
+Nome Autor: James M. Stewart Frequencia: 1
+Nome Autor: Birgit Rackel Frequencia: 1
+Nome Autor: Matthew H Edney Frequencia: 1
+Nome Autor: Anne C. Watkins Frequencia: 1
+Nome Autor: Scott H. Kurtzman Frequencia: 1
+Nome Autor: Canadian Automobile Association Frequencia: 1
+Nome Autor: Stephanie Donald Frequencia: 1
+Nome Autor: Lauryn Hill Frequencia: 1
+Nome Autor: Mouratidis Haralambos Frequencia: 1
+Nome Autor: Christoph Rampetsreiter Frequencia: 1
+Nome Autor: Gregory P Steffine Frequencia: 1
+Nome Autor: George W. Pope Frequencia: 1
+Nome Autor: R. Gilles Frequencia: 1
+Nome Autor: Waldemar Rebizant Frequencia: 1
+Nome Autor: Scott Allen Perry Frequencia: 1
+Nome Autor: Star Music Frequencia: 1
+Nome Autor: Karen Phillips Frequencia: 1
+Nome Autor: James Terry Frequencia: 1
+Nome Autor: Daniel Leslie Rich Frequencia: 1
+Nome Autor: Andrew Healey Frequencia: 1
+Nome Autor: Dong Sun Frequencia: 1
+Nome Autor: B.S. Chalk Frequencia: 1
+Nome Autor: The Planner Corner Frequencia: 1
+Nome Autor: Ian Macdougall Frequencia: 1
+Nome Autor: Mark Ea Schneider Frequencia: 1
+Nome Autor: Douglas H. Sprenkle Frequencia: 1
+Nome Autor: William E. Riebsame Frequencia: 1
+Nome Autor: Butlin Frequencia: 1
+Nome Autor: British Automobile Association Frequencia: 1
+Nome Autor: Scavinold Frequencia: 1
+Nome Autor: John Dakin Frequencia: 1
+Nome Autor: Antonio-Devaughn Frequencia: 1
+Nome Autor: Immigration Consult Frequencia: 1
+Nome Autor: Valerio Lucarini Frequencia: 1
+Nome Autor: Jarkko J. Saarinen Frequencia: 1
+Nome Autor: Erik M. Vartiainen Frequencia: 1
+Nome Autor: Hm Gousha Company Frequencia: 1
+Nome Autor: Jozef J Telega Frequencia: 1
+Nome Autor: Christine Stelzhammer Frequencia: 1
+Nome Autor: Willow Winters Frequencia: 1
+Nome Autor: Simple Happy Planner Frequencia: 1
+Nome Autor: Roy & Hg Frequencia: 1
+Nome Autor: Kathy Matilla Frequencia: 1
+Nome Autor: Annie Lorrain Smith Frequencia: 1
+Nome Autor: Michael C. Jackson Frequencia: 1
+Nome Autor: H G Solomon Frequencia: 1
+Nome Autor: C. J. Puotinen Frequencia: 1
+Nome Autor: Trebbe Johnson Frequencia: 1
+Nome Autor: Tom Whipple Frequencia: 1
+Nome Autor: Catherine Hindson Frequencia: 1
+Nome Autor: Gerhard Wehrmeyer Frequencia: 1
+Nome Autor: Richard Sieburth Frequencia: 1
+Nome Autor: Andy Brown Frequencia: 1
+Nome Autor: Allan House Frequencia: 1
+Nome Autor: Institute for the Advanced Study of Human Sexuality Frequencia: 1
+Nome Autor: Paul L Marrella Frequencia: 1
+Nome Autor: D. Asimakopoulos Frequencia: 1
+Nome Autor: Guy Du Plessis Frequencia: 1
+Nome Autor: Michael Newton Frequencia: 1
+Nome Autor: Deborah Greaves Frequencia: 1
+Nome Autor: Lars Hornuf Frequencia: 1
+Nome Autor: Robert John Thomas Frequencia: 1
+Nome Autor: Randy Enochs Frequencia: 1
+Nome Autor: Edward Saja Sanneh Frequencia: 1
+Nome Autor: Kizzie Stocker Frequencia: 1
+Nome Autor: Matthew Gream Frequencia: 1
+Nome Autor: Bren Smith Frequencia: 1
+Nome Autor: Alex Henshaw Frequencia: 1
+Nome Autor: Osvaldo Rodríguez Morán Frequencia: 1
+Nome Autor: David W. Bercot Frequencia: 1
+Nome Autor: Kathleen Walker-meikle Frequencia: 1
+Nome Autor: Michael Archer Frequencia: 1
+Nome Autor: Marge Edle Frequencia: 1
+Nome Autor: Barry Creyton Frequencia: 1
+Nome Autor: Daumantas Matulis Frequencia: 1
+Nome Autor: A. J. Pullan Frequencia: 1
+Nome Autor: Ann D Zeigler Frequencia: 2
+Nome Autor: Patricia A. Resick Frequencia: 1
+Nome Autor: Robert Leon Wilkins Frequencia: 1
+Nome Autor: Peter Barthol Frequencia: 1
+Nome Autor: Robert K. D. Peterson Frequencia: 1
+Nome Autor: Ralph Nauen Frequencia: 1
+Nome Autor: Robert H. Whitaker Frequencia: 1
+Nome Autor: Jerome J. Schleier Frequencia: 1
+Nome Autor: Peter Vaupel Frequencia: 1
+Nome Autor: George Crile Frequencia: 1
+Nome Autor: Dr Jane Wilson-Howarth Frequencia: 1
+Nome Autor: Simon John Paterson Frequencia: 1
+Nome Autor: R. L. Rankin Frequencia: 1
+Nome Autor: Retirement Tim Frequencia: 1
+Nome Autor: Craig Bartlett Frequencia: 1
+Nome Autor: Ati Teas 6 Exam Prep Team Frequencia: 1
+Nome Autor: Amy Tangerine Frequencia: 1
+Nome Autor: Anja Reich-Osang Frequencia: 1
+Nome Autor: Bob Souer Frequencia: 1
+Nome Autor: Derek Clements-Croome Frequencia: 1
+Nome Autor: Joe Ingle Frequencia: 1
+Nome Autor: Anilkumar Bhate Frequencia: 1
+Nome Autor: Tim Juravich Frequencia: 1
+
+PARTE3
+
+Arvore B (2)
+Tamanho: 1000
+Tempo de Processamento: 0.000708525
+Numero de Comparacoes: 9944
+Numero de Copias: 1831
+
+Arvore B (10)
+Tamanho: 1000
+Tempo de Processamento: 0.000835196
+Numero de Comparacoes: 14991
+Numero de Copias: 1523
+
+Arvore Vermelha e Preta
+Tamanho: 1000
+Tempo de Processamento: 0.00788913
+Numero de Comparacoes: 10208
+Numero de Copias: 572
+

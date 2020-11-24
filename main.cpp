@@ -1,526 +1,151 @@
+
+/********************************************************
+ * Henrique Colonese Echternacht             - 201835028
+ * L√≠via Pereira Oz√≥rio                      - 201835011
+ * Regina Sarah Monferrari Amorim de Paula   - 201835007
+ *******************************************************/
 #include <iostream>
-
-#define _GLIBCXX_USE_C99 1
-
 #include <string>
 #include <fstream>
 #include <map>
 #include <utility>
+#include <random>
+#include <chrono>
+#include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <random>
+#include <algorithm>
+#include <vector> 
+#include <boost/algorithm/string.hpp>
+#include "Leitura.h"
+#include "Ordenacao.h"
 #include "Book.h"
-
-#define n 60000
-#define CHEIA 0
-#define VAZIA 1
-#define BESTSELLERS 2
-#define CATEGORIES 3
-#define DESCRIPTION 4
-#define DIMENSION_X 5
-#define DIMENSION_Y 6
-#define DIMENSION_Z 7
-#define EDITION 8
-#define EDITION_STATEMENT 9
-#define FOR_AGES 10
-#define FORMAT 11
-#define ID 12
-#define ILLUSTRATIONS 13
-#define IMPRINT 14
-#define INDEX_DATE 15
-#define ISBN10 16
-#define ISBN13 17
-#define LANG 18
-#define PUBLICATION_DATE 19
-#define PUBLICATION_PLACE 20
-#define RATING_AVG 21
-#define RATING_COUNT 22
-#define TITLE 23
-#define URL 24
-#define WEIGHT 25
+#include "Author.h"
+#include "Hash.h"
+#include "ArvoreVP.h"
+#include "NoVP.h"
+#include "ArvoreB.h"
 
 using namespace std;
 
+#define MENOR -1
+#define IGUAL 0
+#define MAIOR 1
+#define INFINITO -1
+
+//int numComparacoes = 0;
+//int numCopias = 0;
+string quickk = "QuickSort";
+string mergee = "MergeSort";
+
+string arvore_b_2 = "Arvore B (2)";
+string arvore_b_10 = "Arvore B (10)";
+string arvore_vp = "Arvore Vermelha e Preta";
 
 
-///RETORNA O TAMANHO DA STRING
-int string_size(string s)
+///Escrita no arquivo de saida
+void Escrita(ofstream* Saida, string tipo_arvore, double tempo_processamento, int comparacoes, int copias, int tamanho)
 {
-        int i=0;
-        while(s[i]!='\0')
+        *Saida << tipo_arvore << endl;
+        *Saida << "Tamanho: " << tamanho << endl;
+        *Saida << "Tempo de Processamento: " << tempo_processamento << endl;
+        *Saida << "Numero de Comparacoes: " << comparacoes << endl;
+        *Saida << "Numero de Copias: " << copias << endl << endl;
+}
+
+void Escrita_parte2(ofstream* Saida, vector<Author*> autor, int m)
+{
+        *Saida << "PARTE 2" << endl;
+        *Saida << "M = " << m << endl;
+        for(int i = 0; i < m; i++)
         {
-            i++;
+          *Saida << "Nome Autor: " << autor[i]->get_nome()  << " Frequencia: " << autor[i]->get_contador() << endl;
         }
-        return i;
+        //cout << endl << endl;
 }
 
-string separar(ifstream* arquivo)
-{
-    int tamanho_line;
-    string separar, trash, line;
-    getline(*arquivo, line, '\0');
-    tamanho_line = string_size(line);
-    for(int i=0; i<tamanho_line; i++)
-    {
-        cout<<"entrei aqui4"<< endl;
-        if(line[i]== '"')
-        {
-            if(line[i+1] == ',')
-            {
-                if(line[i+2] == '"')
-                {
-                    getline(*arquivo, trash, '"');
-                    getline(*arquivo, separar, '"');
-                    getline(*arquivo, trash, ',');
-                    cout<<"entrei aqui5"<< endl;
-                    return separar;
-                }
-            }
-        }
-    }
-}
-/*
-string separar(ifstream* arquivo)
-{
-    string line, trash;
-    getline(*arquivo,trash,'"');
-    getline(*arquivo,line,'"');
-    getline(*arquivo,trash,',');
-    //getline(*arquivo,trash,'"');
-    return line;
-}
-/*
-bool verificaAtributos(int* flag, Book leituraDS)
-{
-    if(leituraDS.get_bestsellers_rank() == NULL){
-        *flag = BESTSELLERS;
-        return true;
-    }else if(leituraDS.get_categories() == NULL){
-        *flag = CATEGORIES;
-        return true;
-    }else if(leituraDS.get_description() == NULL){
-        *flag = DESCRIPTION;
-        return true;
-    }else if(leituraDS.get_dimension_x() == NULL){
-        *flag = DIMENSION_X;
-        return true;
-    }else if(leituraDS.get_dimension_y() == NULL){
-        *flag = DIMENSION_Y;
-        return true;
-    }else if(leituraDS.get_dimension_z() == NULL){
-        *flag = DIMENSION_Z;
-        return true;
-    }else if(leituraDS.get_edition() == NULL){
-        *flag = EDITION;
-        return true;
-    }else if(leituraDS.get_edition_statement() == NULL){
-        *flag = EDITION_STATEMENT;
-        return true;
-    }else if(leituraDS.get_format() == NULL){
-        *flag = FORMAT;
-        return true;
-    }else if(leituraDS.get_for_ages() == NULL){
-        *flag = FOR_AGES;
-        return true;
-    }else if(leituraDS.get_id() == NULL){
-        *flag = ID;
-        return true;
-    }else if(leituraDS.get_illustrations_note() == NULL){
-        *flag = ILLUSTRATIONS;
-        return true;
-    }else if(leituraDS.get_imprint() == NULL){
-        *flag = IMPRINT;
-        return true;
-    }else if(leituraDS.get_index_date() == NULL){
-        *flag = INDEX_DATE;
-        return true;
-    }else if(leituraDS.get_isbn10() == NULL){
-        *flag = ISBN10;
-        return true;
-    }else if(leituraDS.get_isbn13() == NULL){
-        *flag = ISBN13;
-        return true;
-    }else if(leituraDS.get_lang() == NULL){
-        *flag = LANG;
-        return true;
-    }else if(leituraDS.get_publication_date() == NULL){
-        *flag = PUBLICATION_DATE;
-        return true;
-    }else if(leituraDS.get_publication_place() == NULL){
-        *flag = PUBLICATION_PLACE;
-        return true;
-    }else if(leituraDS.get_rating_avg() == NULL){
-        *flag = RATING_AVG;
-        return true;
-    }else if(leituraDS.get_rating_count() == NULL){
-        *flag = RATING_COUNT;
-        return true;
-    }else if(leituraDS.get_title() == NULL){
-        *flag = TITLE;
-        return true;
-    }else if(leituraDS.get_url() == NULL){
-        *flag = URL;
-        return true;
-    }else if(leituraDS.get_weight() == NULL){
-        *flag = WEIGHT;
-        return true;
-    }
-    return false;
-}*/
-void imprimir(Book* leitura)
-{
-    cout << leitura->get_authors() << " - " << leitura->get_bestsellers_rank() << endl;
-}
-
-void leituraDataSet()
-{
-    ifstream arquivo;
-    arquivo.open("arquivos/dataset.csv");
-    int flag = 0;
-    if(arquivo.is_open())
-    {
-        cout<<"entrei aqui"<< endl;
-        string word, trash, line;
-        getline(arquivo,line,'\0');
-        while(!arquivo.eof())
-        {
-            Book *leituraDS;
-            leituraDS = new Book;
-
-            ///AUTOR
-            getline(arquivo,line,',');
-            //getline(arquivo,trash,'"');
-            int tamanho_line;
-            tamanho_line = string_size(line);
-            while(line[tamanho_line-1]!=']')
-            {
-                if(line[0]=='[')
-                {
-                    for(int i=1;i<tamanho_line;i++)
-                    {
-                        line[i-1]=line[i];
-                        cout<<"entrei aqui2"<< endl;
-                    }
-                }
-                leituraDS->set_authours(line);
-                getline(arquivo,line,',');
-                tamanho_line = string_size(line);
-            }
-            line[tamanho_line-1] = '\0';
-            leituraDS->set_authours(line);
-            ///RANK BESTSELLERS
-            line = separar(&arquivo);
-            leituraDS->set_bestseller_rank(std::stoi(line));
-            ///CATEGORIAS
-            line = separar(&arquivo);
-            tamanho_line = string_size(line);
-
-            while(line[tamanho_line-1]!=']')
-            {
-                if(line[0]=='[')
-                {
-                    for(int i=1;i<tamanho_line;i++)
-                    {
-                        line[i-1]=line[i];
-                        cout<<"entrei aqui3"<< endl;
-                    }
-                }
-                leituraDS->set_categories(line);
-                line = separar(&arquivo);
-                tamanho_line = string_size(line);
-            }
-            ///DESCRI«√O
-            line = separar(&arquivo);
-            leituraDS->set_description(line);
-            ///DIMENS√O X
-            line = separar(&arquivo);
-            leituraDS->set_dimention_x(std::stof(line));
-            ///DIMENS√O Y
-            line = separar(&arquivo);
-            leituraDS->set_dimention_y(std::stof(line));
-            ///DIMENS√O Z
-            line = separar(&arquivo);
-            leituraDS->set_dimention_z(std::stof(line));
-            ///EDI«√O
-            line = separar(&arquivo);
-            leituraDS->set_edition(line);
-            ///EDITION STATEMENT
-            line = separar(&arquivo);
-            leituraDS->set_edition_statement(line);
-            ///IDADE
-            line = separar(&arquivo);
-            leituraDS->set_for_ages(line);
-            ///FORMATO
-            line = separar(&arquivo);
-            leituraDS->set_format(line);
-            ///ID
-            line = separar(&arquivo);
-            leituraDS->set_id(std::stof(line));
-            ///NOTAS
-            line = separar(&arquivo);
-            leituraDS->set_illustrations_note(line);
-            ///IMPRESS√O
-            line = separar(&arquivo);
-            leituraDS->set_imprint(line);
-            ///INDEX DATE
-            line = separar(&arquivo);
-            leituraDS->set_index_date(line);
-            ///ISBN-10
-            line = separar(&arquivo);
-            leituraDS->set_isbn10(line);
-            ///ISBN-13
-            line = separar(&arquivo);
-            leituraDS->set_isbn13(line);
-            ///LINGUAGEM
-            line = separar(&arquivo);
-            leituraDS->set_lang(line);
-            ///DATA DE PUBLICA«√O
-            line = separar(&arquivo);
-            leituraDS->set_publication_date(line);
-            ///LOCAL DE PUBLICA«√O
-            line = separar(&arquivo);
-            leituraDS->set_publication_place(line);
-            ///RATING-AVG
-            line = separar(&arquivo);
-            leituraDS->set_rating_avg(std::stof(line));
-            ///RATING-COUNT
-            line = separar(&arquivo);
-            leituraDS->set_rating_count(std::stof(line));
-            ///TÕTULO
-            line = separar(&arquivo);
-            leituraDS->set_title(line);
-            ///URL
-            line = separar(&arquivo);
-            leituraDS->set_url(line);
-            ///PESO
-            line = separar(&arquivo);
-            leituraDS->set_weight(std::stof(line));
-
-            /*if(verificaAtributos(&flag, &leituraDS))
-            {
-
-            }*/
-            imprimir(leituraDS);
-        }
-
-        arquivo.close();
-    }
-    else
-    {
-        cout << "Erro ao abrir o arquivo";
-        //exit(1);
-    }
-}
 
 
 int main()
 {
-    leituraDataSet();
-    /*
-    Book *lista_livros;
-    map<string,string> authors;
-    map<string,string> categories;
-    map<string,string> formats;
-    map<string,string> places;
-    ///LE OS AUTORES E ARMAZENA EM UM HASHMAP
-    ifstream arquivo;
-    arquivo.open("arquivos/authors.csv");
-    if(arquivo.is_open())
+    int N = 0;
+    int M = 703200;
+    int m = 1000;
+    ifstream entrada;
+    ofstream saida;
+    Hash* authors = new Hash(M);
+    leituraAuthor(authors, M);
+    //authors->imprime();
+    entrada.open("arquivos/entrada.txt");
+    saida.open("arquivos/saida.txt");
+
+    if(entrada.is_open())
     {
-        string line;
-        string key;
-        getline(arquivo,line);
-        while(!arquivo.eof())
+        string n;
+        getline(entrada, n);
+        N = std::stoi(n);
+        int tamanho[N];
+        vector<Author*> autor_ordenado;
+        ArvoreVP vp;
+        ArvoreB b_2(2);
+        ArvoreB b_10(20);
+       
+        for (int i = 0; i < N; i++)
         {
-            getline(arquivo,key,',');
-            getline(arquivo,line,',');
-            authors.insert(key,line);
+            getline(entrada, n);
+            tamanho[i] = std::stoi(n);
+
+            Book *lista = new Book[tamanho[i]];
+
+            Book *lista2 = new Book[tamanho[i]];
+            leitura_dataset(lista, tamanho[i], authors, &autor_ordenado);
+
+            igual(lista2, lista, tamanho[i]);
+
+            numComparacoes = 0;
+            numCopias = 0;
+
+            int tamOrdenado=autor_ordenado.size();
+            
+            ///PARTE 2
+            MergeSortInt(autor_ordenado[0], 0, tamOrdenado-1);
+
+            Escrita_parte2(&saida, autor_ordenado, m);
+
+            ///PARTE 3
+            saida << endl << "PARTE3" << endl << endl;
+            auto start = std::chrono::steady_clock::now();
+            insercao_b(lista, &b_2, tamanho[i]);
+            auto end = std::chrono::steady_clock::now();
+            std::chrono::duration<double> elapsed_seconds = end-start;
+
+            Escrita(&saida, arvore_b_2, elapsed_seconds.count(), b_2.num_comparacoes, b_2.num_copias, tamanho[i]);
+
+            start = std::chrono::steady_clock::now();
+            insercao_b(lista, &b_10, tamanho[i]);
+            end = std::chrono::steady_clock::now();
+            std::chrono::duration<double> elapsed_sec = end-start;
+
+            Escrita(&saida, arvore_b_10, elapsed_sec.count(), b_10.num_comparacoes, b_10.num_copias, tamanho[i]);
+            
+            start = std::chrono::steady_clock::now();
+            insercao_vp(lista, &vp, tamanho[i]);
+            end = std::chrono::steady_clock::now();
+            std::chrono::duration<double> elapsed_second = end-start;
+
+            Escrita(&saida, arvore_vp, elapsed_second.count(), vp.num_comparacoes, vp.num_copias, tamanho[i]);
+            
+            
+            delete[] lista;
+            delete[] lista2;     
         }
-        arquivo.close();
+        saida.close();
+        cout << "A ordenacao foi finalizada!" << endl;
     }
     else
     {
-        cout << "Erro ao abrir o arquivo";
-        //exit(1);
+        cout << "Erro ao abrir o arquivo" << endl;
     }
-    ///LE AS CATEGORIAS E ARMAZENA EM UM HASHMAP
-    ///TEM CATEGORIES QUE CONTEM VIRGULA LOGO TEREMOS QUE PENSAR COMO FAZER PARA PEGAR ELA POR COMPLETO SEM PARTIR
-    arquivo.open("arquivos/categories.csv");
-    if(arquivo.is_open())
-    {
-        string line;
-        string key;
-        getline(arquivo,line);
-        while(!arquivo.eof())
-        {
-            getline(arquivo,key,',');
-            getline(arquivo,line,',');
-            categories.insert(key,line);
-        }
-        arquivo.close();
-    }
-    else
-    {
-        cout << "Erro ao abrir o arquivo";
-//        exit(1);
-    }
-    ///LE OS FORMATOS E ARMAZENA EM UM HASHMAP
-    arquivo.open("arquivos/formats.csv");
-    if(arquivo.is_open())
-    {
-        string line;
-        string key;
-        getline(arquivo,line);
-        while(!arquivo.eof())
-        {
-            getline(arquivo,key,',');
-            getline(arquivo,line,',');
-            formats.insert(key,line);
-        }
-        arquivo.close();
-    }
-    else
-    {
-        cout << "Erro ao abrir o arquivo";
-//        exit(1);
-    }
-    ///LE OS LUGARES E ARMAZENA EM UM HASHMAP
-    ///TEM PLACES QUE CONTEM VIRGULA LOGO TEREMOS QUE PENSAR COMO FAZER PARA PEGAR ELA POR COMPLETO SEM PARTIR
-    arquivo.open("arquivos/places.csv");
-    if(arquivo.is_open())
-    {
-        string line;
-        string key;
-        getline(arquivo,line);
-        while(!arquivo.eof())
-        {
-            getline(arquivo,key,',');
-            getline(arquivo,line,',');
-            places.insert(key,line);
-        }
-        arquivo.close();
-    }
-    else
-    {
-        cout << "Erro ao abrir o arquivo";
-//        exit(1);
-    }
-    arquivo.open("arquivos/dataset.csv");
-    if(arquivo.is_open())
-    {
-        string line;
-        Book livro;
-        getline(arquivo,line);
-        while(!arquivo.eof())
-        {
-            getline(arquivo,line,',');
-            int tamanho_line;
-            tamanho_line = string_size(line);
-            while(line[tamanho_line-1]!=']')
-            {
-                if(line[0]=='[')
-                {
-                    for(int i=1;i<tamanho_line;i++)
-                    {
-                        line[i-1]=line[i];
-                    }
-                }
-                livro.set_authours(line);
-                getline(arquivo,line,',');
-                tamanho_line = string_size(line);
-            }
-            line[tamanho_line-1] = '\0';
-            livro.set_authours(line);
-            line = separar(&arquivo);
-            livro.set_bestseller_rank(std::stoi(line));
-            line = separar(&arquivo);
-            tamanho_line = string_size(line);
-
-            while(line[tamanho_line-1]!=']')
-            {
-                if(line[0]=='[')
-                {
-                    for(int i=1;i<tamanho_line;i++)
-                    {
-                        line[i-1]=line[i];
-                    }
-                }
-                livro.set_categories(line);
-                line = separar(&arquivo);
-                tamanho_line = string_size(line);
-            }
-            line[tamanho_line-1]='\0';
-            livro.set_categories(line);
-
-            line = separar(&arquivo);
-            livro.set_description(line); ///TEM DESCRIPTION QUE CONTEM VIRGULA LOGO TEREMOS QUE PENSAR COMO FAZER PARA PEGAR ELA POR COMPLETO SEM PARTIR
-
-            line = separar(&arquivo);
-            livro.set_dimention_x(std::stof(line));
-
-            line = separar(&arquivo);
-            livro.set_dimention_y(std::stof(line));
-
-            line = separar(&arquivo);
-            livro.set_dimention_z(std::stof(line));
-
-            line = separar(&arquivo);
-            livro.set_edition(line); ///TEM EDITION QUE CONTEM VIRGULA LOGO TEREMOS QUE PENSAR COMO FAZER PARA PEGAR ELA POR COMPLETO SEM PARTIR
-
-            line = separar(&arquivo);
-            livro.set_edition_statement(line); ///TEM EDITION_STATEMENT QUE CONTEM VIRGULA LOGO TEREMOS QUE PENSAR COMO FAZER PARA PEGAR ELA POR COMPLETO SEM PARTIR
-
-            line = separar(&arquivo);
-            livro.set_for_ages(line);
-
-            line = separar(&arquivo);
-            livro.set_format(line);
-
-            line = separar(&arquivo);
-            livro.set_id(std::stoi(line));
-
-            line = separar(&arquivo);
-            livro.set_illustrations_note(line); ///TEM ILLUSTRATIONS_NOTE QUE CONTEM VIRGULA LOGO TEREMOS QUE PENSAR COMO FAZER PARA PEGAR ELA POR COMPLETO SEM PARTIR
-
-            line = separar(&arquivo);
-            livro.set_imprint(line); ///TEM IMPRINT QUE CONTEM VIRGULA LOGO TEREMOS QUE PENSAR COMO FAZER PARA PEGAR ELA POR COMPLETO SEM PARTIR
-
-            line = separar(&arquivo);
-            livro.set_index_date(line);
-
-            line = separar(&arquivo);
-            livro.set_isbn10(line);
-
-            line = separar(&arquivo);
-            livro.set_isbn13(line);
-
-            line = separar(&arquivo);
-            livro.set_lang(line);
-
-            line = separar(&arquivo);
-            livro.set_publication_date(line);
-
-            line = separar(&arquivo);
-            livro.set_publication_place(line);
-
-            line = separar(&arquivo);
-            livro.set_rating_avg(std::stof(line));
-
-            line = separar(&arquivo);
-            livro.set_rating_count(std::stoi(line));
-
-            line = separar(&arquivo);
-            livro.set_title(line); ///TEM TITLE QUE CONTEM VIRGULA LOGO TEREMOS QUE PENSAR COMO FAZER PARA PEGAR ELA POR COMPLETO SEM PARTIR
-
-            line = separar(&arquivo);
-            livro.set_url(line);
-
-            line = separar(&arquivo);
-            livro.set_weight(std::stof(line));
-        }
-        arquivo.close();
-    }
-    else
-    {
-        cout << "Erro ao abrir o arquivo";
-        //exit(1);
-    }*/
     return 0;
 }
