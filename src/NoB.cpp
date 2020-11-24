@@ -101,7 +101,7 @@ void NoB::imprime()
 /// Auxiliar da inserção
 void NoB::aux_insere(Book *info, int* num_comparacoes, int* num_copias)
 {
-  cout << *num_comparacoes << " - " << *num_copias << endl;
+  //cout << *num_comparacoes << " - " << *num_copias << endl;
   int i = this->n - 1;
   if(this->folha)
   {

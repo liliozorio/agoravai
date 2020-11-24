@@ -14,12 +14,32 @@ ArvoreVP::ArvoreVP()
 /// Destrutor ArvoreVP
 ArvoreVP::~ArvoreVP()
 {
-    NoVP* aux;
+    /*NoVP* aux;
     while(raiz != nullptr)
     {
         aux = remocao(raiz->get_info(), raiz);
         raiz = aux;
+    }*/
+    remove(raiz);
+}
+
+void ArvoreVP::remove(NoVP* p)
+{
+  if(p->get_direito() == nullptr && p->get_esquerdo() == nullptr)
+  {
+    delete p;
+  }
+  else
+  {
+    if(p->get_esquerdo() != nullptr)
+    {
+      remove(p->get_esquerdo());
     }
+    if(p->get_direito() != nullptr)
+    {
+      remove(p->get_direito());
+    }
+  }
 }
 
 /// Retorna raiz 
@@ -207,7 +227,7 @@ NoVP* ArvoreVP::ajusta(NoVP* p, NoVP* pai)
                 p = pai->get_esquerdo();
             }
         }
-        if(p->get_direito() != nullptr)
+        else if(p->get_direito() != nullptr)
         {
             if(pai->get_direito() == p && p->get_direito()->get_cor() == 1)
             {
@@ -291,7 +311,9 @@ NoVP* ArvoreVP::insercao(Book info, NoVP* p)
     else if(info.get_id() > p->get_info().get_id())
     {
         NoVP* pai = p->get_pai();
+        
         p->set_direito(insercao(info, p->get_direito()));
+        
         if(p->get_direito() != nullptr )
         {
             p->get_direito()->set_pai(p);
@@ -315,7 +337,9 @@ NoVP* ArvoreVP::insercao(Book info, NoVP* p)
     else
     {
         NoVP* pai = p->get_pai();
+
         p->set_esquerdo(insercao(info, p->get_esquerdo()));
+        
         if(p->get_esquerdo() != nullptr)
         {
             p->get_esquerdo()->set_pai(p);
@@ -338,6 +362,7 @@ NoVP* ArvoreVP::insercao(Book info, NoVP* p)
     }
     return p;
 }
+
 
 /// Remove NoVP da arvore
 NoVP* ArvoreVP::remocao(Book info, NoVP* p)

@@ -49,8 +49,9 @@ void separaAutores(string line, Hash *h, vector<Author*> *autor_ordenado)
   for(int i = 0; i < autor.size(); i++)
   {
     Author* aux;
+    //cout << "i: " << i << " - " << autor[i] << " - " << endl;
     aux = h->lookup(std::stoi(autor[i]));
-    
+    //cout << "e aqui " << endl;
     if(aux != NULL)
     {
       if(aux->get_contador() == 0)
@@ -78,6 +79,7 @@ void leituraAuthor(Hash* autor, int tam)
 {
     ifstream arquivoAuthors;
     arquivoAuthors.open("authors.csv");
+    int i = 0;
     while(i < tam)
     {
       Author autorAux2;
@@ -89,7 +91,7 @@ void leituraAuthor(Hash* autor, int tam)
         i = 0;
         string word, trash, line;
         string linha;
-        getline(arquivo,trash);
+        getline(arquivoAuthors,trash);
         while(i < tam)
         {
           
@@ -97,9 +99,9 @@ void leituraAuthor(Hash* autor, int tam)
             ///CODIGO
             line = separar(&arquivoAuthors);
             if(line == "")
-                line = '0';
+                line = "0";
             //cout << line << endl;
-            int aux=std::stoi(line);
+            long int aux=std::stol(line);
             autorAux.set_codigo(aux);
             
             ///NOME
@@ -160,13 +162,14 @@ void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_
       getline(arquivo,line,']');
       getline(arquivo,trash,'"');
       lista[i].set_authours(line);
-      cout<< "Oi: " << line << " - " << lista[i].get_authors() << endl;
-      separaAutores(line, h, autor_ordenado);
+      //cout<< a << endl;
+      if(line != "")
+        separaAutores(line, h, autor_ordenado);
       ///RANK BESTSELLERS
       line = separar(&arquivo);
+      //cout << "linha: " << line << endl ;
       if(line == "")
-        line = '0';
-      cout << "e aqui" << endl;
+        line = "0";
       lista[i].set_bestseller_rank(std::stoi(line));
       ///CATEGORIAS
       getline(arquivo,line,'"');
@@ -176,11 +179,12 @@ void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_
       lista[i].set_categories(line);
       ///EDICAO
       line = separar(&arquivo);
+ 
       lista[i].set_edition(line);
       ///ID
       line = separar(&arquivo);
       if(line == "")
-        line = '0';
+        line = "0";
       lista[i].set_id(std::stol(line));
       ///ISBN-10
       line = separar(&arquivo);
@@ -191,12 +195,14 @@ void leitura_dataset(Book* lista, int tamanho, Hash *h, vector<Author*> * autor_
       ///RATING-AVG
       line = separar(&arquivo);
       if(line == "")
-        line = '0';
+        line = "0";
       lista[i].set_rating_avg(std::stof(line));
       ///RATING-COUNT
       line = separar(&arquivo);
+      //cout << line << endl;
       if(line == "")
-        line = '0';
+        line = "0";
+      //cout << "Passou do BESTSELLERS" << endl;
       lista[i].set_rating_count(std::stoi(line));
       ///TITULO
       line = separar(&arquivo);
@@ -223,8 +229,10 @@ void insercao_b(Book *lista, ArvoreB *b, int tamanho)
 /// Insere livros na arvore vermelha e preta
 void insercao_vp(Book *lista, ArvoreVP *vp, int tamanho)
 {
+  cout << "entrei" << endl;
   for(int i = 0; i < tamanho; i++)
   {
+    cout << i << endl;
     vp->insercao(lista[i], vp->get_raiz());
   }
 }

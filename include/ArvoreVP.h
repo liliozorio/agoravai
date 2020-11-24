@@ -18,6 +18,7 @@ class ArvoreVP
         NoVP* rotacao_dupla_direita(NoVP* p, NoVP* pai);
         NoVP* ajusta(NoVP* p, NoVP* pai);
         NoVP* get_raiz();
+        void remove(NoVP* p);
 
         int num_comparacoes = 0;
         int num_copias = 0;

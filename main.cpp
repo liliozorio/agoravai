@@ -57,7 +57,7 @@ void Escrita_parte2(ofstream* Saida, vector<Author*> autor, int m)
 {
         *Saida << "PARTE 2" << endl;
         *Saida << "M = " << m << endl;
-        for(int i = 0; i < autor.size(); i++)
+        for(int i = 0; i < m; i++)
         {
           *Saida << "Nome Autor: " << autor[i]->get_nome()  << " Frequencia: " << autor[i]->get_contador() << endl;
         }
@@ -69,13 +69,13 @@ void Escrita_parte2(ofstream* Saida, vector<Author*> autor, int m)
 int main()
 {
     int N = 0;
-    int M = 1000;
+    int M = 703200;
+    int m = 1000;
     ifstream entrada;
     ofstream saida;
     Hash* authors = new Hash(M);
     leituraAuthor(authors, M);
     //authors->imprime();
-    
     entrada.open("arquivos/entrada.txt");
     saida.open("arquivos/saida.txt");
 
@@ -86,7 +86,6 @@ int main()
         N = std::stoi(n);
         int tamanho[N];
         vector<Author*> autor_ordenado;
-
         ArvoreVP vp;
         ArvoreB b(2);
        
@@ -106,10 +105,11 @@ int main()
             numCopias = 0;
 
             int tamOrdenado=autor_ordenado.size();
+            cout<<"tam2 :"<<tamOrdenado<<endl;
             ///PARTE 2
             MergeSortInt(autor_ordenado[0], 0, tamOrdenado-1);
 
-            Escrita_parte2(&saida, autor_ordenado, M);
+            Escrita_parte2(&saida, autor_ordenado, m);
 
             ///PARTE 3
             saida << endl << "PARTE3" << endl << endl;
@@ -119,16 +119,16 @@ int main()
             std::chrono::duration<double> elapsed_seconds = end-start;
 
             Escrita(&saida, arvore_b, elapsed_seconds.count(), b.num_comparacoes, b.num_copias, tamanho[i]);
-
+            
             start = std::chrono::steady_clock::now();
+            cout << "oo" << endl;
             insercao_vp(lista, &vp, tamanho[i]);
+            cout << "oo" << endl;
             end = std::chrono::steady_clock::now();
             std::chrono::duration<double> elapsed_second = end-start;
 
             Escrita(&saida, arvore_vp, elapsed_second.count(), vp.num_comparacoes, vp.num_copias, tamanho[i]);
-
-            vp.~ArvoreVP();
-            b.~ArvoreB();
+            
             
             delete[] lista;
             delete[] lista2;     

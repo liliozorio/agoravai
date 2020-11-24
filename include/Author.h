@@ -12,11 +12,11 @@ class Author
         virtual ~Author();
 
         string get_nome();
-        int get_codigo();
+        long int get_codigo();
         int get_contador();
 
         void set_nome(string n);
-        void set_codigo(int c);
+        void set_codigo(long int c);
         void set_contador(int cont);
 
         void cont_mais_um();
@@ -24,7 +24,7 @@ class Author
     private:
         int contador = 0;
         string nome;
-        int codigo;
+        long int codigo;
 };
 
 #endif // AUTHOR_H

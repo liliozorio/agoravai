@@ -264,7 +264,7 @@ void MergeSort(Book *Livro, int primeiro, int ultimo)
 }
 
 ///Auxiliar MergeSort para inteiro
-void MergeTripleSortInt(Author *autor_ordenado, int primeiro, int meio, int ultimo)
+void MergeTripleSortInt(Author* autor_ordenado, int primeiro, int meio, int ultimo)
 {
     int x, y, z;
     int a = meio - primeiro +1;
@@ -286,7 +286,7 @@ void MergeTripleSortInt(Author *autor_ordenado, int primeiro, int meio, int ulti
 
     while(x < a && y < b)
     {
-        if(Primeiro[x].get_contador() > Segundo[y].get_contador())
+        if(Primeiro[x].get_contador() >= Segundo[y].get_contador())
         {
             autor_ordenado[z] = Primeiro[x];
             x++;

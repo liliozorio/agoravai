@@ -20,7 +20,7 @@ string Author::get_nome()
 }
 
 /// Retorna codigo
-int Author::get_codigo()
+long int Author::get_codigo()
 {
     return codigo;
 }
@@ -38,7 +38,7 @@ void Author::set_nome(string n)
 }
 
 /// Atualiza codigo
-void Author::set_codigo(int c)
+void Author::set_codigo(long int c)
 {
     codigo = c;
 }

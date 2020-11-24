@@ -47,10 +47,10 @@ int Hash::sondagem_linear(int chave, int* i)
 void Hash::create(Author* Data)
 {
     Author* auxInsere;
-
+    long int cod = -1;
     Author* aux = new Author();
     aux->set_nome("");
-    aux->set_codigo(INFINITO);
+    aux->set_codigo(cod);
     aux->set_contador(INFINITO);
 
     tabela.push_back(*aux);
