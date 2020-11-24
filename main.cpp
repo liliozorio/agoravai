@@ -71,7 +71,7 @@ int main()
 {
     int N = 0;
     int M = 703200;
-    int m = 1;
+    int m = 1000;
     ifstream entrada;
     ofstream saida;
     Hash* authors = new Hash(M);
@@ -89,7 +89,7 @@ int main()
         vector<Author*> autor_ordenado;
         ArvoreVP vp;
         ArvoreB b_2(2);
-        ArvoreB b_10(10);
+        ArvoreB b_10(20);
        
         for (int i = 0; i < N; i++)
         {
@@ -107,6 +107,7 @@ int main()
             numCopias = 0;
 
             int tamOrdenado=autor_ordenado.size();
+            
             ///PARTE 2
             MergeSortInt(autor_ordenado[0], 0, tamOrdenado-1);
 
